@@ -7,6 +7,7 @@
         session_start();
     }
 
+
     
 ?>
 
@@ -39,24 +40,28 @@
 
 
     <div class="container-register">
-
-        <label for="username">Usuário: </label>
-        <input type="text" name="usermail" id="useruser" placeholder="Email ou Usuário" required>
-        <br>
-        <label for="password">Senha: </label>
-        <input type="password" name="password" id="passworduser"required>
-        <br>
-        <label for="name">Nome Completo: </label>
-        <input type="text" name="name" id="nameuser" required>
-        <br>
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="emailuser">
-        <br>
-        <label for="cellphone">Celular: </label>
-        <input type="tel" name="cellphone" id="cellphoneuser">
-        <br>
-        
-        <button type="reset">Limpar</button><button type="submit">Enviar</button>
+        <form action="register.php" method="post">
+            <label for="username">Usuário: </label>
+            <input type="text" name="usermail" id="useruser" placeholder="Digite seu usuário" required>
+            <br>
+            <label for="password">Senha: </label>
+            <input type="password" name="password" id="passworduser"  placeholder="Digite sua senha" required>
+            <br>
+            <label for="passwordagain">Repita a senha: </label>
+            <input type="password" name="passwordagain" id="reppassworduser"  placeholder="Repita a sua senha" required>
+            <br>
+            <label for="name">Nome Completo: </label>
+            <input type="text" name="name" id="nameuser" placeholder="Digite seu nome completo" required>
+            <br>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="emailuser"  placeholder="Digite seu email" >
+            <br>
+            <label for="cellphone">Celular: </label>
+            <input type="tel" name="cellphone" id="cellphoneuser" placeholder="Digite seu celular"  required>
+            <br>
+            
+            <button type="reset">Limpar</button><button type="submit">Enviar</button>
+        </form>
 
 
     </div>
