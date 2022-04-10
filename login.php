@@ -41,11 +41,15 @@
     <div class="container-login">
 
         <label for="usermail">Email/Usuário: </label>
-        <input type="text" name="usermail" id="usermail" placeholder="Email ou Usuário" required>
+        <center><input type="text" name="usermail" id="usermail" placeholder="Email ou Usuário" required></center>
+        <br>
         <label for="password">Senha: </label>
-        <input type="password" name="password" id="password">
-        <br><br>
-        <button type="reset">Limpar</button><button type="submit">Entrar</button>
+        <center><input type="password" name="password" id="password"></center>
+        
+        <center><button type="reset">Limpar</button><button type="submit">Entrar</button>
+        <br>
+        <br>
+        <a href="register.php"><button>Cadastre-se!</button></a></center>
 
 
     </div>
