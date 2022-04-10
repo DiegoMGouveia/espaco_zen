@@ -1,10 +1,44 @@
 <?php
     require("_func/functions.php");
+    require_once("_banco/conection.php");
 
     if (!$_SESSION['user_logged']){
         // se não tiver um usuário não faz nada
     } else {
         session_start();
+    }
+
+    if (isset($_POST["username"])) {
+        $username  = $_POST["username"];
+        if($_POST["password"] == $_POST["passwordagain"]){
+            $password = $_POST["password"];
+
+        } else {
+            $nopwd = "Senhas NÂO identicas, digite novamente.";
+        }
+        if(isset($_POST["name"])) {
+            $user      = $_POST["name"];
+        } else {
+            $noname = "Digite seu nome";
+        }
+        if(isset($_POST["email"])){
+            $email     = $_POST["email"];
+        } 
+        if (isset($_POST["cellphone"])){
+            $cellphone = $_POST["cellphone"];
+        } else {
+            $nophone = "Digite seu celular";
+        }
+
+        if (isset($username) && isset($user) && isset($password) && isset($email) && isset($cellphone)){
+            $register = registro($conecta,$username,$password,$user,$email,$cellphone);
+            if(isset($register)){
+                $sucefful = "Registro realizado com sucesso!";
+            } else {
+                $denied = "Erro no cadastro, verifique e tente novamente.";
+            }
+        }
+
     }
 
     
@@ -39,24 +73,47 @@
 
 
     <div class="container-register">
+        <form action="register.php" method="post">
+            <label for="username">Usuário: </label>
+            <input type="text" name="username" id="useruser" placeholder="Digite seu usuário" required>
+            <br>
+            <label for="password">Senha: </label>
+            <input type="password" name="password" id="passworduser" placeholder="Digite sua senha" required>
+            <br>
+            <label for="passwordagain">Repita a senha: </label>
+            <input type="password" name="passwordagain" id="reppassworduser"  placeholder="Repita a sua senha" required>
+            <br>
+            <label for="name">Nome Completo: </label>
+            <input type="text" name="name" id="nameuser" placeholder="Digite seu nome completo" required>
+            <br>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="emailuser"  placeholder="Digite seu email" >
+            <br>
+            <label for="cellphone">Celular: </label>
+            <input type="tel" name="cellphone" id="cellphoneuser" placeholder="Digite seu celular"  required>
+            <br>
+            
+            <button type="reset">Limpar</button><button type="submit">Enviar</button>
+        </form>
 
-        <label for="username">Usuário: </label>
-        <input type="text" name="usermail" id="useruser" placeholder="Email ou Usuário" required>
-        <br>
-        <label for="password">Senha: </label>
-        <input type="password" name="password" id="passworduser"required>
-        <br>
-        <label for="name">Nome Completo: </label>
-        <input type="text" name="name" id="nameuser" required>
-        <br>
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="emailuser">
-        <br>
-        <label for="cellphone">Celular: </label>
-        <input type="tel" name="cellphone" id="cellphoneuser">
-        <br>
-        
-        <button type="reset">Limpar</button><button type="submit">Enviar</button>
+        <?php if (isset($nopwd) || isset($noname) || isset($nophone) || isset($sucefful) || isset($denied)){
+            if($nopwd){
+                echo "<br>".$nopwd;
+            }
+            if($noname){
+                echo "<br>".$noname;
+            }
+            if($nophone){
+                echo "<br>".$nophone;
+            }
+            if($sucefful) {
+                echo "<br>".$sucefful;
+            }
+            if($denied){
+                echo "<br>".$denied;
+            }
+        }
+        ?>
 
 
     </div>

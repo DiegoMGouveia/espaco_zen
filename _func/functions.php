@@ -14,4 +14,14 @@
             </nav>
         <?php
     }
-?>
+
+    
+    function registro($conection, $user, $pass, $name, $cell, $mail=null){
+        $sql = "INSERT INTO users(username,password,name,email,cellphone) VALUES('$user','$pass','$name','$mail','$cell')";
+        $insert_query = mysqli_query($conection, $sql);
+        if ( !$insert_query ) {
+            die("falha na consulta ao banco, entre em contato conosco informando a falha com data e hora. Obrigado!");
+        } else {
+            return $insert_query;
+        }
+    }
