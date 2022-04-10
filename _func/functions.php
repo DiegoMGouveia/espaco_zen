@@ -5,7 +5,7 @@
             <nav class="bord-menu-principal">
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="#">Administração</a></li>
+                    <li><a href="adminpanel.php">Administração</a></li>
                     <li><a href="#">Perfil</a></li>
                     <li><a href="#">Serviços</a></li>
                     <li><a href="#">Galeria</a></li>
@@ -33,7 +33,7 @@
                         <ul>
                             <li><a href="index.php">Inicio</a></li>
                             <li><a href="login.php">Login</a></li>
-                            <li><a href="#">Cadastrar</a></li>
+                            <li><a href="register.php">Cadastrar</a></li>
                             <li><a href="#">Serviços</a></li>
                             <li><a href="#">Galeria</a></li>
                             <li><a href="#">Agenda</a></li>
@@ -45,7 +45,8 @@
     }
 
     
-    function registro($conection, $user, $pass, $name, $cell, $mail=null){
+    function registro($conection, $user, $pwd, $name, $cell, $mail=null){
+        $pass = MD5($pwd);
         $sql = "INSERT INTO users(username,password,name,email,cellphone) VALUES('$user','$pass','$name','$mail','$cell')";
         $insert_query = mysqli_query($conection, $sql);
         if ( !$insert_query ) {
@@ -56,7 +57,8 @@
     }
 
 //  
-    function login($usermail, $pass, $conection) {
+    function login($usermail, $pwd, $conection) {
+        $pass = MD5($pwd);
         $sqlogin = "SELECT * FROM users WHERE username = '$usermail' AND password = '$pass' OR email = '$usermail' AND password = '$pass' OR cellphone = '$usermail' AND password = '$pass' ";
         $login_query = mysqli_query($conection,$sqlogin);
         if (!$login_query){

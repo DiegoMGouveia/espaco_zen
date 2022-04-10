@@ -85,10 +85,11 @@ body {
 
 .container1-conteudo1 {
     width: 18em;
-    height: 38em;
+    height: auto;
     background: rgba(221, 156, 156, 0.37);
     border-radius: 10px;
     margin-left: 1em;
+    margin-bottom: 1px;
 }
 .conteudo1 h2{
     margin-top: 2em;
@@ -99,6 +100,7 @@ body {
 .conteudo1 ul{
     list-style: none;
     margin-bottom: 10em;
+    padding-bottom: 3em;
 }
 
 .conteudo1 ul li{
@@ -128,7 +130,7 @@ body {
     background-color: rgba(221, 156, 156, 0.384);
     float: left;
     margin-left: 25vw;
-    margin-top: -60vh;
+    margin-top: -75vh;
     border-radius: 20px;
 }
 
@@ -225,3 +227,6 @@ body {
     border-radius: 20px;
     
 }
+
+/* Administração */
+
