@@ -28,7 +28,7 @@
         </div>
         <div class="titulo">
             <a href="index.php"><h1>Espaço Zen</h1></a>
-        <?php menuprincipal() ?>
+        <?php menuprincipal(); ?>
         </div>
 
 

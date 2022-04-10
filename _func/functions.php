@@ -1,11 +1,12 @@
 <?php
     function menuprincipal(){
+        if($_SESSION["privileges"] == 1){
         ?>
             <nav class="bord-menu-principal">
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="#">Cadastrar</a></li>
+                    <li><a href="#">Administração</a></li>
+                    <li><a href="#">Perfil</a></li>
                     <li><a href="#">Serviços</a></li>
                     <li><a href="#">Galeria</a></li>
                     <li><a href="#">Agenda</a></li>
@@ -13,6 +14,34 @@
                 </ul>
             </nav>
         <?php
+        } elseif($_SESSION["privileges"] == 5){
+            ?>
+                <nav class="bord-menu-principal">
+                    <ul>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="login.php">Perfil</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Galeria</a></li>
+                        <li><a href="#">Agenda</a></li>
+                        <li><a href="contato.php">Contato</a></li>
+                    </ul>
+                </nav>
+            <?php
+            } elseif(!$_SESSION["privileges"]){
+                ?>
+                    <nav class="bord-menu-principal">
+                        <ul>
+                            <li><a href="index.php">Inicio</a></li>
+                            <li><a href="login.php">Login</a></li>
+                            <li><a href="#">Cadastrar</a></li>
+                            <li><a href="#">Serviços</a></li>
+                            <li><a href="#">Galeria</a></li>
+                            <li><a href="#">Agenda</a></li>
+                            <li><a href="contato.php">Contato</a></li>
+                        </ul>
+                    </nav>
+                <?php
+                }
     }
 
     

@@ -13,7 +13,7 @@
             //login com sucesso
             $_SESSION["user_logged"] = $login["userID"];
             $_SESSION["user_name"]   = $login["name"];
-            $_SESSION["user_rank"]   = $login["privileges"];
+            $_SESSION["privileges"]   = $login["privileges"];
             header("location:index.php");
         }
         
@@ -31,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="_css/style.css">
     <link rel="shortcut icon" href="_imgs/icone_zen.ico" type="image/x-icon">
-    <title>Inicio - Espaço Zen</title>
+    <title>Login - Espaço Zen</title>
 </head>
 <body>
 
