@@ -5,7 +5,7 @@
     $servidor  = "localhost";
     $usuario = "root";
     $senha = "diego123";
-    $bancodb = "salaodb";
+    $bancodb = "espacozendb";
     $conecta = mysqli_connect($servidor,$usuario,$senha,$bancodb);
 
     //passo 2

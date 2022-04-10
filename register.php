@@ -1,5 +1,6 @@
 <?php
     require("_func/functions.php");
+    require_once("_banco/conection.php");
 
     if (!$_SESSION['user_logged']){
         // se não tiver um usuário não faz nada
@@ -7,8 +8,37 @@
         session_start();
     }
 
-    if (isset($_POST[])) {
-        
+    if (isset($_POST["username"])) {
+        $username  = $_POST["username"];
+        if($_POST["password"] == $_POST["passwordagain"]){
+            $password = $_POST["password"];
+
+        } else {
+            $nopwd = "Senhas NÂO identicas, digite novamente.";
+        }
+        if(isset($_POST["name"])) {
+            $user      = $_POST["name"];
+        } else {
+            $noname = "Digite seu nome";
+        }
+        if(isset($_POST["email"])){
+            $email     = $_POST["email"];
+        } 
+        if (isset($_POST["cellphone"])){
+            $cellphone = $_POST["cellphone"];
+        } else {
+            $nophone = "Digite seu celular";
+        }
+
+        if (isset($username) && isset($user) && isset($password) && isset($email) && isset($cellphone)){
+            $register = registro($conecta,$username,$password,$user,$email,$cellphone);
+            if(isset($register)){
+                $sucefful = "Registro realizado com sucesso!";
+            } else {
+                $denied = "Erro no cadastro, verifique e tente novamente.";
+            }
+        }
+
     }
 
     
@@ -65,6 +95,25 @@
             
             <button type="reset">Limpar</button><button type="submit">Enviar</button>
         </form>
+
+        <?php if (isset($nopwd) || isset($noname) || isset($nophone) || isset($sucefful) || isset($denied)){
+            if($nopwd){
+                echo "<br>".$nopwd;
+            }
+            if($noname){
+                echo "<br>".$noname;
+            }
+            if($nophone){
+                echo "<br>".$nophone;
+            }
+            if($sucefful) {
+                echo "<br>".$sucefful;
+            }
+            if($denied){
+                echo "<br>".$denied;
+            }
+        }
+        ?>
 
 
     </div>
