@@ -18,12 +18,12 @@
             ?>
                 <nav class="bord-menu-principal">
                     <ul>
-                        <li><a href="index.php">Inicio</a></li>
+                        <center><li><a href="index.php">Inicio</a></li>
                         <li><a href="login.php">Perfil</a></li>
                         <li><a href="#">Serviços</a></li>
                         <li><a href="#">Galeria</a></li>
                         <li><a href="#">Agenda</a></li>
-                        <li><a href="contato.php">Contato</a></li>
+                        <li><a href="contato.php">Contato</a></li></center>
                     </ul>
                 </nav>
             <?php

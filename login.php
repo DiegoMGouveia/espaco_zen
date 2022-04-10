@@ -62,8 +62,8 @@
             <center><button type="reset">Limpar</button><button type="submit">Entrar</button>
             <br>
             <br>
-            <a href="register.php"><button>Cadastre-se!</button></a></center>
         </form>
+        <a href="register.php">Cadastre-se!</a></center>
 
 
     </div>
