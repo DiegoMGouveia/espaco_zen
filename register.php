@@ -29,7 +29,7 @@
         } else {
             $nophone = "Digite seu celular";
         }
-
+// --------verifica se $username, $password, $email, $cellphone estão setados
         if (isset($username) && isset($user) && isset($password) && isset($email) && isset($cellphone)){
             $register = registro($conecta,$username,$password,$user,$email,$cellphone);
             if(isset($register)){
