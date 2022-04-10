@@ -1,9 +1,10 @@
 
 body {
     background-color:rgb(255, 208, 208);
-    background-image: url("../_imgs/fundo.jpg");
+    background-image: url("../_imgs/fundo3.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     margin:0;
     padding:0;
     display:inline-block;
@@ -15,12 +16,13 @@ body {
 
 .bord-menu-principal {
     padding: 1vh;
-    width: 20em;
+    width: 28em;
     height: 3em;
+    
     background-color:rgba(221, 156, 156, 0.308);
     border-radius: 10px;
-    margin-left: 38vw;
-    margin-top: 20vh;
+    margin-left: 35vw;
+    margin-top: 13em;
     display:inline-block;
     border-bottom: 3px solid;
     border-left: 3px solid;
@@ -193,5 +195,17 @@ body {
     border-radius: 20px;
 }
 
-/* agenda */
+/* login */
 
+.container-login {
+    
+    width: 13em;
+    height: 10em;
+    background-color: rgba(221, 156, 156, 0.384);
+    float: left;
+    padding: 1em;
+    margin-left: 40vw;
+    margin-top: 10vh;
+    border-radius: 20px;
+
+}
