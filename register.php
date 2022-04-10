@@ -7,6 +7,9 @@
         session_start();
     }
 
+    if (isset($_POST[])) {
+        
+    }
 
     
 ?>
@@ -42,10 +45,10 @@
     <div class="container-register">
         <form action="register.php" method="post">
             <label for="username">Usuário: </label>
-            <input type="text" name="usermail" id="useruser" placeholder="Digite seu usuário" required>
+            <input type="text" name="username" id="useruser" placeholder="Digite seu usuário" required>
             <br>
             <label for="password">Senha: </label>
-            <input type="password" name="password" id="passworduser"  placeholder="Digite sua senha" required>
+            <input type="password" name="password" id="passworduser" placeholder="Digite sua senha" required>
             <br>
             <label for="passwordagain">Repita a senha: </label>
             <input type="password" name="passwordagain" id="reppassworduser"  placeholder="Repita a sua senha" required>
