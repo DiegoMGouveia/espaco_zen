@@ -25,3 +25,17 @@
             return $insert_query;
         }
     }
+
+//  
+    function login($usermail, $pass, $conection) {
+        $sqlogin = "SELECT * FROM users WHERE username = '$usermail' AND password = '$pass' OR email = '$usermail' AND password = '$pass' OR cellphone = '$usermail' AND password = '$pass' ";
+        $login_query = mysqli_query($conection,$sqlogin);
+        if (!$login_query){
+            die("falha na consulta ao banco de dados, entre em contato conosco informando a falha com data e hora. Obrigado!");
+        } else {
+
+            $logado = mysqli_fetch_assoc($login_query);
+            
+            return $logado;
+        }
+    }

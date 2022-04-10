@@ -2,11 +2,7 @@
     require("_func/functions.php");
     require_once("_banco/conection.php");
 
-    if (!$_SESSION['user_logged']){
-        // se não tiver um usuário não faz nada
-    } else {
-        session_start();
-    }
+    session_start();
 
     if (isset($_POST["username"])) {
         $username  = $_POST["username"];

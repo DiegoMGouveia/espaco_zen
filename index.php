@@ -1,11 +1,8 @@
 <?php
     require("_func/functions.php");
+    require_once("_banco/conection.php");
 
-    if (!$_SESSION['user_logged']){
-        // se não tiver um usuário não faz nada
-    } else {
-        session_start();
-    }
+    session_start();
 
     
 ?>
@@ -63,6 +60,8 @@
 
     <div class="container2-posts">
         <h2>Novidades:</h2>
+
+
     </div>
 
 </body>

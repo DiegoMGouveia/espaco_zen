@@ -1,10 +1,23 @@
 <?php
     require("_func/functions.php");
+    require_once("_banco/conection.php");
 
-    if (!$_SESSION['user_logged']){
-        // se não tiver um usuário não faz nada
-    } else {
-        session_start();
+    session_start();
+
+    if(isset($_POST["usermail"]) && isset($_POST["password"])){
+        $login = login($_POST["usermail"],$_POST["password"],$conecta);
+        if ( empty($login) ){
+            //login errado
+            $mensagem = "Usuário/senha incorreto. Tente novamente.";
+        } else {
+            //login com sucesso
+            $_SESSION["user_logged"] = $login["userID"];
+            $_SESSION["user_name"]   = $login["name"];
+            $_SESSION["user_rank"]   = $login["privileges"];
+            header("location:index.php");
+        }
+        
+
     }
 
     
@@ -39,17 +52,18 @@
 
 
     <div class="container-login">
-
-        <label for="usermail">Email/Usuário: </label>
-        <center><input type="text" name="usermail" id="usermail" placeholder="Email ou Usuário" required></center>
-        <br>
-        <label for="password">Senha: </label>
-        <center><input type="password" name="password" id="password"></center>
-        
-        <center><button type="reset">Limpar</button><button type="submit">Entrar</button>
-        <br>
-        <br>
-        <a href="register.php"><button>Cadastre-se!</button></a></center>
+        <form action="login.php" method="post">
+            <label for="usermail">Email/Usuário: </label>
+            <center><input type="text" name="usermail" id="usermail" placeholder="Email ou Usuário" required></center>
+            <br>
+            <label for="password">Senha: </label>
+            <center><input type="password" name="password" id="password"></center>
+            
+            <center><button type="reset">Limpar</button><button type="submit">Entrar</button>
+            <br>
+            <br>
+            <a href="register.php"><button>Cadastre-se!</button></a></center>
+        </form>
 
 
     </div>
