@@ -20,13 +20,15 @@ body {
     
     background-color:rgba(221, 156, 156, 0.308);
     border-radius: 10px;
-    margin-left: 35vw;
+    margin-left: 34vw;
     margin-top: 13em;
     border-bottom: 3px solid;
     border-left: 3px solid;
     border-right: 3px solid;
     border-top: 1.5px solid;
     border-color: rgba(78, 45, 45, 0.342);
+    padding-left: 1em;
+    padding-right: 1em;
 
 
 }
@@ -62,6 +64,8 @@ body {
 
 .bord-menu-principal a{
     text-decoration: none;
+    color: inherit;
+
 }
 
 .img-logo{
@@ -230,3 +234,100 @@ body {
 
 /* Administração */
 
+/* usuários */
+
+.container1-menuadmin {
+    width: 18em;
+    height: auto;
+    background: rgba(221, 156, 156, 0.37);
+    border-radius: 10px;
+    margin-left: 1em;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+.container1-menuadmin a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.adminuserpanel h2{
+    text-align: center;
+}
+
+.paneladmin-menu h2{
+    margin-top: 2em;
+    padding-top: 2em;
+    margin-left: 0.5em;
+}
+
+.paneladmin-menu ul{
+    list-style: none;
+    margin-bottom: 10em;
+    padding-bottom: 3em;
+}
+
+.paneladmin-menu ul li{
+    background-color: rgba(221, 156, 156, 0.384);
+    margin-top: 1%;
+    height: 1.5em;
+    width: 70%;
+    padding: 0.3em;
+    margin-left: 0.5em;
+    border-radius: 10px;
+    text-align: center;
+}
+.paneladmin-menu ul li:hover{
+    background-color: rgba(201, 23, 23, 0.384);
+}
+
+.adminuserpanel {
+    width: 50em;
+    height: 80vh;
+    background-color: rgba(221, 156, 156, 0.384);
+    float: left;
+    margin-left: 26vw;
+    margin-top: -30em;
+    border-radius: 20px;
+}
+
+.adminuserpanel ul{
+    display: inline;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.adminuserpanel ul li {
+    padding: 5px;
+}
+
+.adminuserpanel a{
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.container2-menu-users {
+    display:flex;
+    width: 15em;
+    height: auto;
+    margin-left: 3em;
+    background-color: rgba(209, 112, 112, 0.384);
+    border-radius: 5px;
+}
+
+.tabela-lista-users {
+    margin-top: 5px;
+    margin-left: 2em;
+}
+
+.tabela-lista-users td{
+    padding: 5px;
+
+    background-color:rgba(88, 60, 60, 0.151);
+}
+
+.topo-tabela {
+    background-color:rgba(88, 60, 60, 0.308);
+}

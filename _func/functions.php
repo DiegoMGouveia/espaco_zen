@@ -70,3 +70,11 @@
             return $logado;
         }
     }
+
+
+    function listusers($conection){
+        $sql   = "SELECT * FROM users";
+        $lista = mysqli_query($conection, $sql);
+        return $lista;
+
+    }

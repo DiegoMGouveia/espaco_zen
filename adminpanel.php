@@ -35,13 +35,13 @@
     </Header>
 
 
-    <div class="container1-conteudo1">
-        <div class="conteudo1">
+    <div class="container1-menuadmin">
+        <div class="paneladmin-menu">
             <h2>
                 Painel Adminisrativo:
             </h2>
             <ul>
-            <li>Usuários</li>
+            <li><a href="adminpanel.php?users"> Usuários </a></li>
             <li>Serviços</li>
             <li>Produtos</li>
             <li>Galeria</li>
@@ -51,6 +51,62 @@
             </ul>
         </div>
     </div>
+
+    <?php 
+        if (isset($_GET["users"])) {
+            ?>
+                <div class="adminuserpanel">
+                   <h2> Administração de Usuários: </h2>
+                   <div class="container2-menu-users">
+                        <ul>
+                                <a href="adminpanel.php?users=1"><li>Listar Usuários</li></a>
+                                <li>Procurar Usuário</li>
+                        </ul>
+                    </div>
+
+                    <?php
+                        if ($_GET["users"] == 1){
+                            $lista = listusers($conecta);
+
+                            $sql_list = "SELECT * FROM users"; 
+                            ?>
+                                <div class="tabela-lista-users">
+                                    <table border="1" cellspacing="0">
+                                        <tr class="topo-tabela">
+                                            <td>ID: </td>
+                                            <td>Usuário: </td>
+                                            <td>Nome: </td>
+                                            <td>Email: </td>
+                                            <td>Celular: </td>
+                                            <td>Selecionar: </td>
+                                        </tr>
+
+
+                                        <?php
+                                            while($usuario_list = mysqli_fetch_array($lista)) {
+
+                                        ?>
+                                            <tr>
+            
+                                                <td><?php echo $usuario_list['userID']?></td>
+                                                <td><?php echo $usuario_list['username']?></td>
+                                                <td><?php echo $usuario_list['name']?></td>
+                                                <td><?php echo $usuario_list['email']?></td>
+                                                <td><?php echo $usuario_list['cellphone']?></td>
+                                                <td><a href="http://"></a></td>
+            
+                                            </tr>
+                                    </div>
+
+                                        <?php
+                                            }
+                        }
+                                ?>
+
+                    </div>
+            <?php
+        }
+    ?>
 
     
 
