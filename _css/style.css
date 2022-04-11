@@ -283,23 +283,24 @@ body {
 
 .adminuserpanel {
     width: 50em;
-    height: 80vh;
+    height: 75vh;
     background-color: rgba(221, 156, 156, 0.384);
     float: left;
-    margin-left: 26vw;
+    margin-left: 25vw;
     margin-top: -30em;
     border-radius: 20px;
 }
 
 .adminuserpanel ul{
-    display: inline;
+    display: inline-block;
     list-style: none;
     margin-top: 0;
     margin-bottom: 0;
+    padding-inline-start: 0px;
 }
 
 .adminuserpanel ul li {
-    padding: 5px;
+    padding: 5px;   
 }
 
 .adminuserpanel a{
@@ -309,12 +310,18 @@ body {
 }
 
 .container2-menu-users {
-    display:flex;
-    width: 15em;
+    display:inline-block;
+    width: auto;
     height: auto;
     margin-left: 3em;
+    padding-left: 0;
     background-color: rgba(209, 112, 112, 0.384);
     border-radius: 5px;
+}
+
+
+.container2-menu-users li:hover{
+    background-color: rgba(209, 112, 112, 0.664);
 }
 
 .tabela-lista-users {
