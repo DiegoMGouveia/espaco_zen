@@ -338,3 +338,18 @@ body {
 .topo-tabela {
     background-color:rgba(88, 60, 60, 0.308);
 }
+
+/* manage user */
+
+.manageuser {
+    width: 13em;
+    height: 15em;
+    background-color: rgba(221, 156, 156, 0.384);
+    float: left;
+    margin-left: 40vw;
+    margin-top: -30em;
+    border-radius: 20px;
+    padding: 2em;
+    padding-bottom: 3em;
+    text-align: center;
+}

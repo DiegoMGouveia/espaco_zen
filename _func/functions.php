@@ -55,8 +55,7 @@
             return $insert_query;
         }
     }
-
-//  
+ 
     function login($usermail, $pwd, $conection) {
         $pass = MD5($pwd);
         $sqlogin = "SELECT * FROM users WHERE username = '$usermail' AND password = '$pass' OR email = '$usermail' AND password = '$pass' OR cellphone = '$usermail' AND password = '$pass' ";
@@ -77,4 +76,13 @@
         $lista = mysqli_query($conection, $sql);
         return $lista;
 
+    }
+
+    function selectuserbyid($user, $conection){
+        if ($_SESSION["privileges"] <=2){
+            $sql = "SELECT * FROM users WHERE userID = '$user' ";
+            $login_query = mysqli_query($conection,$sql);
+            $selected_user = mysqli_fetch_assoc($login_query);
+            return $selected_user;
+        }
     }
