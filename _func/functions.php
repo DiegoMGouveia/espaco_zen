@@ -1,4 +1,14 @@
 <?php
+    function useridset(){
+        $userid = $_SESSION["user_logged"];
+        return $userid;
+    }
+
+    function privilegeset(){
+        $privilege = $_SESSION["privileges"];
+        return $privilege;
+    }
+
     function menuprincipal(){
         if($_SESSION["privileges"] == 1){
         ?>
@@ -78,11 +88,48 @@
 
     }
 
-    function selectuserbyid($user, $conection){
+    function selectuserbyid($conection){
         if ($_SESSION["privileges"] <=2){
+            $user = $_GET["edit-user"];
             $sql = "SELECT * FROM users WHERE userID = '$user' ";
             $login_query = mysqli_query($conection,$sql);
             $selected_user = mysqli_fetch_assoc($login_query);
             return $selected_user;
         }
     }
+
+
+    function admChangeUser($conection){
+        if (isset($_SESSION["privileges"])) {
+            $userID        = $_GET["edit-user"];
+            $username      = $_POST["changeusername"];
+            $name          = $_POST["changename"];
+            $email         = $_POST["changeemail"];
+            $cell          = $_POST["changecell"];
+            $privilege     = $_POST["changeprivilege"];
+            $sql_username    = "UPDATE users SET username = '$username' WHERE userID = '$userID'";
+            $usernamel_query = mysqli_query($conection, $sql_username);
+            $sql_name        = "UPDATE users SET name = '$name' WHERE userID = '$userID'";
+            $name_query      = mysqli_query($conection, $sql_name);
+            $sql_email       = "UPDATE users SET email = '$email' WHERE userID = '$userID'";
+            $email_query     = mysqli_query($conection, $sql_email);
+            $sql_cell        = "UPDATE users SET cellphone = '$cell' WHERE userID = '$userID'";
+            $cell_query      = mysqli_query($conection, $sql_cell);
+            $sql_privilege   = "UPDATE users SET privileges = '$privilege' WHERE userID = '$userID'";
+            $privilege_query = mysqli_query($conection, $sql_privilege);
+            if(isset($usernamel_query) && isset($name_query) && isset($email_query) && isset($cell_query) && isset($privilege_query)){
+                return true;
+            } else {   
+            return false;
+        }
+
+
+        }
+    }
+
+    function listprivileges($conection){
+        $sql = "SELECT * FROM privgroup";
+        $privilege_query = mysqli_query($conection, $sql);
+        return $privilege_query;
+    }
+

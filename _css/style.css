@@ -319,6 +319,10 @@ body {
     border-radius: 5px;
 }
 
+.container2-menu-users li{
+    border: 1px solid rgba(201, 23, 23, 0.582);
+}
+
 
 .container2-menu-users li:hover{
     background-color: rgba(209, 112, 112, 0.664);
@@ -329,8 +333,14 @@ body {
     margin-left: 2em;
 }
 
+.tabela-lista-users table{
+
+    margin-right: 2em;
+}
+
 .tabela-lista-users td{
     padding: 5px;
+    margin-right: 55em;
 
     background-color:rgba(88, 60, 60, 0.151);
 }
@@ -343,7 +353,7 @@ body {
 
 .manageuser {
     width: 13em;
-    height: 15em;
+    height: auto;
     background-color: rgba(221, 156, 156, 0.384);
     float: left;
     margin-left: 40vw;
@@ -352,4 +362,24 @@ body {
     padding: 2em;
     padding-bottom: 3em;
     text-align: center;
+    
 }
+.manageuser input{
+    padding: 0.2em;
+    border-color: rgba(201, 23, 23, 0.582);
+    border-radius: 10px;
+    
+}
+
+#searchuser {
+
+    width: 19em;
+    margin-left:20em;
+    border: 1px solid rgba(218, 42, 77, 0.753);
+    border-radius: 10px;
+    padding: 0.5em;
+
+
+}
+
+
