@@ -243,7 +243,7 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                             <label for="newdescription">Descrição: </label><br>
                             <textarea class="inputservices" name="newdescription" placeholder="Digite uma breve descrição aqui..."></textarea><br><br>
                             <label for="newimg">Enviar imagem: </label><br>
-                            <input type="file" name="newimg" class="inputservices"><br><br>
+                            <input type="file" name="newimg" class="inputservices" accept="image/*"><br><br>
                             <button type="reset">Resetar</button><button type="submit">Enviar</button>
 
                         </form>
