@@ -9,5 +9,9 @@ criar layout galeria.php
 criado layout login.php
 criado layout cadastro.php
 criar layout painel de usuario
-criar layout painel do admin
+criando painel do admin
+
+finalizei a edição do usuário pela lista de usuários e também pela busca.
+agora começarei o sistema de cadastro de produtos
+
 
