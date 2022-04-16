@@ -14,13 +14,13 @@
         ?>
             <nav class="bord-menu-principal">
                 <ul>
-                    <li><a href="index.php">Inicio</a></li>
-                    <li><a href="adminpanel.php">Administração</a></li>
-                    <li><a href="#">Perfil</a></li>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Galeria</a></li>
-                    <li><a href="#">Agenda</a></li>
-                    <li><a href="contato.php">Contato</a></li>
+                    <a href="index.php"><li>Inicio</li></a>
+                    <a href="adminpanel.php"><li>Administração</li></a>
+                    <a href="#"><li>Perfil</li></a>
+                    <a href="#"><li>Serviços</li></a>
+                    <a href="#"><li>Galeria</li></a>
+                    <a href="#"><li>Agenda</li></a>
+                    <a href="contato.php"><li>Contato</li></a>
                 </ul>
             </nav>
         <?php

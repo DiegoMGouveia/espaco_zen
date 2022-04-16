@@ -88,65 +88,58 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
             </h2>
             <ul>
             <a href="adminpanel.php?users"><li> Usuários </li></a>
-            <li>Serviços</li>
-            <li>Produtos</li>
-            <li>Galeria</li>
-            <li>Novidades</li>
-            <li>Promoções</li>
-            <li>Definições</li>
+            <a href="adminpanel.php?services"><li> Serviços </li></a>
+            <a href="#"><li>Produtos</li></a>
+            <a href="#"><li>Galeria</li></a>
+            <a href="#"><li>Novidades</li></a>
+            <a href="#"><li>Promoções</li></a>
+            <a href="#"><li>Definições</li></a>
             </ul>
         </div>
     </div>
 
     <?php 
+    // Painel Administrativo -> Usuários
         if (isset($_GET["users"])) {
             ?>
                 <div class="adminuserpanel">
                    <h2> Administração de Usuários: </h2>
                    <div class="container2-menu-users">
                         <ul>
-                                <a href="adminpanel.php?users=1"><li>Listar Usuários</li></a>
+                                <a href="adminpanel.php?users=1"><li>Ver Usuários</li></a>
                                 <a href="adminpanel.php?users=2"><li>Buscar Usuários</li></a>
                         </ul>
                     </div>
 
                     <?php
-                        // lista de usuários
+                    // lista de usuários
 
-                        if ($_GET["users"] == 1){
-                            $users = listusers($conecta);
+                    if ($_GET["users"] == 1){
+                        $users = listusers($conecta);
+
+                        require("reqs/adminpanel_search.php");
+                                        
+                    } elseif ($_GET["users"] == 2){
+                        ?>
+
+                        <form action="adminpanel.php?users=2" method="post">
+                            <input type="text" name="searchuser" id="searchuser" placeholder="Digite alguma informação do usuário">
+                            <a href="adminpanel.php?users=2"><button type="submit">Buscar</button></a>
+                        </form>
+
+                        <?php
+
+                        if(isset($_POST["searchuser"])){
+                            $users = searchusers($conecta);
 
                             require("reqs/adminpanel_search.php");
-                                            
-                        } elseif ($_GET["users"] == 2){
-
-                            ?>
-
-                            <form action="adminpanel.php?users=2" method="post">
-                                <input type="text" name="searchuser" id="searchuser" placeholder="Digite alguma informação do usuário">
-                                <a href="adminpanel.php?users=2"><button type="submit">Buscar</button></a>
-                            </form>
-
-                            <?php
-
-                            if(isset($_POST["searchuser"])){
-                                $users = searchusers($conecta);
-
-                                require("reqs/adminpanel_search.php");
-
-
-                            }
-
-
-
-
-
-
 
                         }
-                                ?>
 
-                    </div>
+                    }
+                    ?>
+
+                </div>
             <?php
                 // editar usuário - adminpanel
         } elseif ($_GET["edit-user"] > 0 && $privileges == 1 || $_GET["edit-user"] > 1 && $privileges == 2) {
@@ -218,9 +211,51 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                 
             </div>
 
-<?php
-}
-?>
+        <?php
+        } elseif (isset($_GET["services"])) {
+            ?>
+
+            <div class="adminservicepanel">
+
+                <h2>Administração de Serviços:</h2>
+
+                <div class="menu-service">
+
+                    <ul>
+                        <a href="adminpanel.php?services=1"><li>Novo Serviço</li></a>
+                        <a href="#"><li>Ver Serviços</li></a>
+                        <a href="#"><li>Buscar Serviço</li></a>
+                    </ul>
+
+                </div>
+                <php
+                if ($_GET["services"] == 1) {
+                    ?>
+                    <div class="newservice">
+                        <h3>Criando um novo serviço:</h3>
+
+                        <form action="adminpanel.php?services1" method="post" enctype="multipart/form-data">
+
+                            <label for="newname">Nome do serviço</label><br>
+                            <input type="text" name="newname" class="inputservices" placeholder="Digite o nome do serviço aqui."><br>
+                            <label for="newprice">Valor R$:</label><br>
+                            <input type="number" name="newprice" class="inputservices"><br>
+                            <label for="newdescription">Descrição: </label><br>
+                            <textarea class="inputservices" name="newdescription" placeholder="Digite uma breve descrição aqui..."></textarea><br><br>
+                            <label for="newimg">Enviar imagem: </label><br>
+                            <input type="file" name="newimg" class="inputservices"><br><br>
+                            <button type="reset">Resetar</button><button type="submit">Enviar</button>
+
+                        </form>
+
+                    </div>
+
+            </div>
+
+            <?php
+
+        }
+        ?>
 
 </body>
 </html>
