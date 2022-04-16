@@ -60,7 +60,7 @@
         $sql = "INSERT INTO users(username,password,name,email,cellphone) VALUES('$user','$pass','$name','$mail','$cell')";
         $insert_query = mysqli_query($conection, $sql);
         if ( !$insert_query ) {
-            die("falha na consulta ao banco, entre em contato conosco informando a falha com data e hora. Obrigado!");
+            die("falha na consulta ao banco, entre em contato conosco informANDo a falha com data e hora. Obrigado!");
         } else {
             return $insert_query;
         }
@@ -71,7 +71,7 @@
         $sqlogin = "SELECT * FROM users WHERE username = '$usermail' AND password = '$pass' OR email = '$usermail' AND password = '$pass' OR cellphone = '$usermail' AND password = '$pass' ";
         $login_query = mysqli_query($conection,$sqlogin);
         if (!$login_query){
-            die("falha na consulta ao banco de dados, entre em contato conosco informando a falha com data e hora. Obrigado!");
+            die("falha na consulta ao banco de dados, entre em contato conosco informANDo a falha com data e hora. Obrigado!");
         } else {
 
             $logado = mysqli_fetch_assoc($login_query);
@@ -133,3 +133,11 @@
         return $privilege_query;
     }
 
+
+    function searchusers($conection){
+        $search_input = $_POST["searchuser"];
+        $sql_user_search = "SELECT * FROM users WHERE userID LIKE '%{$search_input}%' OR username LIKE '%{$search_input}%' OR name LIKE '%{$search_input}%' OR email LIKE '%{$search_input}%' OR cellphone LIKE '%{$search_input}%' ";
+        $lista = mysqli_query($conection, $sql_user_search);
+        return $lista;
+
+    }

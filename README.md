@@ -8,9 +8,10 @@ criar layout agenda.php
 criar layout galeria.php
 criado layout login.php
 criado layout cadastro.php
-criando layout painel de usuario
-criando layout painel do admin
+criar layout painel de usuario
+criando painel do admin
 
-finalizei a edição do usuário pela lista de usuários.
-arrumei o front da busca de usuários
-agora falta começar o backend da busca.
+finalizei a edição do usuário pela lista de usuários e também pela busca.
+agora começarei o sistema de cadastro de produtos
+
+

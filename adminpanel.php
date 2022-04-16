@@ -114,45 +114,9 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                         // lista de usuários
 
                         if ($_GET["users"] == 1){
-                            $lista = listusers($conecta);
+                            $users = listusers($conecta);
 
-                            ?>
-                                <div class="tabela-lista-users">
-                                    <table border="1" cellspacing="0">
-                                        <tr class="topo-tabela">
-                                            <td>ID: </td>
-                                            <td>Usuário: </td>
-                                            <td>Nome: </td>
-                                            <td>Email: </td>
-                                            <td>Celular: </td>
-                                            <td>Selecionar: </td>
-                                        </tr>
-
-
-                                        <?php
-                                            while($usuario_list = mysqli_fetch_array($lista)) {
-                                                $user_id = $usuario_list["userID"];
-
-                                        ?>
-                                        <tr>
-            
-                                            <td><?php echo $user_id;?></td>
-                                            <td><?php echo $usuario_list["username"]?></td>
-                                            <td><?php echo $usuario_list["name"]?></td>
-                                            <td><?php echo $usuario_list["email"]?></td>
-                                            <td><?php echo $usuario_list["cellphone"]?></td>
-                                            <td><a href="adminpanel.php?edit-user=<?php echo $user_id;?>"><button>Editar</button></a></td>
-            
-                                        </tr>
-
-
-                                        <?php
-                                            }
-                                        ?>
-
-                                    </table>
-                                    </div>
-                                    <?php
+                            require("reqs/adminpanel_search.php");
                                             
                         } elseif ($_GET["users"] == 2){
 
@@ -160,10 +124,18 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
 
                             <form action="adminpanel.php?users=2" method="post">
                                 <input type="text" name="searchuser" id="searchuser" placeholder="Digite alguma informação do usuário">
-                                <button type="submit">Buscar</button>
+                                <a href="adminpanel.php?users=2"><button type="submit">Buscar</button></a>
                             </form>
 
                             <?php
+
+                            if(isset($_POST["searchuser"])){
+                                $users = searchusers($conecta);
+
+                                require("reqs/adminpanel_search.php");
+
+
+                            }
 
 
 
