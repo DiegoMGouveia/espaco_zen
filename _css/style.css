@@ -17,6 +17,7 @@ body {
 .bord-menu-principal {
     width: auto;
     height: auto;
+    text-align: center;
     
     background-color:rgba(221, 156, 156, 0.308);
     border-radius: 10px;
@@ -251,10 +252,6 @@ body {
     text-decoration: none;
 }
 
-.adminuserpanel h2{
-    text-align: center;
-}
-
 .paneladmin-menu h2{
     margin-top: 2em;
     padding-top: 2em;
@@ -265,6 +262,8 @@ body {
     list-style: none;
     margin-bottom: 10em;
     padding-bottom: 3em;
+    padding-inline-start: 3em;
+    padding-inline-end: 0em;
 }
 
 .paneladmin-menu ul li{
@@ -277,7 +276,7 @@ body {
     border-radius: 10px;
     text-align: center;
 }
-.paneladmin-menu ul li:hover{
+.paneladmin-menu li:hover{
     background-color: rgba(201, 23, 23, 0.384);
 }
 
@@ -289,6 +288,10 @@ body {
     margin-left: 25vw;
     margin-top: -30em;
     border-radius: 20px;
+}
+
+.adminuserpanel h2{
+    text-align: center;
 }
 
 .adminuserpanel ul{
@@ -382,4 +385,99 @@ body {
 
 }
 
+/* Services */
+
+
+
+.adminservicepanel {
+    width: 50em;
+    height: 75vh;
+    background-color: rgba(221, 156, 156, 0.384);
+    float: left;
+    margin-left: 25vw;
+    margin-top: -30em;
+    border-radius: 20px;
+}
+
+.adminservicepanel h2{
+    text-align: center;
+}
+
+.adminservicepanel ul{
+    display: inline-block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+.adminservicepanel ul li {
+    padding: 5px;   
+}
+
+.adminservicepanel a{
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.menu-service {
+    display:inline-block;
+    width: auto;
+    height: auto;
+    margin-left: 3em;
+    padding-left: 0;
+    background-color: rgba(209, 112, 112, 0.384);
+    border-radius: 5px;
+}
+
+.menu-service li{
+    border: 1px solid rgba(201, 23, 23, 0.582);
+}
+
+
+.menu-service li:hover{
+    background-color: rgba(209, 112, 112, 0.664);
+}
+
+/* novo serviço */
+
+.newservice {
+    text-align: center;
+    width: 19em;
+    height: auto;
+
+    background-color: rgba(209, 112, 112, 0.384);
+    margin-right: auto;
+    margin-left: auto;
+    
+    padding-top: 0.3em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
+}
+
+.inputservices {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* listar serviços */
+
+/* deletar serviço */
+
+.delservice {
+    text-align: center;
+    width: 19em;
+    height: auto;
+
+    background-color: rgba(209, 112, 112, 0.384);
+    margin-right: auto;
+    margin-left: auto;
+    
+    padding-top: 0.3em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
+}
 

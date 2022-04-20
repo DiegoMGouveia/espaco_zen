@@ -9,7 +9,7 @@
     <!--reiniciar pagina -->
     <meta http-equiv="refresh" content="1">
     <title>Logout</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="_css/style.css">
 </head>
 <body>
 
