@@ -257,9 +257,10 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                         if(empty($_POST["newname"]) OR empty($_POST["newprice"]) OR empty($_POST["newdescription"]) OR empty($_FILES["newimg"])) {
                             $notvalor = "Campo vazio, verifique e preencha-o";
                         } else {
-                            $servicename = $_POST['newname'];
+                            $servicename = limpaaspas($_POST['newname']);
                             $servicevalor = $_POST["newprice"];
-                            $servicedesc = $_POST["newdescription"];
+                            $servicedesc = limpaaspas($_POST["newdescription"]);
+                            // limpar descrição
                             $serviceImg = $_FILES["newimg"];
                             if (isset($serviceImg['name'])){
                                 $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
