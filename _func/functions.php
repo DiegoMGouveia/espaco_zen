@@ -292,7 +292,6 @@
             $past   = "_img-product/";
             $img_path = $past . $imagem;
             move_uploaded_file($tempPast, $img_path);
-            var_dump(move_uploaded_file);
 
             $sql = "INSERT INTO products(name,pricetosell,pricetobuy,imgPath,description,stock) VALUES('{$name}','{$prices}','{$priceb}','{$img_path}','{$description}','{$stock}')";
             
