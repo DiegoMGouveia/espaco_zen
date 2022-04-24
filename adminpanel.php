@@ -64,43 +64,17 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
 </head>
 <body>
 
-
-    <Header>
-
-
-        <div class="img-logo">
-            <img src="_imgs/espaco_zen.png" alt="logo espaço zen" width="265em"><br>
-        </div>
-        <div class="titulo">
-            <a href="index.php"><h1>Espaço Zen</h1></a>
-        <?php menuprincipal(); ?>
-
-        </div>
-
-        
-
-
-    </Header>
-
-
-    <div class="container1-menuadmin">
-        <div class="paneladmin-menu">
-            <h2>
-                Painel Adminisrativo:
-            </h2>
-            <ul>
-            <a href="adminpanel.php?users"><li> Usuários </li></a>
-            <a href="adminpanel.php?services"><li> Serviços </li></a>
-            <a href="#"><li>Produtos</li></a>
-            <a href="#"><li>Galeria</li></a>
-            <a href="#"><li>Novidades</li></a>
-            <a href="#"><li>Promoções</li></a>
-            <a href="#"><li>Definições</li></a>
-            </ul>
-        </div>
-    </div>
+    <?php
+    // topo da página
+    require("reqs/topo.php");
+    ?>
 
     <?php 
+    // menu do administrador
+    require("reqs/adminpanel-menuprincipal.php");
+
+
+
     // Painel Administrativo -> Usuários
         if (isset($_GET["users"])) {
             ?>
@@ -214,7 +188,7 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
             </div>
 
         <?php
-        } elseif (isset($_GET["services"]) || isset($_GET['delservice']) || isset($_GET['del'])) {
+        } elseif (isset($_GET["services"]) || isset($_GET['delservice']) || isset($_GET['del']) || isset($_GET["products"])) {
             ?>
 
             <div class="adminservicepanel">
@@ -270,7 +244,7 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                                 $past   = "_img-service/";
                                 $img_path = $past . $imagem;
                                 move_uploaded_file($tempPast, $img_path);
-                            } else {
+                            } elseif($_FILES['changeimage']['error']) {
                                 $imgerror = "houve um erro aqui";
                             }
 
@@ -299,14 +273,14 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                             if(isset($msg_sucesso)) {
                                 echo "$msg_sucesso";
                             }
-// -------------fim do novo serviço -----------------------------------
+                            // -------------fim do novo serviço -----------------------------------
                             ?>
 
                     
 
-                    </div>
-            <?php
-// ------------------------listagem de serviços ----------------------
+                        </div>
+                        <?php
+                            // ------------------------listagem de serviços ----------------------
 
                 } elseif ($_GET["services"] == 2) { 
                     
@@ -364,9 +338,14 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                 } elseif ($_GET['del'] > 0) {
 
                     delservice($conecta);
-                    
-                }
-                            // fim da listagem ----------------------------------
+
+                    // fim dos serviços ----------------------------------
+
+                    // começo dos produtos ----------------
+
+                } 
+
+
                         ?>
 
 
@@ -423,9 +402,12 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                     </form>
             
                     <?php
+                    
                     if ( isset ( $changed ) ) {
                         echo $changed;
-                    }?>
+                    }
+                    
+                    ?>
 
 
                 </div>

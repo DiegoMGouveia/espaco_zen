@@ -20,19 +20,10 @@
 <body>
 
 
-    <Header>
-
-
-        <div class="img-logo">
-            <img src="_imgs/espaco_zen.png" alt="logo espaço zen" width="265em"><br>
-        </div>
-        <div class="titulo">
-            <a href="index.php"><h1>Espaço Zen</h1></a>
-        <?php menuprincipal(); ?>
-        </div>
-
-
-    </Header>
+    <?php
+    // topo da página
+    require("reqs/topo.php");
+    ?>
 
 
     <div class="container1-conteudo1">

@@ -10,19 +10,20 @@ body {
     display:inline;
     margin-left: auto;
     margin-right: auto;
-    width: 6em
+    width: 6em;
 
 }
 
 .bord-menu-principal {
-    width: auto;
+    width: 30em;
     height: auto;
     text-align: center;
     
     background-color:rgba(221, 156, 156, 0.308);
     border-radius: 10px;
-    margin-left: 34vw;
-    margin-top: 13em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
     border-bottom: 3px solid;
     border-left: 3px solid;
     border-right: 3px solid;
@@ -70,12 +71,24 @@ body {
 }
 
 .img-logo{
-    margin-left: 40vw;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.img-logo img{
+    width: 15em;
+    margin-left: -12vw;
+    margin-right: auto;
 }
 
 
 .titulo{
-    margin-top: -18em;
+    text-align: center;
+    margin-top: 3em;
+    margin-left: 3vw;
+    margin-right: auto;
     float: left;
 }
 
@@ -211,7 +224,7 @@ body {
     background-color: rgba(221, 156, 156, 0.384);
     float: left;
     padding: 1em;
-    margin-left: 41vw;
+    margin-left: 44vw;
     margin-top: 10vh;
     border-radius: 20px;
     text-align: center;
@@ -282,11 +295,12 @@ body {
 
 .adminuserpanel {
     width: 50em;
-    height: 75vh;
+    height: auto;
     background-color: rgba(221, 156, 156, 0.384);
-    float: left;
-    margin-left: 25vw;
-    margin-top: -30em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -35em;
+    padding: 3em;
     border-radius: 20px;
 }
 
@@ -391,11 +405,12 @@ body {
 
 .adminservicepanel {
     width: 50em;
-    height: 75vh;
+    height: auto;
     background-color: rgba(221, 156, 156, 0.384);
-    float: left;
-    margin-left: 25vw;
-    margin-top: -30em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -35em;
+    padding: 3em;
     border-radius: 20px;
 }
 
@@ -481,3 +496,42 @@ body {
     border-radius: 10px;
 }
 
+.form-products {
+    width: 21em;
+    height: auto;
+    background-color: rgba(209, 112, 112, 0.384);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+    border-radius: 10px;
+    padding:1%;
+    text-align: center;
+}
+
+.container1-conteudo1 {
+    width: 18em;
+    height: auto;
+    background: rgba(221, 156, 156, 0.37);
+    border-radius: 10px;
+    margin-left: 1em;
+    margin-bottom: 1px;
+}
+
+.container2-menu {
+    display:inline-block;
+    width: auto;
+    height: auto;
+    margin-left: 3em;
+    padding-left: 0;
+    background-color: rgba(209, 112, 112, 0.384);
+    border-radius: 5px;
+}
+
+.container2-menu li{
+    border: 1px solid rgba(201, 23, 23, 0.582);
+}
+
+
+.container2-menu li:hover{
+    background-color: rgba(209, 112, 112, 0.664);
+}

@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="_css/style.css">
 </head>
 <body>
+    
+    <?php
+    // topo da página
+    require("reqs/topo.php");
+    ?>
 
 
     <main>  
