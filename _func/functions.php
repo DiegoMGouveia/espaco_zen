@@ -228,12 +228,15 @@
 
             if (isset($newserviceImg['name'])){
                 $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
-                $extension = strtolower(pathinfo($newserviceImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
-                $tempPast = $newserviceImg["tmp_name"];
+                
+                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+                $extension = strtolower(pathinfo($serviceImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                $tempPast = $serviceImg["tmp_name"];
                 $imagem = $new_name . $extension;
-                $past = "_img-service/";
-                $newimg_path = $past . $imagem;
-                $move = move_uploaded_file($tempPast, $newimg_path);
+                $past   = "_img-service/";
+                $img_path = $past . $imagem;
+                move_uploaded_file($tempPast, $img_path);
+
                 
                 $updateimgservice = "UPDATE services SET imgPath = '$newimg_path' WHERE servicesID = '$serviceID' ";
             
@@ -246,6 +249,7 @@
             
             
         }
+
 
         if($changeService){
             return true;
@@ -265,6 +269,63 @@
         if($deleted){
 
             header('location: adminpanel.php?services=2');
+        }
+
+    }
+
+
+    // cadastrar produtos
+
+    function registerProduct($conection){
+        if(!empty($_POST["newproductname"]) && !empty($_POST["newproductpricetosell"]) && !empty($_POST["newproductpricetobuy"]) && !empty($_POST["newproductdescription"]) && !empty($_POST["newproductstock"])) {
+            $name        = $_POST["newproductname"];
+            $prices      = $_POST["newproductpricetosell"];
+            $priceb      = $_POST["newproductpricetobuy"];
+            $description = $_POST["newproductdescription"];
+            $stock       = $_POST["newproductstock"];
+            $imginput     = $_FILES["newproductimg"];
+
+            $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+            $extension = strtolower(pathinfo($imginput["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+            $tempPast = $imginput["tmp_name"];
+            $imagem = $new_name . $extension;
+            $past   = "_img-product/";
+            $img_path = $past . $imagem;
+            move_uploaded_file($tempPast, $img_path);
+            var_dump(move_uploaded_file);
+
+            $sql = "INSERT INTO products(name,pricetosell,pricetobuy,imgPath,description,stock) VALUES('{$name}','{$prices}','{$priceb}','{$img_path}','{$description}','{$stock}')";
+            
+            $insert_query = mysqli_query($conection, $sql);
+            if(!$insert_query){
+                return false;
+            } else{
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    
+    function listproducts($conection){
+        $sql   = "SELECT * FROM products";
+        $products_query = mysqli_query($conection, $sql);
+        return $products_query;
+
+    }
+
+    function delProduct($conection){
+        $productID = $_GET["del"];
+        $sql_path = "SELECT * FROM products WHERE productID = $productID";
+        $sql_path_query = mysqli_query($conection, $sql_path);
+        $product = mysqli_fetch_assoc($sql_path_query);
+        unlink($product["imgPath"]);
+        $sql_delete = "DELETE FROM products WHERE productID = '$productID' ";
+        $deleted = mysqli_query($conection, $sql_delete);
+        if($deleted){
+
+            header('location: admin-products.php?allproducts');
         }
 
     }
