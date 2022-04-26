@@ -140,7 +140,6 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
 
                     echo "redirecionando de volta...";
 
-                    echo "<a href='adminpanel.php?users=1'><button>Voltar</button></a>";
 
                     echo " <META HTTP-EQUIV='REFRESH' CONTENT='3; URL=adminpanel.php?users=1'>";
 
@@ -157,8 +156,8 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                         <input type="text" name="changename" id="changename" value="<?php echo $selected_user["name"];?>">
                         <label for="changeemail">Email: </label>
                         <input type="email" name="changeemail" id="changeemail" value="<?php echo $selected_user["email"];?>">
-                        <label for="changecell">Celular: </label>
-                        <input type="text" name="changecell" id="changecell" value="<?php echo $selected_user["cellphone"];?>">
+                        <label for="changecell">Celular: ex(53991111111) </label>
+                        <input type="tel" pattern="[0-9]{11}" name="changecell" id="changecell" value="<?php echo $selected_user["cellphone"];?>">
                         <label for="changeprivilege">Privilégios: </label>
                         <select name="changeprivilege">
 
@@ -228,37 +227,47 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
 
                         // verificação de todos campos de criação de serviço estão preenchidos
     
-                        if(empty($_POST["newname"]) OR empty($_POST["newprice"]) OR empty($_POST["newdescription"]) OR empty($_FILES["newimg"])) {
-                            $notvalor = "Campo vazio, verifique e preencha-o";
-                        } else {
-                            $servicename = limpaaspas($_POST['newname']);
-                            $servicevalor = $_POST["newprice"];
-                            $servicedesc = limpaaspas($_POST["newdescription"]);
-                            // limpar descrição
-                            $serviceImg = $_FILES["newimg"];
-                            if (isset($serviceImg['name'])){
-                                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
-                                $extension = strtolower(pathinfo($serviceImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
-                                $tempPast = $serviceImg["tmp_name"];
-                                $imagem = $new_name . $extension;
-                                $past   = "_img-service/";
-                                $img_path = $past . $imagem;
-                                move_uploaded_file($tempPast, $img_path);
-                            } elseif($_FILES['changeimage']['error']) {
-                                $imgerror = "houve um erro aqui";
+                        if (isset($_POST["newname"])){
+                            if(empty($_POST["newname"]) OR empty($_POST["newprice"]) OR empty($_POST["newdescription"]) OR empty($_FILES["newimg"])) {
+                                $notvalor = "Existe um ou mais campos vazio, <br> verifique e preencha-o";
+                            } else {
+
+                                $servicename = limpaaspas($_POST['newname']);
+                                $servicevalor = $_POST["newprice"];
+                                $servicedesc = limpaaspas($_POST["newdescription"]);
+                                // limpar descrição
+                                $serviceImg = $_FILES["newimg"];
+                                if (empty($serviceImg['name'])){
+
+                                    $img_path = "_imgs/noimg.png";
+
+                                } elseif($_FILES['changeimage']['error']) {
+                                    $imgerror = "houve um erro aqui";
+                                
+                                } else {
+
+                                    $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+                                    $extension = strtolower(pathinfo($serviceImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                                    $tempPast = $serviceImg["tmp_name"];
+                                    $imagem = $new_name . $extension;
+                                    $past   = "_img-service/";
+                                    $img_path = $past . $imagem;
+                                    move_uploaded_file($tempPast, $img_path);
+                                
                             }
 
-                            $newservice = "INSERT INTO services(name,price,imgPath,description) VALUES('$servicename', '$servicevalor', '$img_path', '$servicedesc') ";
-                            
-                            $service_send = mysqli_query($conecta, $newservice);
+                                $newservice = "INSERT INTO services(name,price,imgPath,description) VALUES('$servicename', '$servicevalor', '$img_path', '$servicedesc') ";
+                                
+                                $service_send = mysqli_query($conecta, $newservice);
 
 
-                            if ($service_send){
-                                // mensagem de sucesso, quero um log do usuário, data e hora da criação
-                                $msg_sucesso = "Cadastro de serviço realizado com sucesso!";
-                            } else {
-                                //mensagem de erro, quero um log disso
-                                echo "Error: " . $newservice . "<br>" . mysqli_error($conecta);
+                                if ($service_send){
+                                    // mensagem de sucesso, quero um log do usuário, data e hora da criação
+                                    $msg_sucesso = "Cadastro de serviço realizado com sucesso!";
+                                } else {
+                                    //mensagem de erro, quero um log disso
+                                    echo "Error: " . $newservice . "<br>" . mysqli_error($conecta);
+                                }
                             }
                         }
 
@@ -290,9 +299,9 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                     
                     <table class="tabela-lista-servicos" border="1" cellspacing="0">
                         <tr>
-                            <td>img: </td>
+                            <td>Imagem: </td>
                             <td>ID: </td>
-                            <td>Nome do produto: </td>
+                            <td>Nome do serviço: </td>
                             <td>Valor: </td>
                             <td>Descrição: </td>
                             <td>Selecionar: </td>
@@ -315,13 +324,17 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                             <td><a href="adminpanel.php?selectservice=<?php echo $serviceID ?>"><button type="submit">Modificar</button></a><br><a href="adminpanel.php?delservice=<?php echo $serviceID ?>"><button type="submit">Deletar</button></a></td>
 
                         </tr>
-            </div>
                         <?php
                         }
+                        ?>
+
+                    </table>
+            </div>
+                        <?php
 
                         
 
-
+                        // deletar serviço
                 } elseif ($_GET['delservice'] > 0){
 
 
@@ -343,7 +356,11 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
 
                     // começo dos produtos ----------------
 
-                } 
+                } elseif ($_GET["services"] == 3) {
+                    require("reqs/adminpanel-search-service.php");
+
+
+                }
 
 
                         ?>

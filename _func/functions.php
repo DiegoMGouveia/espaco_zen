@@ -157,7 +157,7 @@
     // criando serviço
 
 
-    // selecionando serviço
+    // selecionando serviço pelo ID
 
     function selectservicebyid($serviceid, $conection){
         $sql = "SELECT * FROM services WHERE servicesID = '$serviceid' ";
@@ -169,7 +169,7 @@
     }
     
 
-    // modificando serviço
+    // SELECIONANDO serviço
 
     function selectservice($conection) {
         $serviceID = $_GET['selectservice'];
@@ -193,8 +193,6 @@
             $updateName = "UPDATE services SET name = '$newName' WHERE servicesID = '$serviceID'";
             $changeService = mysqli_query($conection, $updateName);
             
-
-    
         }
     
         if(empty($_POST['changeprice'])) {
@@ -208,7 +206,6 @@
     
         }
     
-    
         if(empty($_POST['changedescription'])) {
             // se não tiver preenchido não mudará nada
     
@@ -220,37 +217,38 @@
     
         }
     
-    
-        if($_FILES['changeimage']['name'] && (!empty($_FILES['changeimage']['name']))) {
+        if(isset($_FILES['changeimage']['name']) && !empty($_FILES['changeimage']['name'])) {
+
             $newserviceImg = $_FILES['changeimage'];
-            unlink($path);
+            
+            if ($path != "_imgs/noimg.png") {
+                unlink($path);
+            }
 
-
+            
             if (isset($newserviceImg['name'])){
-                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
                 
                 $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
-                $extension = strtolower(pathinfo($serviceImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
-                $tempPast = $serviceImg["tmp_name"];
+                $extension = strtolower(pathinfo($newserviceImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                $tempPast = $newserviceImg["tmp_name"];
                 $imagem = $new_name . $extension;
                 $past   = "_img-service/";
                 $img_path = $past . $imagem;
                 move_uploaded_file($tempPast, $img_path);
 
                 
-                $updateimgservice = "UPDATE services SET imgPath = '$newimg_path' WHERE servicesID = '$serviceID' ";
+                $updateimgservice = "UPDATE services SET imgPath = '$img_path' WHERE servicesID = '$serviceID' ";
             
                 $changed = mysqli_query($conection, $updateimgservice);
+
+                
             } else {
                 $imgerror = "houve um erro aqui";
             }
-            
-            
-            
-            
+                        
         }
 
-
+        // verificação para mensagem de erro ou sucesso
         if($changeService){
             return true;
         } else {
@@ -258,12 +256,24 @@
         }
     }
 
+    // buscar serviços
+    function searchService($conection) {
+        $search_input = $_POST["searchservice"];
+        $sql_service_search = "SELECT * FROM services WHERE servicesID LIKE '%{$search_input}%' OR name LIKE '%{$search_input}%' OR description LIKE '%{$search_input}%' OR price LIKE '%{$search_input}%' ";
+        $sql_query = mysqli_query($conection, $sql_service_search);
+
+        return $sql_query;
+    }
+
+    // deletar serviços
     function delservice($conection){
         $serviceID = $_GET["del"];
         $sql_path = "SELECT * FROM services WHERE servicesID = $serviceID";
         $sql_path_query = mysqli_query($conection, $sql_path);
         $service = mysqli_fetch_assoc($sql_path_query);
-        unlink($service["imgPath"]);
+        if ($service["imgPath"] != "_imgs/noimg.png"){
+            unlink($service["imgPath"]);
+        }
         $sql_delete = "DELETE FROM services WHERE servicesID = '$serviceID' ";
         $deleted = mysqli_query($conection, $sql_delete);
         if($deleted){
@@ -284,14 +294,19 @@
             $description = $_POST["newproductdescription"];
             $stock       = $_POST["newproductstock"];
             $imginput     = $_FILES["newproductimg"];
+            if (empty($imginput['name'])){
 
-            $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
-            $extension = strtolower(pathinfo($imginput["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
-            $tempPast = $imginput["tmp_name"];
-            $imagem = $new_name . $extension;
-            $past   = "_img-product/";
-            $img_path = $past . $imagem;
-            move_uploaded_file($tempPast, $img_path);
+                $img_path = "_imgs/noimg.png";
+
+            } else{
+                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+                $extension = strtolower(pathinfo($imginput["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                $tempPast = $imginput["tmp_name"];
+                $imagem = $new_name . $extension;
+                $past   = "_img-product/";
+                $img_path = $past . $imagem;
+                move_uploaded_file($tempPast, $img_path);
+            }
 
             $sql = "INSERT INTO products(name,pricetosell,pricetobuy,imgPath,description,stock) VALUES('{$name}','{$prices}','{$priceb}','{$img_path}','{$description}','{$stock}')";
             
@@ -319,7 +334,9 @@
         $sql_path = "SELECT * FROM products WHERE productID = $productID";
         $sql_path_query = mysqli_query($conection, $sql_path);
         $product = mysqli_fetch_assoc($sql_path_query);
-        unlink($product["imgPath"]);
+        if ($service["imgPath"] != "_imgs/noimg.png"){
+            unlink($service["imgPath"]);
+        }
         $sql_delete = "DELETE FROM products WHERE productID = '$productID' ";
         $deleted = mysqli_query($conection, $sql_delete);
         if($deleted){
