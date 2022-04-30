@@ -22,7 +22,7 @@
             <td><?php echo $usuario_list["name"]?></td>
             <td><?php echo $usuario_list["email"]?></td>
             <td><?php echo $usuario_list["cellphone"]?></td>
-            <td><a href="adminpanel.php?edit-user=<?php echo $user_id;?>"><button>Editar</button></a></td>
+            <td><a href="adminpanel.php?edit-user=<?php echo $user_id;?>"><button>Editar</button></a><br><a href="adminpanel.php?Deluser=<?php echo $user_id; ?>"><button type="submit">Deletar</button></a></td>
 
         </tr>
 

@@ -36,9 +36,11 @@
                 </ul>
             </nav>
         <?php
-        } elseif($_SESSION["privileges"] == 5){
+        } elseif($_SESSION["privileges"] <= 5 && $_SESSION["privileges"] >=3){
             ?>
                 <nav class="bord-menu-principal">
+
+                <?php echo "Olá " . $_SESSION['user_name'] . " | <a href='logout.php'>Sair.</a> <br>";?>
                     <ul>
                         <center><li><a href="index.php">Inicio</a></li>
                         <li><a href="login.php">Perfil</a></li>
@@ -132,11 +134,22 @@
             if(isset($usernamel_query) && isset($name_query) && isset($email_query) && isset($cell_query) && isset($privilege_query)){
                 return true;
             } else {   
-            return false;
-        }
+                return false;
+            }
 
 
         }
+    }
+
+    function delUser($conection){
+        $userID = $_GET["deleted"];
+        $sql_delete = "DELETE FROM users WHERE userID = '$userID' ";
+        $deleted = mysqli_query($conection, $sql_delete);
+        if($deleted){
+
+            header('location: adminpanel.php?users=1');
+        }
+
     }
 
     function listprivileges($conection){
@@ -211,7 +224,7 @@
     
         } else{
     
-            $newDescription = $_POST["changedescription"];
+            $newDescription = limpaaspas($_POST["changedescription"]);
             $updateDescription = "UPDATE services SET description = '$newDescription' WHERE servicesID = '$serviceID'";
             $changeService = mysqli_query($conection, $updateDescription);
     
@@ -288,10 +301,10 @@
 
     function registerProduct($conection){
         if(!empty($_POST["newproductname"]) && !empty($_POST["newproductpricetosell"]) && !empty($_POST["newproductpricetobuy"]) && !empty($_POST["newproductdescription"]) && !empty($_POST["newproductstock"])) {
-            $name        = $_POST["newproductname"];
+            $name        = limpaaspas($_POST["newproductname"]);
             $prices      = $_POST["newproductpricetosell"];
             $priceb      = $_POST["newproductpricetobuy"];
-            $description = $_POST["newproductdescription"];
+            $description = limpaaspas($_POST["newproductdescription"]);
             $stock       = $_POST["newproductstock"];
             $imginput     = $_FILES["newproductimg"];
             if (empty($imginput['name'])){
@@ -323,19 +336,30 @@
 
     
     function listproducts($conection){
+
         $sql   = "SELECT * FROM products";
         $products_query = mysqli_query($conection, $sql);
         return $products_query;
+        
+    }
+
+    function selectProduct($conection) {
+        $productID = $_GET['editproduct'];
+        $sql = "SELECT * FROM products WHERE productID = '$productID' ";
+        $sql_query = mysqli_query($conection, $sql);
+        $product = mysqli_fetch_assoc($sql_query);
+        return $product;
 
     }
 
+    // deletar produto
     function delProduct($conection){
         $productID = $_GET["del"];
         $sql_path = "SELECT * FROM products WHERE productID = $productID";
         $sql_path_query = mysqli_query($conection, $sql_path);
         $product = mysqli_fetch_assoc($sql_path_query);
-        if ($service["imgPath"] != "_imgs/noimg.png"){
-            unlink($service["imgPath"]);
+        if ($product["imgPath"] != "_imgs/noimg.png"){
+            unlink($product["imgPath"]);
         }
         $sql_delete = "DELETE FROM products WHERE productID = '$productID' ";
         $deleted = mysqli_query($conection, $sql_delete);
@@ -344,4 +368,257 @@
             header('location: admin-products.php?allproducts');
         }
 
+    }
+
+    // galeria de fotos
+
+    // registro de foto
+
+    function registerPhoto($conection){
+        if(!empty($_POST["newphotoname"]) && !empty($_POST["newphotodescription"])) {
+            $name        = limpaaspas($_POST["newphotoname"]);
+            $description = limpaaspas($_POST["newphotodescription"]);
+            $imginput     = $_FILES["newphoto"];
+            if (empty($imginput['name'])){
+
+                $img_path = "_imgs/noimg.png";
+
+            } else{
+                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+                $extension = strtolower(pathinfo($imginput["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                $tempPast = $imginput["tmp_name"];
+                $imagem = $new_name . $extension;
+                $past   = "_img-gallery/";
+                $img_path = $past . $imagem;
+                move_uploaded_file($tempPast, $img_path);
+            }
+
+            $sql = "INSERT INTO gallery(name,description,photoPath) VALUES('{$name}','{$description}','{$img_path}')";
+            
+            $insert_query = mysqli_query($conection, $sql);
+            if(!$insert_query){
+                return false;
+            } else{
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // listar fotos
+        
+    function listgallery($conection){
+        
+        $sql   = "SELECT * FROM gallery";
+        $gallery_query = mysqli_query($conection, $sql);
+        return $gallery_query;
+
+    }
+
+    function changeProduct($productID,$path,$conection){
+
+        if(empty($_POST['changename'])) {
+            // se não tiver preenchido não mudará nada
+            
+
+        } else{
+    
+            $newName = limpaaspas($_POST["changename"]);
+            $updateName = "UPDATE products SET name = '$newName' WHERE productID = '$productID'";
+            $changeProduct = mysqli_query($conection, $updateName);
+            
+        }
+    
+        if(empty($_POST['changedescription'])) {
+            // se não tiver preenchido não mudará nada
+    
+        } else{
+    
+            $newDescription = limpaaspas($_POST["changedescription"]);
+            $updateDescription = "UPDATE products SET description = '$newDescription' WHERE productID = '$productID'";
+            $changeProduct = mysqli_query($conection, $updateDescription);
+    
+        }
+
+        if(empty($_POST['changeprices'])) {
+            // se não tiver preenchido não mudará nada
+    
+        } else{
+    
+            $newPriceS = limpaaspas($_POST["changeprices"]);
+            $updatePriceS = "UPDATE products SET pricetosell = '$newPriceS' WHERE productID = '$productID'";
+            $changeProduct = mysqli_query($conection, $updatePriceS);
+    
+        }
+
+        if(empty($_POST['changepriceb'])) {
+            // se não tiver preenchido não mudará nada
+    
+        } else{
+    
+            $newPriceB = $_POST["changepriceb"];
+            $updatePriceB = "UPDATE products SET pricetobuy = '$newPriceB' WHERE productID = '$productID'";
+            $changeProduct = mysqli_query($conection, $updatePriceB);
+    
+        }
+
+        if(empty($_POST['changestock'])) {
+            // se não tiver preenchido não mudará nada
+    
+        } else{
+    
+            $newStock = $_POST["changestock"];
+            $updatestock = "UPDATE products SET stock = '$newStock' WHERE productID = '$productID'";
+            $changeProduct = mysqli_query($conection, $updatestock);
+    
+        }
+    
+        if(isset($_FILES['changeimage']['name']) && !empty($_FILES['changeimage']['name'])) {
+
+            $newproductImg = $_FILES['changeimage'];
+            
+            if ($path != "_imgs/noimg.png") {
+                unlink($path);
+            }
+
+            
+            if (isset($newproductImg['name'])){
+                
+                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+                $extension = strtolower(pathinfo($newproductImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                $tempPast = $newproductImg["tmp_name"];
+                $imagem = $new_name . $extension;
+                $past   = "_img-product/";
+                $img_path = $past . $imagem;
+                move_uploaded_file($tempPast, $img_path);
+
+                
+                $updateimgproduct = "UPDATE products SET imgPath = '$img_path' WHERE productID = '$productID' ";
+            
+                $changed = mysqli_query($conection, $updateimgproduct);
+
+                
+            } else {
+                $imgerror = "houve um erro aqui";
+            }
+                        
+        }
+
+        // verificação para mensagem de erro ou sucesso
+        if($changeProduct){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // busca de produtos
+    function searchProduct($conection){
+        $search_input = $_POST["searchproduct"];
+        $sql_user_search = "SELECT * FROM products WHERE productID LIKE '%{$search_input}%' OR name LIKE '%{$search_input}%' OR pricetosell LIKE '%{$search_input}%' OR pricetobuy LIKE '%{$search_input}%' OR description LIKE '%{$search_input}%' ";
+        $lista = mysqli_query($conection, $sql_user_search);
+        return $lista;
+
+    }
+
+    // deletar Fotos
+
+    function delPhoto($conection){
+        $galleryID = $_GET["del"];
+        $sql_path = "SELECT * FROM gallery WHERE galleryID = $galleryID";
+        $sql_path_query = mysqli_query($conection, $sql_path);
+        $photo = mysqli_fetch_assoc($sql_path_query);
+        if ($photo["photoPath"] != "_imgs/noimg.png"){
+            unlink($photo["photoPath"]);
+        }
+        $sql_delete = "DELETE FROM gallery WHERE galleryID = '$galleryID' ";
+        $deleted = mysqli_query($conection, $sql_delete);
+        if($deleted){
+
+            header('location: admin-gallery.php?listgallery');
+        }
+
+    }
+
+    function searchPhoto($conection){
+        $search_input = $_POST["searchphoto"];
+        $sql_user_search = "SELECT * FROM gallery WHERE galleryID LIKE '%{$search_input}%' OR name LIKE '%{$search_input}%' OR description LIKE '%{$search_input}%' ";
+        $lista = mysqli_query($conection, $sql_user_search);
+        return $lista;
+
+    }
+
+    function selectPhoto($conection) {
+        $galleryID = $_GET['editphoto'];
+        $sql = "SELECT * FROM gallery WHERE galleryID = '$galleryID' ";
+        $sql_query = mysqli_query($conection, $sql);
+        $photo = mysqli_fetch_assoc($sql_query);
+        return $photo;
+
+    }
+
+    // modificar foto da galeria
+    function changePhoto($galleryID,$path,$conection){
+
+        if(empty($_POST['changename'])) {
+            // se não tiver preenchido não mudará nada
+            
+
+        } else{
+    
+            $newName = limpaaspas($_POST["changename"]);
+            $updateName = "UPDATE gallery SET name = '$newName' WHERE galleryID = '$galleryID'";
+            $changePhoto = mysqli_query($conection, $updateName);
+            
+        }
+    
+        if(empty($_POST['changedescription'])) {
+            // se não tiver preenchido não mudará nada
+    
+        } else{
+    
+            $newDescription = limpaaspas($_POST["changedescription"]);
+            $updateDescription = "UPDATE gallery SET description = '$newDescription' WHERE galleryID = '$galleryID'";
+            $changePhoto = mysqli_query($conection, $updateDescription);
+    
+        }
+    
+        if(isset($_FILES['changeimage']['name']) && !empty($_FILES['changeimage']['name'])) {
+
+            $newphotoImg = $_FILES['changeimage'];
+            
+            if ($path != "_imgs/noimg.png") {
+                unlink($path);
+            }
+
+            
+            if (isset($newphotoImg['name'])){
+                
+                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+                $extension = strtolower(pathinfo($newphotoImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                $tempPast = $newphotoImg["tmp_name"];
+                $imagem = $new_name . $extension;
+                $past   = "_img-gallery/";
+                $img_path = $past . $imagem;
+                move_uploaded_file($tempPast, $img_path);
+
+                
+                $updateimgphoto = "UPDATE gallery SET photoPath = '$img_path' WHERE galleryID = '$galleryID' ";
+            
+                $changed = mysqli_query($conection, $updateimgphoto);
+
+                
+            } else {
+                $imgerror = "houve um erro aqui";
+            }
+                        
+        }
+
+        // verificação para mensagem de erro ou sucesso
+        if($changePhoto){
+            return true;
+        } else {
+            return false;
+        }
     }

@@ -187,6 +187,19 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
             </div>
 
         <?php
+        
+        // deletar usuário
+        } elseif(isset($_GET["Deluser"] ) || isset($_GET["deleted"])) {
+
+            echo "<div class='adminservicepanel'>";
+            
+            require("reqs/admin-user-deluser.php");
+
+            // div adminservicepanel
+            echo "</div>";
+
+
+            // serviços começo
         } elseif (isset($_GET["services"]) || isset($_GET['delservice']) || isset($_GET['del']) || isset($_GET["products"])) {
             ?>
 
