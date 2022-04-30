@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+require("_func/functions.php");
+require_once("_banco/conection.php");
+
+
+session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,9 +14,14 @@
     <!--reiniciar pagina -->
     <meta http-equiv="refresh" content="1">
     <title>Logout</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="_css/style.css">
 </head>
 <body>
+    
+    <?php
+    // topo da página
+    require("reqs/topo.php");
+    ?>
 
 
     <main>  

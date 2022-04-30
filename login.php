@@ -10,11 +10,28 @@
             //login errado
             $mensagem = "Usuário/senha incorreto. Tente novamente.";
         } else {
-            //login com sucesso
-            $_SESSION["user_logged"] = $login["userID"];
-            $_SESSION["user_name"]   = $login["name"];
-            $_SESSION["privileges"]   = $login["privileges"];
-            header("location:index.php");
+            if ($login["username"] === $_POST["usermail"] || $login["cellphone"] === $_POST["usermail"] || $login["email"] === $_POST["usermail"]  ) {
+                //login com sucesso
+                $_SESSION["user_logged"] = $login["userID"];
+                $_SESSION["user_name"]   = $login["name"];
+                $_SESSION["privileges"]   = $login["privileges"];
+                if ($_SESSION["privileges"] <= 2) {
+                    // se o usuário tiver privilégio administrativo ou é o proprietário
+                    
+                    header("location:adminpanel.php");
+                
+                } elseif ($_SESSION["privileges"] > 2 && ($_SESSION["privileges"] <= 5)) {
+                    // se o usuário for um cliente, funcionário ou fornecedor
+
+                    header("location:index.php");
+
+                }
+            } else {
+
+                //login errado
+                $mensagem = "Usuário/senha incorreto. Tente novamente.";
+
+            }
         }
         
 
@@ -36,19 +53,10 @@
 <body>
 
 
-    <Header>
-
-
-        <div class="img-logo">
-            <img src="_imgs/espaco_zen.png" alt="logo espaço zen" width="265em"><br>
-        </div>
-        <div class="titulo">
-            <a href="index.php"><h1>Espaço Zen</h1></a>
-        <?php menuprincipal() ?>
-        </div>
-
-
-    </Header>
+    <?php
+    // topo da página
+    require("reqs/topo.php");
+    ?>
 
 
     <div class="container-login">
@@ -63,7 +71,24 @@
             <br>
             <br>
         </form>
-        <a href="register.php">Cadastre-se!</a></center>
+
+        <a href="register.php">Cadastre-se!</a>
+    
+        <?php
+        if (isset($mensagem)){
+
+            echo "<div class='msgerror'>";
+
+            echo "<br>" . $mensagem;
+
+            echo "</div>";
+            
+        }
+        ?>
+    
+    </center>
+
+
 
 
     </div>

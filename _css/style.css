@@ -10,23 +10,27 @@ body {
     display:inline;
     margin-left: auto;
     margin-right: auto;
-    width: 6em
+    width: 6em;
 
 }
 
 .bord-menu-principal {
-    width: auto;
+    width: 30em;
     height: auto;
+    text-align: center;
     
     background-color:rgba(221, 156, 156, 0.308);
     border-radius: 10px;
-    margin-left: 35vw;
-    margin-top: 13em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
     border-bottom: 3px solid;
     border-left: 3px solid;
     border-right: 3px solid;
     border-top: 1.5px solid;
     border-color: rgba(78, 45, 45, 0.342);
+    padding-left: 1em;
+    padding-right: 1em;
 
 
 }
@@ -62,15 +66,29 @@ body {
 
 .bord-menu-principal a{
     text-decoration: none;
+    color: inherit;
+
 }
 
 .img-logo{
-    margin-left: 40vw;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.img-logo img{
+    width: 15em;
+    margin-left: -12vw;
+    margin-right: auto;
 }
 
 
 .titulo{
-    margin-top: -18em;
+    text-align: center;
+    margin-top: 3em;
+    margin-left: 3vw;
+    margin-right: auto;
     float: left;
 }
 
@@ -90,6 +108,7 @@ body {
     border-radius: 10px;
     margin-left: 1em;
     margin-bottom: 1px;
+    margin-top: -10em;
 }
 .conteudo1 h2{
     margin-top: 2em;
@@ -126,12 +145,35 @@ body {
 
 .container2-posts {
     width: 50em;
-    height: 80vh;
+    height: auto;
     background-color: rgba(221, 156, 156, 0.384);
-    float: left;
-    margin-left: 25vw;
-    margin-top: -75vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -39em;
+    padding: 3em;
     border-radius: 20px;
+}
+
+.container2-posts h2{
+    text-align: center;
+}
+
+.container2-posts ul{
+    display: inline-block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+.container2-posts ul li {
+    padding: 5px;   
+}
+
+.container2-posts a{
+    color: inherit;
+    text-decoration: none;
+
 }
 
 /* contato */
@@ -202,15 +244,19 @@ body {
 .container-login {
     
     width: 13em;
-    height: 10em;
+    height: auto;
     background-color: rgba(221, 156, 156, 0.384);
     float: left;
     padding: 1em;
-    margin-left: 41vw;
+    margin-left: 44vw;
     margin-top: 10vh;
     border-radius: 20px;
     text-align: center;
 
+}
+
+.msgerror {
+    color: red;
 }
 
 /* Registro */
@@ -230,3 +276,293 @@ body {
 
 /* Administração */
 
+/* usuários */
+
+.container1-menuadmin {
+    width: 18em;
+    height: auto;
+    background: rgba(221, 156, 156, 0.37);
+    border-radius: 10px;
+    margin-left: 1em;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+.container1-menuadmin a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.paneladmin-menu h2{
+    margin-top: -6em;
+    padding-top: 2em;
+    margin-left: 0.5em;
+}
+
+.paneladmin-menu ul{
+    list-style: none;
+    margin-bottom: 10em;
+    padding-bottom: 3em;
+    padding-inline-start: 3em;
+    padding-inline-end: 0em;
+}
+
+.paneladmin-menu ul li{
+    background-color: rgba(221, 156, 156, 0.384);
+    margin-top: 1%;
+    height: 1.5em;
+    width: 70%;
+    padding: 0.3em;
+    margin-left: 0.5em;
+    border-radius: 10px;
+    text-align: center;
+}
+.paneladmin-menu li:hover{
+    background-color: rgba(201, 23, 23, 0.384);
+}
+
+.adminuserpanel {
+    width: 50em;
+    height: auto;
+    background-color: rgba(221, 156, 156, 0.384);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -24em;
+    padding: 3em;
+    border-radius: 20px;
+}
+
+.adminuserpanel h2{
+    text-align: center;
+}
+
+.adminuserpanel ul{
+    display: inline-block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+.adminuserpanel ul li {
+    padding: 5px;   
+}
+
+.adminuserpanel a{
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.container2-menu-users {
+    display:inline-block;
+    width: auto;
+    height: auto;
+    margin-left: 3em;
+    padding-left: 0;
+    background-color: rgba(209, 112, 112, 0.384);
+    border-radius: 5px;
+}
+
+.container2-menu-users li{
+    border: 1px solid rgba(201, 23, 23, 0.582);
+}
+
+
+.container2-menu-users li:hover{
+    background-color: rgba(209, 112, 112, 0.664);
+}
+
+.tabela-lista-users {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.tabela-lista-users table{
+
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+.tabela-lista-users td{
+    padding: 5px;
+    margin-right: 55em;
+
+    background-color:rgba(88, 60, 60, 0.151);
+}
+
+.topo-tabela {
+    background-color:rgba(88, 60, 60, 0.308);
+}
+
+/* manage user */
+
+.manageuser {
+    width: 13em;
+    height: auto;
+    background-color: rgba(221, 156, 156, 0.384);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -23em;
+    border-radius: 20px;
+    padding: 2em;
+    padding-bottom: 3em;
+    text-align: center;
+    
+}
+.manageuser input{
+    padding: 0.2em;
+    border-color: rgba(201, 23, 23, 0.582);
+    border-radius: 10px;
+    
+}
+
+#searchuser {
+
+    width: 19em;
+    margin-left:20em;
+    border: 1px solid rgba(218, 42, 77, 0.753);
+    border-radius: 10px;
+    padding: 0.5em;
+
+
+}
+
+/* Services */
+
+
+.adminservicepanel {
+    width: 50em;
+    height: auto;
+    background-color: rgba(221, 156, 156, 0.384);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -24em;
+    padding: 3em;
+    border-radius: 20px;
+}
+
+.adminservicepanel h2{
+    text-align: center;
+}
+
+.adminservicepanel ul{
+    display: inline-block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+.adminservicepanel ul li {
+    padding: 5px;   
+}
+
+.adminservicepanel a{
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.menu-service {
+    display:inline-block;
+    width: auto;
+    height: auto;
+    margin-left: 3em;
+    padding-left: 0;
+    background-color: rgba(209, 112, 112, 0.384);
+    border-radius: 5px;
+}
+
+.menu-service li{
+    border: 1px solid rgba(201, 23, 23, 0.582);
+}
+
+
+.menu-service li:hover{
+    background-color: rgba(209, 112, 112, 0.664);
+}
+
+/* novo serviço */
+
+.newservice {
+    text-align: center;
+    width: 19em;
+    height: auto;
+
+    background-color: rgba(209, 112, 112, 0.384);
+    margin-right: auto;
+    margin-left: auto;
+    
+    padding-top: 0.3em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
+}
+
+.inputservices {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* listar serviços */
+
+/* deletar serviço */
+
+.delservice {
+    text-align: center;
+    width: 19em;
+    height: auto;
+
+    background-color: rgba(209, 112, 112, 0.384);
+    margin-right: auto;
+    margin-left: auto;
+    
+    padding-top: 0.3em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
+}
+
+.form-products {
+    width: 21em;
+    height: auto;
+    background-color: rgba(209, 112, 112, 0.384);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+    border-radius: 10px;
+    padding:1%;
+    text-align: center;
+}
+
+.container1-conteudo1 {
+    width: 18em;
+    height: auto;
+    background: rgba(221, 156, 156, 0.37);
+    border-radius: 10px;
+    margin-left: 1em;
+    margin-bottom: 1px;
+}
+
+.container2-menu {
+    display:inline-block;
+    width: auto;
+    height: auto;
+    margin-left: 3em;
+    padding-left: 0;
+    background-color: rgba(209, 112, 112, 0.384);
+    border-radius: 5px;
+}
+
+.container2-menu li{
+    border: 1px solid rgba(201, 23, 23, 0.582);
+}
+
+
+.container2-menu li:hover{
+    background-color: rgba(209, 112, 112, 0.664);
+}

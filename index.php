@@ -20,19 +20,10 @@
 <body>
 
 
-    <Header>
-
-
-        <div class="img-logo">
-            <img src="_imgs/espaco_zen.png" alt="logo espaço zen" width="265em"><br>
-        </div>
-        <div class="titulo">
-            <a href="index.php"><h1>Espaço Zen</h1></a>
-        <?php menuprincipal(); ?>
-        </div>
-
-
-    </Header>
+    <?php
+    // topo da página
+    require("reqs/topo.php");
+    ?>
 
 
     <div class="container1-conteudo1">
@@ -41,19 +32,19 @@
                 Aqui você encontra:
             </h2>
             <ul>
-            <li>Terapia Capilar</li>
-            <li>Cronogramas</li>
-            <li>Mechas e Colorimetria</li>
-            <li>Químicas em geral</li>
-            <li>Corte feminino e infantil</li>
-            <li>Sobrancelhas</li>
-            <li>Cílios</li>
-            <li>Depilação</li>
-            <li>Unhas</li>
-            <li>Maquiagem</li>
-            <li>Drenagem linfática</li>
-            <li>Microagulhamento</li>
-            <li>Peeling químico</li>
+                <li>Terapia Capilar</li>
+                <li>Cronogramas</li>
+                <li>Mechas e Colorimetria</li>
+                <li>Químicas em geral</li>
+                <li>Corte feminino e infantil</li>
+                <li>Sobrancelhas</li>
+                <li>Cílios</li>
+                <li>Depilação</li>
+                <li>Unhas</li>
+                <li>Maquiagem</li>
+                <li>Drenagem linfática</li>
+                <li>Microagulhamento</li>
+                <li>Peeling químico</li>
             </ul>
         </div>
     </div>
