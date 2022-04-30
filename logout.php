@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+require("_func/functions.php");
+require_once("_banco/conection.php");
+
+
+session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">

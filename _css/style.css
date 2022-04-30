@@ -108,6 +108,7 @@ body {
     border-radius: 10px;
     margin-left: 1em;
     margin-bottom: 1px;
+    margin-top: -10em;
 }
 .conteudo1 h2{
     margin-top: 2em;
@@ -144,12 +145,35 @@ body {
 
 .container2-posts {
     width: 50em;
-    height: 80vh;
+    height: auto;
     background-color: rgba(221, 156, 156, 0.384);
-    float: left;
-    margin-left: 25vw;
-    margin-top: -75vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -39em;
+    padding: 3em;
     border-radius: 20px;
+}
+
+.container2-posts h2{
+    text-align: center;
+}
+
+.container2-posts ul{
+    display: inline-block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+.container2-posts ul li {
+    padding: 5px;   
+}
+
+.container2-posts a{
+    color: inherit;
+    text-decoration: none;
+
 }
 
 /* contato */
@@ -220,7 +244,7 @@ body {
 .container-login {
     
     width: 13em;
-    height: 10em;
+    height: auto;
     background-color: rgba(221, 156, 156, 0.384);
     float: left;
     padding: 1em;
@@ -229,6 +253,10 @@ body {
     border-radius: 20px;
     text-align: center;
 
+}
+
+.msgerror {
+    color: red;
 }
 
 /* Registro */
@@ -266,7 +294,7 @@ body {
 }
 
 .paneladmin-menu h2{
-    margin-top: 2em;
+    margin-top: -6em;
     padding-top: 2em;
     margin-left: 0.5em;
 }
@@ -299,7 +327,7 @@ body {
     background-color: rgba(221, 156, 156, 0.384);
     margin-left: auto;
     margin-right: auto;
-    margin-top: -35em;
+    margin-top: -24em;
     padding: 3em;
     border-radius: 20px;
 }
@@ -347,12 +375,16 @@ body {
 
 .tabela-lista-users {
     margin-top: 5px;
-    margin-left: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .tabela-lista-users table{
 
-    margin-right: 2em;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2%;
 }
 
 .tabela-lista-users td{
@@ -372,9 +404,9 @@ body {
     width: 13em;
     height: auto;
     background-color: rgba(221, 156, 156, 0.384);
-    float: left;
-    margin-left: 40vw;
-    margin-top: -30em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -23em;
     border-radius: 20px;
     padding: 2em;
     padding-bottom: 3em;
@@ -402,14 +434,13 @@ body {
 /* Services */
 
 
-
 .adminservicepanel {
     width: 50em;
     height: auto;
     background-color: rgba(221, 156, 156, 0.384);
     margin-left: auto;
     margin-right: auto;
-    margin-top: -35em;
+    margin-top: -24em;
     padding: 3em;
     border-radius: 20px;
 }

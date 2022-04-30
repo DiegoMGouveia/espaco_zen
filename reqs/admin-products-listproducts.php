@@ -11,7 +11,6 @@
             <td>Ação: </td>
         </tr>
 
-
         <?php
 
             $products_query = listproducts($conecta);
@@ -31,7 +30,6 @@
             <td><a href="admin-products.php?editproduct=<?php echo $produto_list['productID'];?>"><button>Editar</button></a><a href="admin-products.php?delproduct=<?php echo $produto_list["productID"];?>"><button>Deletar</button></a></td>
 
         </tr>
-
 
         <?php
             }

@@ -10,11 +10,28 @@
             //login errado
             $mensagem = "Usuário/senha incorreto. Tente novamente.";
         } else {
-            //login com sucesso
-            $_SESSION["user_logged"] = $login["userID"];
-            $_SESSION["user_name"]   = $login["name"];
-            $_SESSION["privileges"]   = $login["privileges"];
-            header("location:index.php");
+            if ($login["username"] === $_POST["usermail"] || $login["cellphone"] === $_POST["usermail"] || $login["email"] === $_POST["usermail"]  ) {
+                //login com sucesso
+                $_SESSION["user_logged"] = $login["userID"];
+                $_SESSION["user_name"]   = $login["name"];
+                $_SESSION["privileges"]   = $login["privileges"];
+                if ($_SESSION["privileges"] <= 2) {
+                    // se o usuário tiver privilégio administrativo ou é o proprietário
+                    
+                    header("location:adminpanel.php");
+                
+                } elseif ($_SESSION["privileges"] > 2 && ($_SESSION["privileges"] <= 5)) {
+                    // se o usuário for um cliente, funcionário ou fornecedor
+
+                    header("location:index.php");
+
+                }
+            } else {
+
+                //login errado
+                $mensagem = "Usuário/senha incorreto. Tente novamente.";
+
+            }
         }
         
 
@@ -54,7 +71,24 @@
             <br>
             <br>
         </form>
-        <a href="register.php">Cadastre-se!</a></center>
+
+        <a href="register.php">Cadastre-se!</a>
+    
+        <?php
+        if (isset($mensagem)){
+
+            echo "<div class='msgerror'>";
+
+            echo "<br>" . $mensagem;
+
+            echo "</div>";
+            
+        }
+        ?>
+    
+    </center>
+
+
 
 
     </div>

@@ -39,7 +39,8 @@ if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SE
         ?>
     <div class="adminuserpanel">
         
-
+        <h2>Administração de produtos: </h2>
+        
         <?php 
         // menu dos produtos
         require("reqs/admin-products-menu.php");
@@ -60,6 +61,15 @@ if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SE
         } elseif(isset($_GET["delproduct"]) || isset($_GET['del'])) {
             
             require("reqs/admin-products-delproduct.php");
+        }
+        // modificando produto
+        require("reqs/admin-product-modify-product.php");
+
+        // buscar produto
+        if(isset($_GET["search"])) {
+
+            require("reqs/admin-product-search-product.php");
+
         }
 
         ?>
