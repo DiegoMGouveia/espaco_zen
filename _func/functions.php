@@ -370,52 +370,6 @@
 
     }
 
-    // galeria de fotos
-
-    // registro de foto
-
-    function registerPhoto($conection){
-        if(!empty($_POST["newphotoname"]) && !empty($_POST["newphotodescription"])) {
-            $name        = limpaaspas($_POST["newphotoname"]);
-            $description = limpaaspas($_POST["newphotodescription"]);
-            $imginput     = $_FILES["newphoto"];
-            if (empty($imginput['name'])){
-
-                $img_path = "_imgs/noimg.png";
-
-            } else{
-                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
-                $extension = strtolower(pathinfo($imginput["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
-                $tempPast = $imginput["tmp_name"];
-                $imagem = $new_name . $extension;
-                $past   = "_img-gallery/";
-                $img_path = $past . $imagem;
-                move_uploaded_file($tempPast, $img_path);
-            }
-
-            $sql = "INSERT INTO gallery(name,description,photoPath) VALUES('{$name}','{$description}','{$img_path}')";
-            
-            $insert_query = mysqli_query($conection, $sql);
-            if(!$insert_query){
-                return false;
-            } else{
-                return true;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    // listar fotos
-        
-    function listgallery($conection){
-        
-        $sql   = "SELECT * FROM gallery";
-        $gallery_query = mysqli_query($conection, $sql);
-        return $gallery_query;
-
-    }
-
     function changeProduct($productID,$path,$conection){
 
         if(empty($_POST['changename'])) {
@@ -522,6 +476,54 @@
 
     }
 
+    // galeria de fotos
+
+    // registro de foto
+
+    function registerPhoto($conection){
+        if(!empty($_POST["newphotoname"]) && !empty($_POST["newphotodescription"])) {
+            $name        = limpaaspas($_POST["newphotoname"]);
+            $description = limpaaspas($_POST["newphotodescription"]);
+            $imginput     = $_FILES["newphoto"];
+            if (empty($imginput['name'])){
+
+                $img_path = "_imgs/noimg.png";
+
+            } else{
+                $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
+                $extension = strtolower(pathinfo($imginput["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
+                $tempPast = $imginput["tmp_name"];
+                $imagem = $new_name . $extension;
+                $past   = "_img-gallery/";
+                $img_path = $past . $imagem;
+                move_uploaded_file($tempPast, $img_path);
+            }
+
+            $sql = "INSERT INTO gallery(name,description,photoPath) VALUES('{$name}','{$description}','{$img_path}')";
+            
+            $insert_query = mysqli_query($conection, $sql);
+            if(!$insert_query){
+                return false;
+            } else{
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // listar fotos
+        
+    function listgallery($conection){
+        
+        $sql   = "SELECT * FROM gallery";
+        $gallery_query = mysqli_query($conection, $sql);
+        return $gallery_query;
+
+    }
+
+    
+
     // deletar Fotos
 
     function delPhoto($conection){
@@ -541,6 +543,7 @@
 
     }
 
+    // buscar foto da galeria
     function searchPhoto($conection){
         $search_input = $_POST["searchphoto"];
         $sql_user_search = "SELECT * FROM gallery WHERE galleryID LIKE '%{$search_input}%' OR name LIKE '%{$search_input}%' OR description LIKE '%{$search_input}%' ";
@@ -549,6 +552,7 @@
 
     }
 
+    // selecionar foto da galeria
     function selectPhoto($conection) {
         $galleryID = $_GET['editphoto'];
         $sql = "SELECT * FROM gallery WHERE galleryID = '$galleryID' ";
@@ -622,3 +626,7 @@
             return false;
         }
     }
+
+    // store
+
+    
