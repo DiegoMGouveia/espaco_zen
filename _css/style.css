@@ -23,7 +23,7 @@ body {
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5em;
+    margin-top: 1em;
     border-bottom: 3px solid;
     border-left: 3px solid;
     border-right: 3px solid;
@@ -294,7 +294,7 @@ body {
 }
 
 .paneladmin-menu h2{
-    margin-top: -6em;
+    margin-top: -2.5em;
     padding-top: 2em;
     margin-left: 0.5em;
 }
@@ -565,4 +565,203 @@ body {
 
 .container2-menu li:hover{
     background-color: rgba(209, 112, 112, 0.664);
+}
+
+/* store */
+
+.storepanel {
+    width: 70em;
+    height: auto;
+    background-color: rgba(221, 156, 156, 0.384);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -32em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+
+
+    border-radius: 20px;
+}
+
+.storepanel h2{
+    text-align: center;
+}
+
+.storepanel ul{
+    display: inline-block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+.storepanel ul li {
+    padding: 5px;   
+}
+
+.storepanel a{
+    color: inherit;
+    text-decoration: none;
+
+}
+
+
+.storewindow {
+    width: 60em;
+    height: auto;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4em;
+    padding-top: 2em;
+    border: 3px solid #710a6097;
+    border-radius: 1em;
+
+
+}
+
+/* carrinho */
+
+.menu-store-container {
+
+    display: inline-block;
+    width: 4em;
+    height: auto;
+    padding: 1em;
+    background-color: rgba(149, 22, 101, 0.603);
+    border-radius: 1em;
+    box-shadow: 0 0 28px rgba(235, 8, 243, 0.424);
+    
+    
+    
+}
+
+.menu-store-container2 {
+
+    width: 4em;
+    height: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 1px solid rgba(149, 22, 100, 0.264);
+    border-radius: 1em;
+    background-color: rgba(242, 73, 242, 0.272);
+    text-align: center;
+}
+
+.menu-store-container p{
+    margin: 0;
+}
+
+.store-menu-containers {
+    margin-left: 17vw;
+    margin-right: auto;
+}
+
+.container-new-shop {
+    display: block;
+    width: 20em;
+    height: auto;
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3em;
+    border: 1px solid rgba(242, 73, 242, 0.272);
+    border-radius: 1em;
+    background-color:rgba(232, 108, 213, 0.461);
+}
+
+.container-manage-shop {
+    display: block;
+    width: 50em;
+    height: auto;
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3em;
+    border: 1px solid rgba(242, 73, 242, 0.272);
+    border-radius: 1em;
+    background-color:rgba(232, 108, 213, 0.461);
+    text-align: center;
+}
+
+/* estilo tabela store */
+
+
+table.shop-table {
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 60%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table.shop-table td, table.shop-table th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+  }
+  table.shop-table tbody td {
+    font-size: 13px;
+    font-weight: bold;
+    color: #212121;
+  }
+  table.shop-table tr:nth-child(even) {
+    background: #F1C8F5;
+  }
+  table.shop-table thead {
+    background: #A40C92;
+    background: -moz-linear-gradient(top, #bb49ad 0%, #ad249d 66%, #A40C92 100%);
+    background: -webkit-linear-gradient(top, #bb49ad 0%, #ad249d 66%, #A40C92 100%);
+    background: linear-gradient(to bottom, #bb49ad 0%, #ad249d 66%, #A40C92 100%);
+    border-bottom: 2px solid #444444;
+  }
+  table.shop-table thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #F5C0F4;
+  }
+  table.shop-table thead th:first-child {
+    border-left: none;
+  }
+  
+  table.shop-table tfoot td {
+    font-size: 14px;
+  }
+  table.shop-table tfoot .links {
+    text-align: right;
+  }
+  table.shop-table tfoot .links a{
+    display: inline-block;
+    background: #A40C69;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
+
+
+.container-total{
+    margin-left: 45vw;
+    margin-top: 1em;
+    background:rgb(235, 137, 223);
+    border: 1px solid #1C6EA4;
+    padding: 0.5em;
+}
+
+.inputcart{
+    width: 4em;
+}
+
+.form-insert-cart {
+    width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    border: 1px solid rgb(243, 72, 101);
+    border-radius: 2em;
+    background:#f33fde82;
 }

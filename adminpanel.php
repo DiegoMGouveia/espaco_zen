@@ -4,19 +4,8 @@
 
     session_start();
 
-    if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 2) {
-
-        $user = useridset();
-        $privileges = privilegeset();
-
-    } else {
-        // se não estiver, será redirecionado ao index.php
-        header('location: login.php');
-    }
-
-    if (isset($_GET["selectservice"])){
-        $serviceID = $_GET["selectservice"]; 
-    }
+    // checa se o usuário é administrador
+    adminCheck();
 ?>
 
 <?php
@@ -399,7 +388,7 @@ if (isset($_POST["changeusername"]) && isset($_POST["changename"]) && isset($_PO
                 <?php
                 // menu painel admin --------------------
                 require("reqs/adminpanel_menu.php");
-                $service = selectservice($conecta);
+                $service = selectservice($_GET["selectservice"], $conecta);
                 
                 if (isset($_POST["changename"]) && (!empty($_POST["changename"]))){
 

@@ -21,7 +21,7 @@
 
         <?php
 
-        $sql_query = searchService($conecta);
+        $sql_query = searchService($_POST["searchservice"], $conecta);
                     
         while($service_list = mysqli_fetch_array($sql_query)) {
             $serviceID = $service_list['servicesID'];

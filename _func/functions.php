@@ -1,4 +1,18 @@
 <?php
+
+    // checa se o usuário está logado e se é administrador
+    function adminCheck() {
+
+        if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 2) {
+
+            // se for um administrador abrirá a página normalmente
+            
+        } else {
+            // se não estiver, será redirecionado ao index.php
+            header("location: login.php");
+        }
+    }
+
     function limpaaspas($dado){
 
         // Trocando ocorrencias de "exemplo" por "teste", e "Frase" por "Texto"
@@ -11,6 +25,11 @@
 
     function useridset(){
         $userid = $_SESSION["user_logged"];
+        return $userid;
+    }
+
+    function userNameSet(){
+        $userid = $_SESSION["user_name"];
         return $userid;
     }
 
@@ -184,8 +203,7 @@
 
     // SELECIONANDO serviço
 
-    function selectservice($conection) {
-        $serviceID = $_GET['selectservice'];
+    function selectservice($serviceID, $conection) {
         $sql = "SELECT * FROM services WHERE servicesID = '$serviceID' ";
         $sql_query = mysqli_query($conection, $sql);
         $service = mysqli_fetch_assoc($sql_query);
@@ -270,8 +288,7 @@
     }
 
     // buscar serviços
-    function searchService($conection) {
-        $search_input = $_POST["searchservice"];
+    function searchService($search_input, $conection) {
         $sql_service_search = "SELECT * FROM services WHERE servicesID LIKE '%{$search_input}%' OR name LIKE '%{$search_input}%' OR description LIKE '%{$search_input}%' OR price LIKE '%{$search_input}%' ";
         $sql_query = mysqli_query($conection, $sql_service_search);
 
@@ -629,4 +646,97 @@
 
     // store
 
-    
+    function newShopCart($cpf, $conection) {
+        $user = useridset();
+        $dateTime = date('Y-m-d H:i:s');
+        $newSql = "INSERT INTO store(operatorID,openTime,cpfClient) VALUES('$user','$dateTime','$cpf')";
+
+        if(mysqli_query($conection,$newSql)) {
+            $sql = "SELECT * FROM store WHERE opentime = '$dateTime' ";
+            $sqlQuery = mysqli_query($conection,$sql);
+            $sqlQueryAssoc = mysqli_fetch_assoc($sqlQuery);
+            return [$sqlQueryAssoc["storeID"],$dateTime];
+
+        }
+    }
+
+
+    function validateCPF($number) {
+
+        $cpf = preg_replace('/[^0-9]/', "", $number);
+
+        if (strlen($cpf) != 11 || preg_match('/([0-9])\1{10}/', $cpf)) {
+            return false;
+        }
+
+        $number_quantity_to_loop = [9, 10];
+
+        foreach ($number_quantity_to_loop as $item) {
+
+            $sum = 0;
+            $number_to_multiplicate = $item + 1;
+        
+            for ($index = 0; $index < $item; $index++) {
+
+                $sum += $cpf[$index] * ($number_to_multiplicate--);
+        
+            }
+
+            $result = (($sum * 10) % 11);
+
+            if ($cpf[$item] != $result) {
+                return false;
+            }
+
+        }
+
+        return true;
+
+    }
+
+    function selectShopById($shopID, $conection){
+        $sql = "SELECT * FROM store WHERE storeID = $shopID";
+        $shopQuery = mysqli_query($conection,$sql);
+        $shopSelected = mysqli_fetch_assoc($shopQuery);
+        if (empty($shopSelected)){
+            return false;
+        } else {
+            return $shopSelected;
+        }
+    }
+
+    function selectNameOperator($operatorID, $conection){
+        $sql = "SELECT * FROM users WHERE userID = '$operatorID'";
+        $sqlQuery = mysqli_query($conection, $sql);
+        $operatorName = mysqli_fetch_assoc($sqlQuery);
+        return $operatorName["name"];
+    }
+
+
+
+
+    function addShop($item, $conection) {
+        $type = $item["shopType"];
+        $storeId = $item["storeID"];
+        $itemId = $item["itemID"];
+        $itemName = $item["itemName"];
+        $qtd = $item["shopQtd"];
+        $price = $qtd * $item["shopPrice"];
+
+        $sql = "INSERT INTO shop_cart(shopType,storeID,itemID,itemName,shopQtd,shopPrice) VALUES('$type','$storeId','$itemId','$itemName', '$qtd', '$price') ";
+        $addQuery = mysqli_query($conection,$sql);
+        if (isset( $addQuery ) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    function selectShopCart($shopID,$conection){
+        $sql = "SELECT * FROM shop_cart WHERE storeID = '$shopID'";
+        $sqlQuery = mysqli_query($conection,$sql);
+        return $sqlQuery;
+
+        
+    }

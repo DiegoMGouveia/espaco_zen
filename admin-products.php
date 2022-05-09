@@ -5,15 +5,8 @@ require_once("_banco/conection.php");
 
 session_start();
 
-if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 2) {
-
-    $user = useridset();
-    $privileges = privilegeset();
-
-} else {
-    // se não estiver, será redirecionado ao index.php
-    header('location: login.php');
-}
+// checa se o usuário é administrador
+adminCheck();
 
 ?>
 
