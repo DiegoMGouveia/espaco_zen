@@ -73,37 +73,34 @@ adminCheck();
             require("store/store-new-shop.php");
 
             //listar carrinhos
-            if ( isset ( $_GET["liststore"] ) ) {
-                
+            if ( isset ( $_GET["liststore"] ) || empty( $_GET["liststore"]) ) {
+                $store_list = listShops($conecta);
+
+                var_dump($store_list);
                 ?>
-                <a href="store.php">Voltar</a>
+
                 <table class="shop-table">
-                    
                     <thead>
                         <tr>
                             <th width="50">ID</th>
                             <th width="50">Operador</th>
-                            <th width="30">CPF Cliente</th>
-                            <th width="50">Abertura</th>
+                            <th width="700">Abertura</th>
                             <th width="80">Encerramento</th>
-                            <th width="30">Cupom</th>
                             <th width="30">Valor Total</th>
+                            <th width="30">Cupom</th>
+                            <th width="30">CPF Cliente</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                    $store_list = listShops($conecta);
                     while($shop = mysqli_fetch_array($store_list)) {
-
                         ?>
                         <tr>
-                            <td><?php echo $shop["storeID"] ?></td>
-                            <td><?php echo $shop["operatorID"] ?></td>
-                            <td><?php echo $shop["cpfClient"] ?></td>
-                            <td><?php echo $shop["openTime"] ?></td>
-                            <td><?php echo $shop["closeTime"] ?></td>
-                            <td><?php echo $shop["coupon"] ?></td>
-                            <td><?php echo $shop["totalPrice"] ?></td>
+                            <td><?php echo $shop["itemID"] ?></td>
+                            <td><?php echo $shop["shopType"] ?></td>
+                            <td><?php echo $shop["itemName"] ?></td>
+                            <td><?php echo $shop["shopQtd"] ?></td>
+                            <td><?php echo $shop["shopPrice"] ?></td>
                         </tr>
                         <?php
                 
@@ -114,8 +111,11 @@ adminCheck();
                     </tbody>
 
                 </table>
-                    
+                
+
                 <?php
+                
+                
 
 
             } // if ( isset ( $_GET["listStore"])) {

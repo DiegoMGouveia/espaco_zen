@@ -99,25 +99,15 @@ if( isset ($_SESSION["cart"]) ) {
                 <label for="inputtypeitem">Produto:</label>
                 <input type="radio" name="inputtypeitem" class="inputrcart"value="product"><br>
                 <label for="inputiditem">ID do item: </label>
-                <input type="number" name="inputiditem" class="inputcart" placeholder="00"><br>
+                <input type="number" name="inputiditem" class="inputcart" placeholder="00" required><br>
                 <label for="inputqtditem">Quantidade do item: </label>
-                <input type="number" size="20" name="inputqtditem" class="inputcart" Value="1"><br>
+                <input type="number" size="20" name="inputqtditem" class="inputcart" Value="1" required><br>
                 <button type="submit">Enviar</button>
 
             </form>
         </div> <!-- form-insert-cart -->
          <?php
-        
-    ?>
-
-
-        <center>
-        <form action="store.php?quitshop"  method="post">
-            <a href="store.php?quitshop"><button>Fechar Carrinho</button></a>
-        </form>
-        </center>
-
-        <?php 
+        // inserção de dados no carrinho
         if ( isset ( $_POST["inputtypeitem"] ) ) {
             if( $_POST["inputtypeitem"] == "service" ) {
                 $item = selectservice($_POST["inputiditem"],$conecta);
@@ -132,48 +122,10 @@ if( isset ($_SESSION["cart"]) ) {
                 $item_insert = addShop($carrinho,$conecta);
             } // if( $_POST["inputtypeitem"] == "service" ) {
         } // if ( isset ( $_POST["inputtypeitem"] ) ) {
-            ?>
-        <table class="shop-table">
-        <thead>
-            <tr>
-                <th width="50">ID</th>
-                <th width="50">Tipo</th>
-                <th width="700">Item</th>
-                <th width="80">Quantidade</th>
-                <th width="30">Preço</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php 
-        $storeID = selectShopCart($_SESSION["cart"]["storeID"],$conecta);
-        while($produto_list = mysqli_fetch_array($storeID)) {
-
-
-        ?>
-            <tr>
-                <td><?php echo $produto_list["itemID"] ?></td>
-                <td><?php echo $produto_list["shopType"] ?></td>
-                <td><?php echo $produto_list["itemName"] ?></td>
-                <td><?php echo $produto_list["shopQtd"] ?></td>
-                <td><?php echo $produto_list["shopPrice"] ?></td>
-            </tr>
-            <?php
         
-        } // while($produto_list = mysqli_fetch_array(selectShopCart($_SESSION["cart"]["storeID"],$conecta))) {
-        ?>
-        </tbody>
-        </table>
+        listCart($_SESSION["cart"]["storeID"],$conecta);
+        
 
-        <div class='container-total'>
-
-            <p>Total: R$00.00</p>
-
-
-        </div>
-
-    <?php
-
-    echo "<br>";
 
     // div container-storeshop
     echo "</div>";

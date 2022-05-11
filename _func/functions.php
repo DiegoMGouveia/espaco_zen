@@ -714,7 +714,7 @@
 
 
 
-
+    // insere os dados($item) no carrinho
     function addShop($item, $conection) {
         $type = $item["shopType"];
         $storeId = $item["storeID"];
@@ -732,11 +732,93 @@
         }
     }
 
-
+    // seleciona um carrinho ($shopID)
     function selectShopCart($shopID,$conection){
         $sql = "SELECT * FROM shop_cart WHERE storeID = '$shopID'";
         $sqlQuery = mysqli_query($conection,$sql);
         return $sqlQuery;
 
         
+    }
+
+    //lista os produtos de um carrinho ($storeID)
+    function listCart($storeID, $conection){
+
+        ?>
+
+        <center>
+            <form action="store.php?quitshop"  method="post">
+                <a href="store.php?quitshop"><button>Fechar Carrinho</button></a>
+            </form>
+        </center>
+
+        <?php 
+
+            ?>
+        <table class="shop-table">
+            <thead>
+                <tr>
+                    <th width="50">ID</th>
+                    <th width="50">Tipo</th>
+                    <th width="700">Item</th>
+                    <th width="80">Quantidade</th>
+                    <th width="30">Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+            $shop_cart = selectShopCart($storeID,$conection);
+            while($produto_list = mysqli_fetch_array($shop_cart)) {
+
+
+            ?>
+                <tr>
+                    <td><?php echo $produto_list["itemID"] ?></td>
+                    <td><?php echo $produto_list["shopType"] ?></td>
+                    <td><?php echo $produto_list["itemName"] ?></td>
+                    <td><?php echo $produto_list["shopQtd"] ?></td>
+                    <td><?php echo $produto_list["shopPrice"] ?></td>
+                </tr>
+                <?php
+                $total += $produto_list["shopPrice"];
+                insertTotalCart($total, $produto_list["storeID"],$conection);
+
+            
+            } // while($produto_list = mysqli_fetch_array(selectShopCart($shop_cart,$conection))) {
+            ?>
+            </tbody>
+            </table>
+
+            <div class='container-total'>
+
+                <p>Total: <?php echo "R$" . $total ?></p>
+
+
+            </div> <!-- CLASS container-total -->
+
+            <?php
+
+            echo "<br>";
+
+    } // function listCart($storeID, $conection){
+
+    function listShops($conection) {
+        $sql = "SELECT * FROM store";
+        $sqlQuery = mysqli_query($conection, $sql);
+        return $sqlQuery;
+    }
+
+    function insertTotalCart($total, $storeID, $conection) {
+            $sql = "UPDATE store SET totalPrice = '$total' WHERE storeID = '$storeID' ";
+            $newTotal = mysqli_query($conection, $sql);
+            
+    }
+
+    function totalPriceStore($storeID, $conection) {
+
+        $shop_cart = selectShopCart($storeID,$conection);
+        $cart = mysqli_fetch_assoc($shop_cart);
+
+        return $cart["totalPrice"];
+
     }

@@ -15,7 +15,7 @@
     </div> 
 
     <div class="menu-store-container">
-        <a href="#">
+        <a href="store.php?liststore">
             <div class="menu-store-container2">
 
                 <p>Listar Carrinhos</p>
