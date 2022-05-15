@@ -19,7 +19,7 @@
 
         <td><figure><img width="195em" src="<?php echo $imagem;?>"></figure></td>
             <td><?php echo $gallery_list["galleryID"]?></td>
-            <td><?php echo $gallery_list["name"]?></td>
+            <td><strong><?php echo $gallery_list["name"]?></strong></td>
             <td><?php echo $gallery_list["description"]?></td>
             <td><a href="admin-gallery.php?editphoto=<?php echo $gallery_list['galleryID'];?>"><button>Editar</button></a><br><a href="admin-gallery.php?delphoto=<?php echo $gallery_list["galleryID"];?>"><button>Deletar</button></a></td>
 

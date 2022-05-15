@@ -32,19 +32,16 @@
                 Aqui você encontra:
             </h2>
             <ul>
-                <li>Terapia Capilar</li>
-                <li>Cronogramas</li>
-                <li>Mechas e Colorimetria</li>
-                <li>Químicas em geral</li>
-                <li>Corte feminino e infantil</li>
-                <li>Sobrancelhas</li>
-                <li>Cílios</li>
-                <li>Depilação</li>
-                <li>Unhas</li>
-                <li>Maquiagem</li>
-                <li>Drenagem linfática</li>
-                <li>Microagulhamento</li>
-                <li>Peeling químico</li>
+            <?php
+            $list_sql = selectservices($conecta);
+            while($service_list = mysqli_fetch_array($list_sql)) {
+                $serviceID = $service_list['servicesID'];
+
+            ?>
+                <li><?php echo $service_list["name"]; ?></li>
+            <?php
+                 } 
+                 ?>
             </ul>
         </div>
     </div>

@@ -1,3 +1,16 @@
+version 1.0.0.4
+
+NOVO: agora no index.php mostra no menu a esquerda, todos os nomes dos serviços cadastrados.
+NOVO: Criado arquivo services.php onde mostrará informações de todos os serviços cadastrados aos clientes.
+NOVO: Criado arquivo gallery.php onde mostrará as fotos postadas referente a serviços entre outras imagens aos clientes.
+MOD: adicionado link da página de serviços e da galeria ao menu principal.
+NOVO: front da página de serviços inicialmente feito
+MOD: update banco de dados
+MOD: consertado a sessão na pagina contato.php que não havia sido instalada.
+
+
+-----------------------------------------------------------------------------------
+
 version 1.0.0.3
 
 NOVO: foi adicionado botão voltar em algumas páginas da store;

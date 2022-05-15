@@ -56,8 +56,8 @@
                     <a href="index.php"><li>Inicio</li></a>
                     <a href="adminpanel.php"><li>Administração</li></a>
                     <a href="#"><li>Perfil</li></a>
-                    <a href="#"><li>Serviços</li></a>
-                    <a href="#"><li>Galeria</li></a>
+                    <a href="services.php"><li>Serviços</li></a>
+                    <a href="gallery.php"><li>Galeria</li></a>
                     <a href="#"><li>Agenda</li></a>
                     <a href="contato.php"><li>Contato</li></a>
                 </ul>
@@ -69,12 +69,12 @@
 
                 <?php echo "Olá " . $_SESSION['user_name'] . " | <a href='logout.php'>Sair.</a> <br>";?>
                     <ul>
-                        <center><li><a href="index.php">Inicio</a></li>
-                        <li><a href="login.php">Perfil</a></li>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Galeria</a></li>
-                        <li><a href="#">Agenda</a></li>
-                        <li><a href="contato.php">Contato</a></li></center>
+                        <center><a href="index.php"><li>Inicio</li></a>
+                        <a href="login.php"><li>Perfil</li></a>
+                        <a href="services.php"><li>Serviços</li></a>
+                        <a href="gallery.php"><li>Galeria</li></a>
+                        <a href="#"><li>Agenda</li></a>
+                        <a href="contato.php"><li>Contato</li></a></center>
                     </ul>
                 </nav>
             <?php
@@ -82,13 +82,13 @@
                 ?>
                     <nav class="bord-menu-principal">
                         <ul>
-                            <li><a href="index.php">Inicio</a></li>
-                            <li><a href="login.php">Login</a></li>
-                            <li><a href="register.php">Cadastrar</a></li>
-                            <li><a href="#">Serviços</a></li>
-                            <li><a href="#">Galeria</a></li>
-                            <li><a href="#">Agenda</a></li>
-                            <li><a href="contato.php">Contato</a></li>
+                            <a href="index.php"><li>Inicio</li></a>
+                            <a href="login.php"><li>Login</li></a>
+                            <a href="register.php"><li>Cadastrar</li></a>
+                            <a href="services.php"><li>Serviços</li></a>
+                            <a href="gallery.php"><li>Galeria</li></a>
+                            <a href="#"><li>Agenda</a></li>
+                            <a href="contato.php"><li>Contato</li></a>
                         </ul>
                     </nav>
                 <?php
