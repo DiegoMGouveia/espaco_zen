@@ -3,12 +3,25 @@
     // checa se o usuário está logado e se é administrador
     function adminCheck() {
 
-        if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 2) {
+        if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 && isset($_SESSION["user_name"]) || isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 2 && isset( $_SESSION["user_name"] )) {
 
             // se for um administrador abrirá a página normalmente
             
         } else {
             // se não estiver, será redirecionado ao index.php
+            header("location: login.php");
+        }
+    }
+
+    // checa se o usuário está logado
+    function userCheck() {
+
+        if(isset($_SESSION['user_logged']) && isset($_SESSION["privileges"]) && isset($_SESSION["user_name"])) {
+
+            // se estiver logado, a página abrirá normalmente
+            
+        } else {
+            // se não estiver, será redirecionado ao login.php
             header("location: login.php");
         }
     }
@@ -55,7 +68,7 @@
                 <ul>
                     <a href="index.php"><li>Inicio</li></a>
                     <a href="adminpanel.php"><li>Administração</li></a>
-                    <a href="#"><li>Perfil</li></a>
+                    <a href="userpanel.php"><li>Perfil</li></a>
                     <a href="services.php"><li>Serviços</li></a>
                     <a href="gallery.php"><li>Galeria</li></a>
                     <a href="#"><li>Agenda</li></a>
@@ -70,7 +83,7 @@
                 <?php echo "Olá " . $_SESSION['user_name'] . " | <a href='logout.php'>Sair.</a> <br>";?>
                     <ul>
                         <center><a href="index.php"><li>Inicio</li></a>
-                        <a href="login.php"><li>Perfil</li></a>
+                        <a href="userpanel.php"><li>Perfil</li></a>
                         <a href="services.php"><li>Serviços</li></a>
                         <a href="gallery.php"><li>Galeria</li></a>
                         <a href="#"><li>Agenda</li></a>

@@ -1,3 +1,11 @@
+version 1.0.0.5
+
+NOVO: criado painel do usuário, userpanel.php, o usuário precisa estar logado para acessar a página ou será redirecionado a página de login.
+NOVO criado CSS para a página de painel de usuário.
+
+-----------------------------------------------------------------------------------
+
+
 version 1.0.0.4
 
 NOVO: agora no index.php mostra no menu a esquerda, todos os nomes dos serviços cadastrados.
@@ -7,6 +15,8 @@ MOD: adicionado link da página de serviços e da galeria ao menu principal.
 NOVO: front da página de serviços inicialmente feito
 MOD: update banco de dados
 MOD: consertado a sessão na pagina contato.php que não havia sido instalada.
+ADD: "userCheck" nova função que verifica se o usuário está logado, se não estiver redirecionará para a página de login.
+
 
 
 -----------------------------------------------------------------------------------
