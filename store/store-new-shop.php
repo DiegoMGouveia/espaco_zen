@@ -31,8 +31,6 @@ if (isset($_GET["newcart"]) && !$carrinho["openTime"]) {
         }
     }
 
-
-
     echo "<div class='container-new-shop'>";
     echo "Carrinho iniciado: <br>";
 
@@ -66,13 +64,7 @@ if (isset($_GET["newcart"]) && !$carrinho["openTime"]) {
 
     <?php
 
-
 }
-
-
-
-
-
 
 ?>
 

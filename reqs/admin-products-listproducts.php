@@ -1,15 +1,19 @@
 <div class="tabela-lista-users">
-    <table border="1" cellspacing="0">
-        <tr class="topo-tabela">
-            <td>Imagem: </td>
-            <td>ID: </td>
-            <td>Produto: </td>
-            <td>Preço de venda: </td>
-            <td>Preço de custo: </td>
-            <td>Estoque: </td>
-            <td>Descrição: </td>
-            <td>Ação: </td>
-        </tr>
+    <table border="1" cellspacing="0" class="shop" >
+        <thead>
+            <!-- <tr class="topo-tabela"> -->
+            <tr>
+                <th>Imagem: </th>
+                <th>ID: </th>
+                <th>Produto: </th>
+                <th>Preço de venda: </th>
+                <th>Preço de custo: </th>
+                <th>Estoque: </th>
+                <th>Descrição: </th>
+                <th>Ação: </th>
+            </tr>
+        </thead>
+
 
         <?php
 
@@ -18,18 +22,21 @@
                 $imagem_produto = $produto_list['imgPath'];
 
         ?>
-        <tr>
+        <tbody>
 
-        <td><figure><img width="195em" src="<?php echo $imagem_produto;?>"></figure></td>
-            <td><?php echo $produto_list["productID"]?></td>
-            <td><?php echo $produto_list["name"]?></td>
-            <td><?php echo $produto_list["pricetosell"]?></td>
-            <td><?php echo $produto_list["pricetobuy"]?></td>
-            <td><?php echo $produto_list["stock"]?></td>
-            <td><?php echo $produto_list["description"]?></td>
-            <td><a href="admin-products.php?editproduct=<?php echo $produto_list['productID'];?>"><button>Editar</button></a><a href="admin-products.php?delproduct=<?php echo $produto_list["productID"];?>"><button>Deletar</button></a></td>
+            <tr>
 
-        </tr>
+            <td><figure><img width="195em" src="<?php echo $imagem_produto;?>"></figure></td>
+                <td><?php echo $produto_list["productID"]?></td>
+                <td><?php echo $produto_list["name"]?></td>
+                <td><?php echo "R$" . $produto_list["pricetosell"]?></td>
+                <td><?php echo "R$" . $produto_list["pricetobuy"]?></td>
+                <td><?php echo $produto_list["stock"]?></td>
+                <td><?php echo $produto_list["description"]?></td>
+                <td><a href="admin-products.php?editproduct=<?php echo $produto_list['productID'];?>"><button>Editar</button></a><a href="admin-products.php?delproduct=<?php echo $produto_list["productID"];?>"><button>Deletar</button></a></td>
+
+            </tr>
+        </tbody>
 
         <?php
             }

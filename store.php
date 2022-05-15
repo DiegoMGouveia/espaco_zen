@@ -54,15 +54,22 @@ adminCheck();
 
             if (empty($_GET)) {
                 require("store/store-menu.php");
+            } else {
+
+                ?>
+                <a href="store.php">Voltar</a>
+                <?php
             }
             
             // termina a sessão "cart"
             if(isset($_GET["quitshop"])) {
 
+
+                $closed = closeShopCart($_SESSION["cart"]["storeID"], $conecta, $_POST["coupon"]);
                 unset($_SESSION["cart"]);
                 
-                header('location: store.php');
-                
+                header("location: store.php");
+
             }
             
 
@@ -76,7 +83,6 @@ adminCheck();
             if ( isset ( $_GET["liststore"] ) ) {
                 
                 ?>
-                <a href="store.php">Voltar</a>
                 <table class="shop-table">
                     
                     <thead>
@@ -103,7 +109,7 @@ adminCheck();
                             <td><?php echo $shop["openTime"] ?></td>
                             <td><?php echo $shop["closeTime"] ?></td>
                             <td><?php echo $shop["coupon"] ?></td>
-                            <td><?php echo $shop["totalPrice"] ?></td>
+                            <td><?php echo "R$" . $shop["totalPrice"] ?></td>
                         </tr>
                         <?php
                 

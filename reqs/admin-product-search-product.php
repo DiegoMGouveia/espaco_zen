@@ -23,7 +23,7 @@
 
         <?php
 
-        $sql_query = searchProduct($conecta);
+        $sql_query = searchProduct($_POST["searchproduct"], $conecta);
                     
         while($product_list = mysqli_fetch_array($sql_query)) {
             $productID = $product_list['productID'];
@@ -37,7 +37,7 @@
             <td><?php echo $product_list['pricetobuy']?></td>
             <td><?php echo $product_list['stock']?></td>
             <td><?php echo $product_list['description']?></td>
-            <td><a href="admin-product.php?editproduct=<?php echo $productID ?>"><button type="submit">Modificar</button></a><br><a href="admin-product.php?delphoto=<?php echo $productID ?>"><button type="submit">Deletar</button></a></td>
+            <td><a href="admin-products.php?editproduct=<?php echo $productID ?>"><button type="submit">Modificar</button></a><br><a href="admin-products.php?delproduct=<?php echo $productID ?>"><button type="submit">Deletar</button></a></td>
 
         </tr>
         <?php 

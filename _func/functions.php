@@ -38,6 +38,14 @@
         return $privilege;
     }
 
+    function privilegename($privilege, $conection) {
+        $sql = "SELECT * FROM privgroup WHERE privID = '$privilege' ";
+        $sqlQuery = mysqli_query($conection, $sql);
+        $privilege_name = mysqli_fetch_assoc($sqlQuery);
+        return $privilege_name["privname"];
+
+    }
+
     function menuprincipal(){
         if($_SESSION["privileges"] == 1){
         ?>
@@ -92,8 +100,11 @@
         $pass = MD5($pwd);
         $sql = "INSERT INTO users(username,password,name,email,cellphone) VALUES('{$user}','{$pass}','{$name}','{$mail}','{$cell}')";
         $insert_query = mysqli_query($conection, $sql);
-        if ( !$insert_query ) {
-            die("falha na consulta ao banco, entre em contato conosco informANDo a falha com data e hora. Obrigado!");
+        if ($conection->errno == 1062) {
+            return 1062;
+        }
+        if ( !$insert_query && $conection->errno != 1062) {
+            die("falha na consulta ao banco, entre em contato conosco informando a falha com data e hora. Obrigado!");
         } else {
             return $insert_query;
         }
@@ -166,7 +177,7 @@
         $deleted = mysqli_query($conection, $sql_delete);
         if($deleted){
 
-            header('location: adminpanel.php?users=1');
+            header('location: admin-users.php?allusers');
         }
 
     }
@@ -203,11 +214,10 @@
 
     // SELECIONANDO serviço
 
-    function selectservice($serviceID, $conection) {
-        $sql = "SELECT * FROM services WHERE servicesID = '$serviceID' ";
+    function selectservices($conection) {
+        $sql = "SELECT * FROM services";
         $sql_query = mysqli_query($conection, $sql);
-        $service = mysqli_fetch_assoc($sql_query);
-        return $service;
+        return $sql_query;
 
     }
 
@@ -308,7 +318,7 @@
         $deleted = mysqli_query($conection, $sql_delete);
         if($deleted){
 
-            header('location: adminpanel.php?services=2');
+            header('location: admin-services.php?allservices');
         }
 
     }
@@ -360,8 +370,7 @@
         
     }
 
-    function selectProduct($conection) {
-        $productID = $_GET['editproduct'];
+    function selectProduct($productID, $conection) {
         $sql = "SELECT * FROM products WHERE productID = '$productID' ";
         $sql_query = mysqli_query($conection, $sql);
         $product = mysqli_fetch_assoc($sql_query);
@@ -485,8 +494,7 @@
     }
 
     // busca de produtos
-    function searchProduct($conection){
-        $search_input = $_POST["searchproduct"];
+    function searchProduct($search_input, $conection){
         $sql_user_search = "SELECT * FROM products WHERE productID LIKE '%{$search_input}%' OR name LIKE '%{$search_input}%' OR pricetosell LIKE '%{$search_input}%' OR pricetobuy LIKE '%{$search_input}%' OR description LIKE '%{$search_input}%' ";
         $lista = mysqli_query($conection, $sql_user_search);
         return $lista;
@@ -660,6 +668,28 @@
         }
     }
 
+    function closeShopCart($shopID, $conection, $coupon) {
+
+        $dateTime = date('Y-m-d H:i:s');
+        $sql = "UPDATE store SET closeTime = '$dateTime' WHERE storeID = '$shopID' ";
+        $sqlQuery_time = mysqli_query($conection, $sql);
+
+        if ( !empty ( $coupon ) ) {
+            $sql_coupon = "UPDATE store SET coupon = '$coupon' WHERE storeID = '$shopID' ";
+            $sqlQuery_coupon = mysqli_query($conection, $sql_coupon);
+            return [$sqlQuery_time, $sqlQuery_coupon];
+        }
+
+        return [$sqlQuery_time];
+        
+    }
+
+    function searchSales($search, $conection) {
+        $sql = "SELECT * FROM shop_cart WHERE shopID LIKE '%{$search_input}%' OR shopType LIKE '%{$search_input}%' OR storeID LIKE '%{$search_input}%' OR itemID LIKE '%{$search_input}%' OR itemName LIKE '%{$search_input}%' OR time_sale LIKE '%{$search_input}%' ";
+        $sqlQuery = mysqli_query($conection, $sql);
+        return $sqlQuery;
+    }
+
 
     function validateCPF($number) {
 
@@ -722,8 +752,9 @@
         $itemName = $item["itemName"];
         $qtd = $item["shopQtd"];
         $price = $qtd * $item["shopPrice"];
+        $dateTime = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO shop_cart(shopType,storeID,itemID,itemName,shopQtd,shopPrice) VALUES('$type','$storeId','$itemId','$itemName', '$qtd', '$price') ";
+        $sql = "INSERT INTO shop_cart(shopType,storeID,itemID,itemName,shopQtd,shopPrice,time_sale) VALUES('$type','$storeId','$itemId','$itemName', '$qtd', '$price', '$dateTime') ";
         $addQuery = mysqli_query($conection,$sql);
         if (isset( $addQuery ) ) {
             return true;
@@ -746,15 +777,7 @@
 
         ?>
 
-        <center>
-            <form action="store.php?quitshop"  method="post">
-                <a href="store.php?quitshop"><button>Fechar Carrinho</button></a>
-            </form>
-        </center>
 
-        <?php 
-
-            ?>
         <table class="shop-table">
             <thead>
                 <tr>
@@ -777,7 +800,7 @@
                     <td><?php echo $produto_list["shopType"] ?></td>
                     <td><?php echo $produto_list["itemName"] ?></td>
                     <td><?php echo $produto_list["shopQtd"] ?></td>
-                    <td><?php echo $produto_list["shopPrice"] ?></td>
+                    <td><?php echo "R$" . $produto_list["shopPrice"] ?></td>
                 </tr>
                 <?php
                 $total += $produto_list["shopPrice"];
@@ -794,7 +817,16 @@
                 <p>Total: <?php echo "R$" . $total ?></p>
 
 
+
             </div> <!-- CLASS container-total -->
+
+        <center>
+            <form action="store.php?quitshop"  method="post">
+                <label for="coupon">Cupom de Desconto:</label>
+                <input type="text" name="coupon" id="coupon" placeholder="X3D5-XD12">
+                <a href="store.php?quitshop"><button>Fechar Carrinho</button></a>
+            </form>
+        </center>
 
             <?php
 

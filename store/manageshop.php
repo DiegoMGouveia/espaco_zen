@@ -40,50 +40,60 @@ if( isset ($_SESSION["cart"]) ) {
     <!-- inicio lista da pesquisa do formulário -->
     <?php
     if (isset($_POST["typeitem"])) {
-        if ($_POST["typeitem"] == "service") {
-                
-            $service_add["itemType"] = $_POST['typeitem'];
-            $service_add["storeID"] = $_SESSION['cart']['storeID'];
+        $service_add["itemType"] = $_POST['typeitem'];
+        $service_add["storeID"] = $_SESSION['cart']['storeID'];
+        ?>
+
+        <table class="shop-table">
+            <thead>
+                <tr>
+                    <th width="30">ID</th>
+                    <th width="200">Serviço a ser adicionado</th>
+                    <th width="30">Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            <?php
+            if ($_POST["typeitem"] == "service") {
+                $searchQuery = searchService($_POST["searchitem"], $conecta);
+                while($service_list = mysqli_fetch_array($searchQuery)) {
+                    ?>
+                    <tr>
+                        <center>
+                            <td><?php echo $service_list['servicesID']; ?></td>
+                        </center>
+    
+                        <td><?php echo $service_list['name']; ?></td>
+                        <td><?php echo "R$" . $service_list['price']; ?></td>
+                    </tr>
+                    <?php
+                } // while($service_list = mysqli_fetch_array($searchQuery)) {
+
+            } elseif ($_POST["typeitem"] == "product") {
+                $searchQuery = searchProduct($_POST["searchitem"], $conecta);
+                while($service_list = mysqli_fetch_array($searchQuery)) {
+                    ?>
+                    <tr>
+                        <center>
+                            <td><?php echo $service_list['productID']; ?></td>
+                        </center>
+    
+                        <td><?php echo $service_list['name']; ?></td>
+                        <td><?php echo "R$" . $service_list['pricetosell']; ?></td>
+                    </tr>
+                    <?php
+                } // while($service_list = mysqli_fetch_array($searchQuery)) {
+            }
+                        
             ?>
- 
-                <table class="shop-table">
-                    <thead>
-                        <tr>
-                            <th width="30">ID</th>
-                            <th width="200">Serviço a ser adicionado</th>
-                            <th width="30">Preço</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            
+            </tbody>
 
-                        <?php
-                        $serviceQuery = searchService($_POST["searchitem"], $conecta);
-                        
-                        while($service_list = mysqli_fetch_array($serviceQuery)) {
-                            ?>
-                            <tr>
-                                <center>
-                                    <td><?php echo $service_list['servicesID']; ?></td>
-                                </center>
-
-                                <td><?php echo $service_list['name']; ?></td>
-                                <td><?php echo $service_list['price']; ?></td>
-                            </tr>
-                            <?php
-                        } // while($service_list = mysqli_fetch_array($serviceQuery)) {
-                        ?>
-
-                        
-                    </tbody>
-
-                </table><br><br>
+        </table><br><br>
 
         <?php
             
-
-        } // if ($_POST["typeitem"] == "service") {
-
-         
     } // if (isset($_POST["typeitem"])) {
 
 
@@ -110,7 +120,7 @@ if( isset ($_SESSION["cart"]) ) {
         // inserção de dados no carrinho
         if ( isset ( $_POST["inputtypeitem"] ) ) {
             if( $_POST["inputtypeitem"] == "service" ) {
-                $item = selectservice($_POST["inputiditem"],$conecta);
+                $item = selectservicebyid($_POST["inputiditem"],$conecta);
                 $carrinho = [
                     "shopType" => $_POST["inputtypeitem"],
                     "storeID" => $_SESSION["cart"]["storeID"],
@@ -120,7 +130,19 @@ if( isset ($_SESSION["cart"]) ) {
                     "shopPrice" => $item["price"],
                 ];
                 $item_insert = addShop($carrinho,$conecta);
-            } // if( $_POST["inputtypeitem"] == "service" ) {
+            // EDITAR O CODIGO ABAIXO
+            } elseif( $_POST["inputtypeitem"] == "product" ) {
+                $item = selectProduct($_POST["inputiditem"],$conecta);
+                $carrinho = [
+                    "shopType" => $_POST["inputtypeitem"],
+                    "storeID" => $_SESSION["cart"]["storeID"],
+                    "itemID" => $item["productID"],
+                    "itemName" => $item["name"],
+                    "shopQtd" => $_POST["inputqtditem"],
+                    "shopPrice" => $item["pricetosell"],
+                ];
+                $item_insert = addShop($carrinho,$conecta);
+            }
         } // if ( isset ( $_POST["inputtypeitem"] ) ) {
         
         listCart($_SESSION["cart"]["storeID"],$conecta);

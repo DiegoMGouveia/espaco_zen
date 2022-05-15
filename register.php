@@ -27,9 +27,13 @@
         }
 // --------verifica se $username, $password, $email, $cellphone estão setados
         if (isset($username) && isset($user) && isset($password) && isset($email) && isset($cellphone)){
-            $register = registro($conecta,$username,$password,$user,$email,$cellphone);
-            if(isset($register)){
+            $register = registro($conecta,$username,$password,$user,$cellphone,$email);
+            if($register != 1062){
                 $sucefful = "Registro realizado com sucesso!";
+            } elseif ($register == 1062) {
+
+                $duplicate = "<strong>Nome de usuário</strong>, <strong>e-mail</strong> ou <strong>celular</strong> ja existente no cadastro de outro usuário, favor utilizar um diferente.";
+                 
             } else {
                 $denied = "Erro no cadastro, verifique e tente novamente.";
             }
@@ -61,29 +65,32 @@
 
     <div class="container-register">
         <form action="register.php" method="post">
-            <label for="username">Usuário: </label>
+            <label for="username">Usuário: </label><br>
             <input type="text" name="username" id="useruser" placeholder="Digite seu usuário" required>
             <br>
-            <label for="password">Senha: </label>
+            <label for="password">Senha: </label><br>
             <input type="password" name="password" id="passworduser" placeholder="Digite sua senha" required>
             <br>
-            <label for="passwordagain">Repita a senha: </label>
+            <label for="passwordagain">Repita a senha: </label><br>
             <input type="password" name="passwordagain" id="reppassworduser"  placeholder="Repita a sua senha" required>
             <br>
-            <label for="name">Nome Completo: </label>
+            <label for="name">Nome Completo: </label><br>
             <input type="text" name="name" id="nameuser" placeholder="Digite seu nome completo" required>
             <br>
-            <label for="email">Email: </label>
+            <label for="email">Email: </label><br>
             <input type="email" name="email" id="emailuser"  placeholder="Digite seu email" >
             <br>
-            <label for="cellphone">Celular: </label>
+            <label for="cellphone">Celular: </label><br>
             <input type="tel" name="cellphone" id="cellphoneuser" placeholder="Digite seu celular"  required>
             <br>
             
             <button type="reset">Limpar</button><button type="submit">Enviar</button>
         </form>
 
-        <?php if (isset($nopwd) || isset($noname) || isset($nophone) || isset($sucefful) || isset($denied)){
+
+        <?php
+        
+        if (isset($nopwd) || isset($noname) || isset($nophone) || isset($sucefful) || isset($denied) || isset($duplicate)){
             if($nopwd){
                 echo "<br>".$nopwd;
             }
@@ -98,6 +105,9 @@
             }
             if($denied){
                 echo "<br>".$denied;
+            }
+            if ( isset ( $duplicate ) ){
+                echo "</br>" . $duplicate;
             }
         }
         ?>

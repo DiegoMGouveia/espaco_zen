@@ -4,8 +4,8 @@
                 Painel Adminisrativo:
             </h2>
             <ul>
-            <a href="adminpanel.php?users"><li> Usuários </li></a>
-            <a href="adminpanel.php?services"><li> Serviços </li></a>
+            <a href="admin-users.php"><li> Usuários </li></a>
+            <a href="admin-services.php"><li> Serviços </li></a>
             <a href="admin-products.php"><li>Produtos</li></a>
             <a href="admin-gallery.php"><li>Galeria</li></a>
             <a href="store.php"><li>Store</li></a>

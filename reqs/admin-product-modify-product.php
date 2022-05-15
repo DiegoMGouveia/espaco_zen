@@ -4,7 +4,7 @@
 <?php 
     if (isset($_GET["editproduct"])){
         $productID = $_GET["editproduct"];
-        $product = selectProduct($conecta);
+        $product = selectProduct($productID, $conecta);
     
         if (isset($_POST["changename"]) && (!empty($_POST["changename"]))){
 
