@@ -1,5 +1,13 @@
 
 
+version 1.0.0.7
+
+NOVO: nova função "delItemCart" que procura o código do item, verifica se esta associado ao carrinho em questão, se estiver, ele deleta o item, caso contrario nada acontece.
+
+
+
+-----------------------------------------------------------------------------------
+
 version 1.0.0.6
 
 NOVO: agora no Store, é possivel abrir novamente um carrinho que havia sido fechado através do menu "listar carrinhos", adicionando assim uma nova data de fechamento do carrinho.

@@ -229,8 +229,12 @@
         $sql = "SELECT * FROM services WHERE servicesID = '$serviceid' ";
                             
         $sql_query = mysqli_query($conection,$sql);
-        $service = mysqli_fetch_assoc($sql_query);
-        return $service;
+        if ($sql_query == true) {
+            $service = mysqli_fetch_assoc($sql_query);
+            return $service;
+        }else {
+            return false;
+        }
 
     }
     
@@ -824,6 +828,7 @@
         <table class="shop-table">
             <thead>
                 <tr>
+                    <th width="50">Cód</th>
                     <th width="50">ID</th>
                     <th width="50">Tipo</th>
                     <th width="700">Item</th>
@@ -839,6 +844,7 @@
 
             ?>
                 <tr>
+                    <td><?php echo $produto_list["shopID"] ?></td>
                     <td><?php echo $produto_list["itemID"] ?></td>
                     <td><?php echo $produto_list["shopType"] ?></td>
                     <td><?php echo $produto_list["itemName"] ?></td>
@@ -895,5 +901,20 @@
         $cart = mysqli_fetch_assoc($shop_cart);
 
         return $cart["totalPrice"];
+
+    }
+
+    function delItemCart($cod, $conection) {
+        $storeID = $_SESSION["cart"]["storeID"];
+        $sqlselect = "SELECT * FROM shop_cart WHERE shopID = '$cod' AND storeID = '$storeID' ";
+        $sqlQuery = mysqli_query($conection, $sqlselect);
+        if (!$sqlQuery) {
+            return false;
+        } else {
+
+            $sql = "DELETE FROM shop_cart WHERE shopID = '$cod' AND storeID = '$storeID' ";
+            $delitem = mysqli_query($conection, $sql);
+            return true;
+        }
 
     }

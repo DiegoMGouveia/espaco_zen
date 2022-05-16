@@ -834,5 +834,15 @@ table.shop-table {
     margin-right: auto;
     display: block;
     border-radius: 2em;
+    text-align: center;
 
+}
+
+.delitem {
+    background: #ff0800da;
+    width: 13em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em;
+    border-radius: 1em;
 }

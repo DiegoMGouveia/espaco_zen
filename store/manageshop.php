@@ -1,6 +1,11 @@
 <?php
 
 if( isset ($_SESSION["cart"]) ) {
+
+    if (isset($_POST["inputIdDel"])){
+        $deleted = delItemCart($_POST["inputIdDel"], $conecta);
+
+    }
     
 
 
@@ -30,7 +35,7 @@ if( isset ($_SESSION["cart"]) ) {
             <h4>Pesquisar Produto ou Serviço</h4>
             <label for="typeitem">Categoria do item: </label><br>
             <label for="typeitem"> serviço</label>
-            <input type="radio" name="typeitem" <?php if ( $_POST["typeitem"] == "service" ) { echo "checked"; }; ?> class="inputshopsearch" value="service"><br>
+            <input type="radio" name="typeitem" <?php if ( $_POST["typeitem"] == "service" ) { echo "checked"; }; ?> class="inputshopsearch" value="service">
             <label for="typeitem">Produto</label>
             <input type="radio" name="typeitem" <?php if ( $_POST["typeitem"] == "product" ) { echo "checked"; }; ?> class="inputshopsearch" value="product"><br>
             <label for="searchitem">Nome do item:</label>
@@ -108,7 +113,7 @@ if( isset ($_SESSION["cart"]) ) {
             <h3>Insira o item no carrinho: </h3>
             <form action="store.php?shop" method="post">
                 <label for="inputtypeitem">Serviço:</label>
-                <input type="radio" name="inputtypeitem" class="inputrcart" value="service"><br>
+                <input type="radio" name="inputtypeitem" class="inputrcart" value="service">
                 <label for="inputtypeitem">Produto:</label>
                 <input type="radio" name="inputtypeitem" class="inputrcart"value="product"><br>
                 <label for="inputiditem">ID do item: </label>
@@ -124,19 +129,30 @@ if( isset ($_SESSION["cart"]) ) {
         if ( isset ( $_POST["inputtypeitem"] ) ) {
             if( $_POST["inputtypeitem"] == "service" ) {
                 $item = selectservicebyid($_POST["inputiditem"],$conecta);
-                $carrinho = [
-                    "shopType" => $_POST["inputtypeitem"],
-                    "storeID" => $_SESSION["cart"]["storeID"],
-                    "itemID" => $item["servicesID"],
-                    "itemName" => $item["name"],
-                    "shopQtd" => $_POST["inputqtditem"],
-                    "shopPrice" => $item["price"],
-                ];
-                $item_insert = addShop($carrinho,$conecta);
-            // EDITAR O CODIGO ABAIXO
+                if ($item == false) {
+                    
+                } else {
+
+                    $carrinho = [
+                        "shopType" => $_POST["inputtypeitem"],
+                        "storeID" => $_SESSION["cart"]["storeID"],
+                        "itemID" => $item["servicesID"],
+                        "itemName" => $item["name"],
+                        "shopQtd" => $_POST["inputqtditem"],
+                        "shopPrice" => $item["price"],
+                    ];
+                    $item_insert = addShop($carrinho,$conecta);
+
+                }
+                
+            
             } elseif( $_POST["inputtypeitem"] == "product" ) {
                 $item = selectProduct($_POST["inputiditem"],$conecta);
-                $carrinho = [
+                if ($item == false) {
+                    
+                } else {
+
+                    $carrinho = [
                     "shopType" => $_POST["inputtypeitem"],
                     "storeID" => $_SESSION["cart"]["storeID"],
                     "itemID" => $item["productID"],
@@ -145,10 +161,27 @@ if( isset ($_SESSION["cart"]) ) {
                     "shopPrice" => $item["pricetosell"],
                 ];
                 $item_insert = addShop($carrinho,$conecta);
+
+                }
             }
         } // if ( isset ( $_POST["inputtypeitem"] ) ) {
         
         listCart($_SESSION["cart"]["storeID"],$conecta);
+        ?>
+
+        <div class="delitem">
+            <p>Remover item do carrinho</p>
+            <form action="store.php?shop" method="post">
+                <label for="inputIdDel"><strong>Cód</strong> do item: </label>
+                <input type="number" name="inputIdDel" class="inputcart" placeholder="00" required><br>
+                <button type="submit">Enviar</button>
+                
+            </form>
+
+        </div> <!-- "delitem" -->
+
+        <?php
+        
         
 
 
