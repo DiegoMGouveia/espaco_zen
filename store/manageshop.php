@@ -24,18 +24,21 @@ if( isset ($_SESSION["cart"]) ) {
 
 
     <!-- formulário para pesquisar o produto ou serviço -->
-    <form action="store.php?shop"  method="post">
+    <div class="search-itens">
+        <form action="store.php?shop"  method="post">
 
-        <label for="typeitem">Categoria do item: </label><br>
-        <label for="typeitem"> serviço</label>
-        <input type="radio" name="typeitem" <?php if ( $_POST["typeitem"] == "service" ) { echo "checked"; }; ?> class="inputshopsearch" value="service"><br>
-        <label for="typeitem">Produto</label>
-        <input type="radio" name="typeitem" <?php if ( $_POST["typeitem"] == "product" ) { echo "checked"; }; ?> class="inputshopsearch" value="product"><br>
-        <label for="searchitem">Nome do item:</label>
-        <input type="text" name="searchitem" id="searchitem" placeholder="item a ser adicionado" <?php if ( isset ( $_POST["searchitem"] ) ) { echo "value = ". $_POST['searchitem']; }; ?> >
-        <button type="submit">pesquisar</button>
+            <h4>Pesquisar Produto ou Serviço</h4>
+            <label for="typeitem">Categoria do item: </label><br>
+            <label for="typeitem"> serviço</label>
+            <input type="radio" name="typeitem" <?php if ( $_POST["typeitem"] == "service" ) { echo "checked"; }; ?> class="inputshopsearch" value="service"><br>
+            <label for="typeitem">Produto</label>
+            <input type="radio" name="typeitem" <?php if ( $_POST["typeitem"] == "product" ) { echo "checked"; }; ?> class="inputshopsearch" value="product"><br>
+            <label for="searchitem">Nome do item:</label>
+            <input type="text" name="searchitem" id="searchitem" placeholder="item a ser adicionado" <?php if ( isset ( $_POST["searchitem"] ) ) { echo "value = ". $_POST['searchitem']; }; ?> >
+            <button type="submit">pesquisar</button>
 
-    </form>
+        </form>
+    </div> <!-- "search-itens -->
     <!-- fim do formulário -->
     <!-- inicio lista da pesquisa do formulário -->
     <?php
@@ -102,7 +105,7 @@ if( isset ($_SESSION["cart"]) ) {
 
         ?>
         <div class="form-insert-cart">
-            <h4>Insira o item no carrinho: </h4>
+            <h3>Insira o item no carrinho: </h3>
             <form action="store.php?shop" method="post">
                 <label for="inputtypeitem">Serviço:</label>
                 <input type="radio" name="inputtypeitem" class="inputrcart" value="service"><br>

@@ -1,3 +1,17 @@
+
+
+version 1.0.0.6
+
+NOVO: agora no Store, é possivel abrir novamente um carrinho que havia sido fechado através do menu "listar carrinhos", adicionando assim uma nova data de fechamento do carrinho.
+NOVO: criado a função "openCart" para abrir um carrinho já fechado.
+NOVO: Criado a função "destroyCart" para deletar um carrinho e os itens pertencentes a ele do banco de dados
+
+
+-----------------------------------------------------------------------------------
+
+
+
+
 version 1.0.0.5
 
 NOVO: criado painel do usuário, userpanel.php, o usuário precisa estar logado para acessar a página ou será redirecionado a página de login.

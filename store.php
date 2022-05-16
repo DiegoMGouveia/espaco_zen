@@ -94,6 +94,7 @@ adminCheck();
                             <th width="80">Encerramento</th>
                             <th width="30">Cupom</th>
                             <th width="30">Valor Total</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,6 +111,7 @@ adminCheck();
                             <td><?php echo $shop["closeTime"] ?></td>
                             <td><?php echo $shop["coupon"] ?></td>
                             <td><?php echo "R$" . $shop["totalPrice"] ?></td>
+                            <td><a href="store.php?open=<?php echo $shop["storeID"];?>"><button type="submit" name="selectshop">Abrir</button></a><a href="store.php?delStore=<?php echo $shop["storeID"];?>"><button type="submit">Deletar</button></a></td>
                         </tr>
                         <?php
                 
@@ -123,8 +125,18 @@ adminCheck();
                     
                 <?php
 
+            // if ( isset ( $_GET["listStore"])) {
+            } elseif ( $_GET["open"] > 0) {
+                echo "cheguei aqui ".$_GET["open"];
+                $shop = openCart($_GET["open"], $conecta);
+                $_SESSION["cart"] = $shop;
+                header("location: store.php?shop");
 
-            } // if ( isset ( $_GET["listStore"])) {
+
+            } elseif ( isset ($_GET["delStore"] ) ){
+                destroyCart($_GET["delStore"], $conecta);
+            }
+                
             
 
             ?>

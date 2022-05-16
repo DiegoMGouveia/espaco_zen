@@ -155,6 +155,16 @@
         }
     }
 
+    function selectUser($conection){
+        if (isset($_SESSION['user_logged']) && isset($_SESSION["privileges"]) && isset($_SESSION["user_name"])){
+            $user = $_SESSION['user_logged'];
+            $sql = "SELECT * FROM users WHERE userID = '$user' ";
+            $sqlQuery = mysqli_query($conection,$sql);
+            $selected_user = mysqli_fetch_assoc($sqlQuery);
+            return $selected_user;
+        }
+    }
+
 
     function admChangeUser($conection){
         if (isset($_SESSION["privileges"])) {
@@ -679,6 +689,26 @@
             return [$sqlQueryAssoc["storeID"],$dateTime];
 
         }
+    }
+
+    function openCart($storeID, $conection) {
+        $sql = "SELECT * FROM store WHERE storeID = '$storeID' ";
+        $sqlQuery = mysqli_query($conection, $sql);
+        $shop = mysqli_fetch_assoc($sqlQuery);
+        return $shop;
+    }
+
+    function destroyCart($storeID, $conection) {
+        $sql = "DELETE FROM shop_cart WHERE storeID = '$storeID' ";
+        $sqlQuery = mysqli_query($conection, $sql);
+        $sql2 = "DELETE FROM store WHERE storeID = '$storeID' ";
+        $sqlQuery2 = mysqli_query($conection, $sql2);
+        if ($sqlQuery == true && $sqlQuery2 ==true){
+
+            header("location: store.php?liststore");
+        }
+        
+
     }
 
     function closeShopCart($shopID, $conection, $coupon) {

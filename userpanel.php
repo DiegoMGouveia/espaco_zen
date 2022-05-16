@@ -34,11 +34,14 @@
 
         <h2>Painel do(a) Usuário(a):</h2>
         <div class="container-perfil">
-            <p><strong>Usuário:</strong> <?php echo "NomedoUsuário" ?></p>
-            <p><strong>Nome:</strong> <?php echo "NomedoUsuário" ?></p>
-            <p><strong>E-mail:</strong> <?php echo "NomedoUsuário" ?></p>
-            <p><strong>CPF:</strong> <?php echo "NomedoUsuário" ?></p>
-            <p><strong>Celular:</strong> <?php echo "NomedoUsuário" ?></p>
+            <?php
+            $userprofile = selectUser($conecta);
+            ?>
+            <p><strong>Usuário:</strong> <?php echo $userprofile["username"]; ?></p>
+            <p><strong>Nome:</strong> <?php echo $userprofile["name"]; ?></p>
+            <p><strong>E-mail:</strong> <?php echo $userprofile["email"]; ?></p>
+            <p><strong>CPF:</strong> <?php echo $userprofile["cpf"]; ?></p>
+            <p><strong>Celular:</strong> <?php echo $userprofile["cellphone"]; ?></p>
         </div> <!--container-perfil-->
 
 

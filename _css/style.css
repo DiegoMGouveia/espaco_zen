@@ -766,6 +766,12 @@ table.shop-table {
     border-radius: 5px;
   }
 
+.shop-table button{
+    background:#eb50d949;
+    border: 1px solid rgba(123, 6, 94, 0.404);
+    border-radius: 1em;
+}
+
 
 .container-total{
     margin-left: 45vw;
@@ -819,3 +825,14 @@ table.shop-table {
 
 }
 
+.search-itens {
+    width: 20em;
+    background:#e12a6d77;
+    border: 1px solid #a43e63de;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 2em;
+
+}
