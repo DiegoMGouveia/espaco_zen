@@ -846,3 +846,26 @@ table.shop-table {
     padding: 0.5em;
     border-radius: 1em;
 }
+
+.container-total2{
+    display: block;
+    width: 5em;
+    background:#f961bf;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.form-coupon {
+    background:#a40c6a29;
+    display: block;
+    width: 20em;
+    border: 1px solid rgba(193, 4, 200, 0.49);
+    border-radius: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    text-align: center;
+
+}

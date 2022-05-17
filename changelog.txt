@@ -1,6 +1,17 @@
 
+changelog version 1.0.0.8
 
-version 1.0.0.7
+NOVO: Criado arquivo "admin-coupons.php" e "reqs/admin-coupons-menu.php" onde o administrador poderá gerar um novo código de cupom promocional, podendo escolher quantos porcento de desconto tera o cupom e a descrição do mesmo.
+NOVO: Criado a função "createCode" onde será gerado um código aleatório de 9 caracteres, alternados entre letras e numeros.ex: "A1H1-3F3G"
+NOVO: Criado a função "insertCode" que gera um codigo usando a função "createCode", faz a verificação se este codigo ja se encontra no banco de dados, caso não esteja, ele pega dados como porcentagem e descrição do cupom e insere ao banco.
+NOVO: criado arquivo "admin-financial.php" onde mostrará dados sobre vendas no mes escolhido.
+NOVO: criado a função "monthName" para setar o nome do mês escolhido.
+
+
+-----------------------------------------------------------------------------------
+
+
+changelog version 1.0.0.7
 
 NOVO: nova função "delItemCart" que procura o código do item, verifica se esta associado ao carrinho em questão, se estiver, ele deleta o item, caso contrario nada acontece.
 
@@ -8,7 +19,7 @@ NOVO: nova função "delItemCart" que procura o código do item, verifica se est
 
 -----------------------------------------------------------------------------------
 
-version 1.0.0.6
+changelog version 1.0.0.6
 
 NOVO: agora no Store, é possivel abrir novamente um carrinho que havia sido fechado através do menu "listar carrinhos", adicionando assim uma nova data de fechamento do carrinho.
 NOVO: criado a função "openCart" para abrir um carrinho já fechado.
@@ -20,7 +31,7 @@ NOVO: Criado a função "destroyCart" para deletar um carrinho e os itens perten
 
 
 
-version 1.0.0.5
+changelog version 1.0.0.5
 
 NOVO: criado painel do usuário, userpanel.php, o usuário precisa estar logado para acessar a página ou será redirecionado a página de login.
 NOVO criado CSS para a página de painel de usuário.
@@ -28,7 +39,7 @@ NOVO criado CSS para a página de painel de usuário.
 -----------------------------------------------------------------------------------
 
 
-version 1.0.0.4
+changelog version 1.0.0.4
 
 NOVO: agora no index.php mostra no menu a esquerda, todos os nomes dos serviços cadastrados.
 NOVO: Criado arquivo services.php onde mostrará informações de todos os serviços cadastrados aos clientes.
@@ -43,7 +54,7 @@ ADD: "userCheck" nova função que verifica se o usuário está logado, se não 
 
 -----------------------------------------------------------------------------------
 
-version 1.0.0.3
+changelog version 1.0.0.3
 
 NOVO: foi adicionado botão voltar em algumas páginas da store;
 RESOLVIDO: foi consertado o bug encontrado no ultimo update,com isso a página administrativa de usuários e serviços tiveram seus arquivos separados do adminpanel.php

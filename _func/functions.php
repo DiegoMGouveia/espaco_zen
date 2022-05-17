@@ -918,3 +918,63 @@
         }
 
     }
+
+    function monthName($month) {
+        if ($month == 1) {
+            return "Janeiro";
+        } elseif ($month == 2) {
+            return "Fevereiro";
+        } elseif ($month == 3) {
+            return "Março";
+        } elseif ($month == 4) {
+            return "Abril";
+        } elseif ($month == 5) {
+            return "Maio";
+        } elseif ($month == 6) {
+            return "Junho";
+        } elseif ($month == 7) {
+            return "Julho";
+        } elseif ($month == 8) {
+            return "Agosto";
+        } elseif ($month == 9) {
+            return "Setembro";
+        } elseif ($month == 10) {
+            return "Outubro";
+        } elseif ($month == 11) {
+            return "Novembro";
+        } elseif ($month == 12) {
+            return "Dezembro";
+        }
+    }
+
+    function createCode($size = 9){
+        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $randomString = '';
+        for($i = 0; $i < $size; $i = $i+1){
+            if ($i != 4){
+                $randomString .= $chars[mt_rand(0,35)];
+            } else {
+                $randomString .= "-";
+            }
+        }
+        
+        return $randomString;
+    }
+
+    function insertCode($discount,$description,$conection) {
+        while (true) {
+            $code = createCode();
+            $sql = "SELECT * FROM coupons WHERE coupon = '$code' ";
+            $sqlQuery = mysqli_query($conection, $sql);
+            $return = mysqli_fetch_assoc($sqlQuery);
+
+            if (!$return) {
+                $dateTime = date('Y-m-d H:i:s');
+                $sql = "INSERT INTO coupons(coupon,discount,dateTime,description) VALUES('$code','$discount','$dateTime','$description') ";
+                $sqlQuery = mysqli_query($conection, $sql);
+                return $code;
+            }
+
+
+        }
+    }

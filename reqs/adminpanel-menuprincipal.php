@@ -9,8 +9,8 @@
             <a href="admin-products.php"><li>Produtos</li></a>
             <a href="admin-gallery.php"><li>Galeria</li></a>
             <a href="store.php"><li>Store</li></a>
-            <a href="#"><li>Novidades</li></a>
-            <a href="#"><li>Promoções</li></a>
+            <a href="admin-financial.php"><li>Financeiro</li></a>
+            <a href="admin-coupons.php"><li>Promoções</li></a>
             <a href="#"><li>Definições</li></a>
             </ul>
         </div>
