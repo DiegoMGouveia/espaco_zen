@@ -715,20 +715,65 @@
 
     }
 
-    function closeShopCart($shopID, $conection, $coupon) {
+    function closeShopCart($shopID, $conection) {
 
         $dateTime = date('Y-m-d H:i:s');
         $sql = "UPDATE store SET closeTime = '$dateTime' WHERE storeID = '$shopID' ";
         $sqlQuery_time = mysqli_query($conection, $sql);
 
-        if ( !empty ( $coupon ) ) {
-            $sql_coupon = "UPDATE store SET coupon = '$coupon' WHERE storeID = '$shopID' ";
-            $sqlQuery_coupon = mysqli_query($conection, $sql_coupon);
-            return [$sqlQuery_time, $sqlQuery_coupon];
-        }
-
         return [$sqlQuery_time];
         
+    }
+
+
+
+    function insertCoupon($coupon, $shopID, $conection) {
+        if ( !empty ( $coupon ) ) {
+            // primeiro fazer a busca se há um cupom igual já foi utilizado
+            $sql_search = "SELECT * FROM store WHERE coupon = '$coupon' ";
+            $amount = mysqli_query($conection, $sql_search);
+            if ( mb_strlen($coupon) > 9) {
+                echo "Formato inválido, verifique o cupom e tente novamente.";
+            } elseif ($amount->num_rows > 0 ) {
+
+                echo "<div class='errormsg'>Cupom já utilizado! Verifique e tente novamente. </div>";
+
+            } else {
+
+                // primeiro fazer a busca se há um cupom igual já foi utilizado
+                $sql_validate = "SELECT * FROM coupons WHERE coupon = '$coupon' ";
+                $checking = mysqli_query($conection, $sql_validate);
+                if ($checking->num_rows > 0 ) {
+                    $coupon_check = mysqli_fetch_assoc($checking);
+                    if ($coupon_check["status"] == "novo") {
+                        $sql_coupon_insert = "UPDATE store SET coupon = '$coupon' WHERE storeID = '$shopID' ";
+                        if(mysqli_query($conection, $sql_coupon_insert)){
+
+                            $sql_coupon_update = "UPDATE coupons SET status = 'usado' WHERE coupon = '$coupon' ";
+                            if (mysqli_query($conection, $sql_coupon_update)){
+                                echo "Cupom inserido com sucesso!";
+                            }
+                            
+
+                        }
+
+                    } elseif ($coupon_check["status"] == "novo") {
+
+                        echo "<div class='errormsg'>Cupom já utilizado! Verifique e tente novamente. </div>";
+
+                    }
+   
+                } elseif ($checking->num_rows == 0 ) {
+                    echo "<div class='errormsg'>Cupom não encontrado, verifique e tente novamente.</div>";
+                }
+
+            }
+
+            
+        // if ( !empty ( $coupon ) ) {  
+        } elseif (isset ( $coupon ) && empty ( $coupon )){
+            echo "Insira o seu cupom!";
+        }
     }
 
     function searchSales($search, $conection) {
@@ -819,12 +864,35 @@
         
     }
 
+    // verifica se tem um cupom no carrinho, se tiver retorna o cupom, se não retorna uma string "Nenhum."
+    function haveCoupon($storeID, $conection){
+        $sql = "SELECT * FROM store WHERE storeID = '$storeID' ";
+        $sqlQuery = mysqli_query($conection,$sql);
+        if ($sqlQuery->num_rows > 0){
+            $coupon = mysqli_fetch_assoc($sqlQuery);
+            if (empty($coupon["coupon"])){
+                return "Nenhum.";
+            } else {
+                return $coupon["coupon"];
+            }
+        } 
+    }
+
+
     //lista os produtos de um carrinho ($storeID)
     function listCart($storeID, $conection){
+        $operator = selectNameOperator($_SESSION["cart"]["operatorID"], $conection);
 
+        if (isset($_POST["coupon"])){
+            insertCoupon($_POST["coupon"], $storeID, $conection);
+        }
         ?>
 
-
+        
+        <?php 
+        $coupon_cart = haveCoupon($_SESSION["cart"]["storeID"], $conection);
+        echo "<div class='container2-shop'> <h4>Carrinho: </h4> Identificação do carrinho: " . $_SESSION["cart"]["storeID"] . "| Cupom: $coupon_cart <br> Operador: $operator |  Cliente CPF: " . $_SESSION["cart"]["cpfClient"] . "</div><br>";
+        ?>
         <table class="shop-table">
             <thead>
                 <tr>
@@ -846,13 +914,24 @@
                 <tr>
                     <td><?php echo $produto_list["shopID"] ?></td>
                     <td><?php echo $produto_list["itemID"] ?></td>
-                    <td><?php echo $produto_list["shopType"] ?></td>
+                    <td><?php if ($produto_list["shopType"] == "service") {echo "Serviço"; } elseif ($produto_list["shopType"] == "product") { echo "Produto"; } ?></td>
                     <td><?php echo $produto_list["itemName"] ?></td>
                     <td><?php echo $produto_list["shopQtd"] ?></td>
                     <td><?php echo "R$" . $produto_list["shopPrice"] ?></td>
                 </tr>
                 <?php
                 $total += $produto_list["shopPrice"];
+
+                if ($coupon_cart != "Nenhum."){
+                    $disc = "0.";
+                    $total_disc = selectDiscount($coupon_cart, $conection);
+                    $disc .= $total_disc;
+                    $total_2 = $total - $disc * $total;
+
+
+
+                    
+                }
                 insertTotalCart($total, $produto_list["storeID"],$conection);
 
             
@@ -864,15 +943,17 @@
             <div class='container-total'>
 
                 <p>Total: <?php echo "R$" . $total ?></p>
+                <?php
+                
+                if ($coupon_cart != "Nenhum.") {
+                    echo "Total com Desconto de $total_disc% de Desc. = R$$total_2 <br> ";
+                }
+                ?>
 
-
-
-            </div> <!-- CLASS container-total -->
+            </div> <!-- CLASS container-total -->            
 
         <center>
             <form action="store.php?quitshop"  method="post">
-                <label for="coupon">Cupom de Desconto:</label>
-                <input type="text" name="coupon" id="coupon" placeholder="X3D5-XD12">
                 <a href="store.php?quitshop"><button>Fechar Carrinho</button></a>
             </form>
         </center>
@@ -882,6 +963,13 @@
             echo "<br>";
 
     } // function listCart($storeID, $conection){
+
+    function selectDiscount($coupon, $conection) {
+        $sql = "SELECT* FROM coupons WHERE coupon = '$coupon' ";
+        $sqlQuery = mysqli_query($conection, $sql);
+        $discount = mysqli_fetch_assoc($sqlQuery);
+        return $discount["discount"];
+    }
 
     function listShops($conection) {
         $sql = "SELECT * FROM store";
@@ -977,4 +1065,19 @@
 
 
         }
+    }
+
+    // função para selecionar todos os cupons do banco de dados
+    function listcoupons($conection) {
+        $sql   = "SELECT * FROM coupons";
+        $lista = mysqli_query($conection, $sql);
+        return $lista;
+
+    }
+
+    // função para deletar um cupom
+    function delCoupon($coupon, $conection){
+        $sql_delete = "DELETE FROM coupons WHERE couponID = '$coupon' ";
+        $deleted = mysqli_query($conection, $sql_delete);
+        
     }

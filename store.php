@@ -80,48 +80,52 @@ adminCheck();
             require("store/store-new-shop.php");
 
             //listar carrinhos
+
             if ( isset ( $_GET["liststore"] ) ) {
                 
                 ?>
-                <table class="shop-table">
+                <div class="list-store-container">
+                    <h3>Lista de Carrinhos:</h3>
+                    <table class="shop-table">
+                        
+                        <thead>
+                            <tr>
+                                <th width="50">ID</th>
+                                <th width="50">Operador</th>
+                                <th width="30">CPF Cliente</th>
+                                <th width="50">Abertura</th>
+                                <th width="80">Encerramento</th>
+                                <th width="30">Cupom</th>
+                                <th width="30">Valor Total</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $store_list = listShops($conecta);
+                        while($shop = mysqli_fetch_array($store_list)) {
+
+                            ?>
+                            <tr>
+                                <td><?php echo $shop["storeID"] ?></td>
+                                <td><?php echo $shop["operatorID"] ?></td>
+                                <td><?php echo $shop["cpfClient"] ?></td>
+                                <td><?php echo $shop["openTime"] ?></td>
+                                <td><?php echo $shop["closeTime"] ?></td>
+                                <td><?php echo $shop["coupon"] ?></td>
+                                <td><?php echo "R$" . $shop["totalPrice"] ?></td>
+                                <td><a href="store.php?open=<?php echo $shop["storeID"];?>"><button type="submit" name="selectshop">Abrir</button></a><a href="store.php?delStore=<?php echo $shop["storeID"];?>"><button type="submit">Deletar</button></a></td>
+                            </tr>
+                            <?php
                     
-                    <thead>
-                        <tr>
-                            <th width="50">ID</th>
-                            <th width="50">Operador</th>
-                            <th width="30">CPF Cliente</th>
-                            <th width="50">Abertura</th>
-                            <th width="80">Encerramento</th>
-                            <th width="30">Cupom</th>
-                            <th width="30">Valor Total</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $store_list = listShops($conecta);
-                    while($shop = mysqli_fetch_array($store_list)) {
+                    
+                        } // while($shop = mysqli_fetch_array($store_list)) {
 
                         ?>
-                        <tr>
-                            <td><?php echo $shop["storeID"] ?></td>
-                            <td><?php echo $shop["operatorID"] ?></td>
-                            <td><?php echo $shop["cpfClient"] ?></td>
-                            <td><?php echo $shop["openTime"] ?></td>
-                            <td><?php echo $shop["closeTime"] ?></td>
-                            <td><?php echo $shop["coupon"] ?></td>
-                            <td><?php echo "R$" . $shop["totalPrice"] ?></td>
-                            <td><a href="store.php?open=<?php echo $shop["storeID"];?>"><button type="submit" name="selectshop">Abrir</button></a><a href="store.php?delStore=<?php echo $shop["storeID"];?>"><button type="submit">Deletar</button></a></td>
-                        </tr>
-                        <?php
-                
-                
-                    } // while($shop = mysqli_fetch_array($store_list)) {
+                        </tbody>
 
-                    ?>
-                    </tbody>
-
-                </table>
+                    </table>
+                </div> <!-- "list-store-container" -->
                     
                 <?php
 

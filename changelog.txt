@@ -1,6 +1,22 @@
 
 changelog version 1.0.0.8
 
+NOVO: Adicionado link no menú ("reqs/admin-coupons-menu.php") para ver todos os cupons.
+NOVO: Adicionado sistema que lista todos os cupons e junto um botão para deletar o cupom desejado.
+MOD: Modificado layout da pesquisa de item na página "store.php"
+NOVO: Adicionado uma nova função "haveCoupon", erifica se tem um cupom no carrinho, se tiver retorna o cupom, se não retorna uma string "Nenhum."
+MOD: alterado o layout do carrinho na página "store.php"
+MOD: Modificado a função "listCart" para que o layout da página fique melhor.
+MOD: atualizado layout da lista de carrinhos.
+
+
+
+
+-----------------------------------------------------------------------------------
+
+
+changelog version 1.0.0.8
+
 NOVO: Criado arquivo "admin-coupons.php" e "reqs/admin-coupons-menu.php" onde o administrador poderá gerar um novo código de cupom promocional, podendo escolher quantos porcento de desconto tera o cupom e a descrição do mesmo.
 NOVO: Criado a função "createCode" onde será gerado um código aleatório de 9 caracteres, alternados entre letras e numeros.ex: "A1H1-3F3G"
 NOVO: Criado a função "insertCode" que gera um codigo usando a função "createCode", faz a verificação se este codigo ja se encontra no banco de dados, caso não esteja, ele pega dados como porcentagem e descrição do cupom e insere ao banco.

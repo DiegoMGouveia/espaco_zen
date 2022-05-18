@@ -2,7 +2,7 @@
 
 if (isset($_GET["newcart"]) && !$carrinho["openTime"]) {
 
-    $carrinho["operatorID"] = userNameSet();
+    $carrinho["operatorID"] = useridset();
     
     if (isset($_POST["insertNewCpf"])){
 

@@ -39,7 +39,7 @@ adminCheck();
             // menu da galeria
             require("reqs/admin-coupons-menu.php");
 
-            // opção 1 nova foto
+            // opção 1 novo cupom
             if(isset($_GET["new"])) {
                 ?>
 
@@ -66,8 +66,11 @@ adminCheck();
 
                 <?php
 
-            // opção 2 listar fotos
-            } 
+            // opção 2 listar cupons
+            }  elseif (isset($_GET["listcoupons"])) {
+                    require("reqs/admin-coupons-listall.php");
+
+            }
             ?>
 
     </div>

@@ -35,6 +35,10 @@ body {
 
 }
 
+.errormsg {
+    color: red;
+}
+
 .bord-menu-principal ul{
     margin: 0;
     padding: 0;
@@ -694,21 +698,28 @@ body {
     background-color:rgba(232, 108, 213, 0.461);
 }
 
-.container-manage-shop {
-    display: block;
-    width: 50em;
-    height: auto;
-    margin-top: 3em;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3em;
-    border: 1px solid rgba(242, 73, 242, 0.272);
-    border-radius: 1em;
-    background-color:rgba(232, 108, 213, 0.461);
-    text-align: center;
-}
+
 
 /* estilo tabela store */
+
+.list-store-container {
+    background-color:#a41dda8b;
+    width: 36em;
+    height: auto;
+    padding: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 1px solid black;
+    border-radius: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-store-container h3{
+    margin: 0;
+    text-align: center;
+    text-decoration: underline;
+}
 
 
 table.shop-table {
@@ -772,12 +783,38 @@ table.shop-table {
     border-radius: 1em;
 }
 
+.list-shop-container {
+    background:#dab7cc74;
+    border: 1px solid rgba(0, 0, 0, 0.334);
+    margin-top: 1.5em;
+}
+
+
+.container2-shop {
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em;
+    border: 1px solid rgba(0, 0, 0, 0.476);
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.361);
+
+}
+
+.container2-shop h4 {
+
+    margin: 0;
+    margin-bottom: 0.3em;
+}
 
 .container-total{
-    margin-left: 45vw;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 1em;
-    background:rgb(235, 137, 223);
-    border: 1px solid #1C6EA4;
+    background:#36044a46;
+    border: 1px solid #36044a;
+    border-radius: 1em;
     padding: 0.5em;
 }
 
@@ -786,14 +823,30 @@ table.shop-table {
 }
 
 .form-insert-cart {
-    width: 20em;
+
+    width: 40em;
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
     border: 1px solid rgb(243, 72, 101);
     border-radius: 2em;
     background:#f33fde82;
+    text-align: center;
 }
+
+
+.form-insert-cart h3 {
+    text-align: center;
+    margin: 0;
+}
+
+.form-insert-item {
+    background:rgba(54, 4, 46, 0.304);
+    margin: 0;
+    border-radius: 2em;
+}
+
+
 
 /* serviços */
 
@@ -826,7 +879,7 @@ table.shop-table {
 }
 
 .search-itens {
-    width: 20em;
+    width: 27em;
     background:#e12a6d77;
     border: 1px solid #a43e63de;
     padding: 1em;
@@ -836,6 +889,26 @@ table.shop-table {
     border-radius: 2em;
     text-align: center;
 
+}
+
+.container-type-item {
+    display: inline-block;
+    margin-top: 0.4em;
+    background:#a40c6a54;
+    border: 1px solid rgba(0, 0, 0, 0.361);
+    border-radius: 2em;
+}
+
+.table-search-container {
+
+    height: 6em;
+    overflow-y: auto;
+
+}
+
+.search-itens p {
+    margin: 0;
+    padding: 0;
 }
 
 .delitem {
