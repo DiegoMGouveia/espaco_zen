@@ -52,9 +52,10 @@ adminCheck();
             <?php
             // menu entrada 3 opções (Novo carrinho, Listar Carrinhos, Financeiro)
 
-            if (empty($_GET)) {
+            if (empty($_GET) && empty($_SESSION["cart"])) {
+                
                 require("store/store-menu.php");
-            } else {
+            } elseif (!isset($_SESSION["cart"]) || empty($_SESSION["cart"])) {
 
                 ?>
                 <a href="store.php">Voltar</a>

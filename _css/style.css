@@ -640,7 +640,7 @@ body {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    padding: 4em;
+    /* padding: 4em; */
     padding-top: 2em;
     border: 3px solid #710a6097;
     border-radius: 1em;
@@ -703,7 +703,7 @@ body {
 /* estilo tabela store */
 
 .list-store-container {
-    background-color:#a41dda8b;
+    background-color:#ca57ea96;
     width: 36em;
     height: auto;
     padding: 0;
@@ -795,9 +795,12 @@ table.shop-table {
     margin-left: auto;
     margin-right: auto;
     width: 25em;
-    border: 1px solid rgba(0, 0, 0, 0.476);
+    border: 1px solid rgba(230, 17, 234, 0.135);
+    border-radius: 3em;
     padding: 1em;
-    background: rgba(0, 0, 0, 0.361);
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(182, 24, 164, 0.53) 49%, rgba(255,255,255,0) 100%);
+    box-shadow: 0px 0px 15px 10px rgba(168, 18, 153, 0.519);
 
 }
 

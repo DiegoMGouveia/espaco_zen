@@ -1,3 +1,12 @@
+changelog version 1.0.0.8
+
+
+MOD: atualizado layout do carrinho de compras.
+
+
+-----------------------------------------------------------------------------------
+
+
 
 changelog version 1.0.0.8
 
