@@ -1,4 +1,4 @@
-<div class="container2-menu">
+<div class="container2-menu-users">
 
     <ul>
         <a href="admin-products.php?newproduct"><li>Novo Produto</li></a>

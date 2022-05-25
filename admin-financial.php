@@ -44,7 +44,7 @@ if (isset($_POST["month"])){
     require("reqs/adminpanel-menuprincipal.php");
     ?>
 
-    <div class="adminservicepanel">
+    <div class="adminuserpanel">
 
         <h2>Administração Financeira:</h2>
         <form action="admin-financial.php" method="post">
@@ -70,7 +70,7 @@ if (isset($_POST["month"])){
             ?>
             <h2>Itens vendidos no mês de <?php echo monthName($_POST["month"]); ?> </h2>
 
-            <table class="shop-table">
+            <table class="darkTable">
                 <thead>
                     <tr>
                         <th width="50">Nome</th>
@@ -83,22 +83,22 @@ if (isset($_POST["month"])){
                     while($results = mysqli_fetch_array(($financial))){
                         ?>
                         <tr>
-                            <td><?php echo $results["itemName"] ?> </td>
-                            <td><?php echo $results["shopQtd"] ?> </td>
-                            <td><?php echo $results["shopPrice"] ?> </td>
+                            <td><b><?php echo $results["itemName"] ?> </b></td>
+                            <td><b><?php echo $results["shopQtd"] ?></b> </td>
+                            <td><b><?php echo $results["shopPrice"] ?> </b></td>
                         </tr>
+                        
                     
                         <?php
                         $total += $results["shopPrice"];
                     }
 
-                    ?>
-                </tbody>
+                    ?></tbody>
                 
             </table>
             <div class='container-total2'>
 
-                    <p>Total: <?php echo "R$" . $total ?></p>
+                    <p>Total:<b> <?php echo "R$ " . $total ?></b></p>
 
                 </div> <!-- CLASS container-total -->
             <?php

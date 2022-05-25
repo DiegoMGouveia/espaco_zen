@@ -7,7 +7,7 @@ if ($_GET["listcoupons"] > 0) {
 }
 ?>
 
-<table class="shop-table">
+<table class="darkTable">
             <thead>
                 <tr>
                     <th width="30">ID</th>

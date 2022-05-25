@@ -1,4 +1,4 @@
-<div class="menu-service">
+<div class="container2-menu-users">
 
     <ul>
         <a href="admin-services.php?newservice"><li>Novo Serviço</li></a>

@@ -1,3 +1,14 @@
+changelog version 1.0.0.9
+
+design version
+
+MOD: mudança geral no front-end, alterando o tema rosa para um tema preto e branco.
+algumas correções ocorreram no desenvolvimento.
+
+
+
+-----------------------------------------------------------------------------------
+
 changelog version 1.0.0.8
 
 

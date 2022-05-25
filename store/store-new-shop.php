@@ -44,18 +44,13 @@ if (isset($_GET["newcart"]) && !$carrinho["openTime"]) {
         <button type="submit">Enviar</button><br><br>
     </form>
         
-        <a href="store.php"><button> Voltar </button></a>
 
     <?php
     if (isset($cpfInvalid)) {
         
         echo "<center>" . $cpfInvalid . "</center>"; 
 
-    } elseif (isset($carrinho["storeID"])){
-        echo "Carrinho criado!";
-    } else {
-        echo "carrinho feito";
-     }
+    }
 
     ?>
 

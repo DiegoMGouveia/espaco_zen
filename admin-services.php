@@ -30,12 +30,12 @@
     require("reqs/adminpanel-menuprincipal.php");
     ?>
 
-    <div class="adminservicepanel">
+    <div class="adminuserpanel">
 
-        <h2>Administração de Serviços:</h2>
         <?php
         // menu serviços ----------------------------------------------------------
         require("reqs/admin-services-menu.php");
+        echo "<h2>Administração de Serviços:</h2>";
 
         if ( isset ($_GET["newservice"] ) ) {
 
@@ -69,7 +69,7 @@
         } elseif ( isset ( $_GET["search"] ) ) {
             ?>
             <form action="admin-services.php?search" method="post">
-                <input type="text" name="search" id="search" placeholder="pesquisar serviço">
+                <input type="text" name="search" id="searchuser" placeholder="pesquisar serviço">
                 <button type="submit">Buscar</button>
 
             </form>

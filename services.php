@@ -24,7 +24,11 @@
     require("reqs/topo.php");
     ?>
     <br>
-    <center><h1>Serviços oferecidos pelo <strong>Espaço Zen</strong></h1></center>
+    <div class="container-caption-page">
+
+        <center><h1>Serviços oferecidos pelo <strong>Espaço Zen</strong></h1></center>
+
+    </div>
     <div class="container-content">
     <?php 
     $list_sql = selectservices($conecta);
@@ -32,10 +36,10 @@
         ?>
             <div class="container1-service-show">
                 <img src="<?php echo $service_list['imgPath']; ?>" alt="<?php echo $service_list['name']; ?>" width="300em" height="300em">
-                <h3><?php echo $service_list['name']; ?></h3>
+                <h2><?php echo $service_list['name']; ?></h2>
                 <p><strong>R$<?php echo $service_list['price']; ?></strong></p>
                 <h4>Descrição:</h4>
-                <p><?php echo $service_list['description']; ?></p>
+                <p><b><?php echo $service_list['description']; ?></b></p>
             </div> <!-- container1-service-show -->
         <?php
     }

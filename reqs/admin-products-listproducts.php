@@ -1,7 +1,6 @@
-<div class="tabela-lista-users">
-    <table border="1" cellspacing="0" class="shop" >
+
+    <table cellspacing="0" class="darkTable" >
         <thead>
-            <!-- <tr class="topo-tabela"> -->
             <tr>
                 <th>Imagem: </th>
                 <th>ID: </th>
@@ -13,6 +12,7 @@
                 <th>Ação: </th>
             </tr>
         </thead>
+        <tbody>
 
 
         <?php
@@ -22,7 +22,6 @@
                 $imagem_produto = $produto_list['imgPath'];
 
         ?>
-        <tbody>
 
             <tr>
 
@@ -33,14 +32,14 @@
                 <td><?php echo "R$" . $produto_list["pricetobuy"]?></td>
                 <td><?php echo $produto_list["stock"]?></td>
                 <td><?php echo $produto_list["description"]?></td>
-                <td><a href="admin-products.php?editproduct=<?php echo $produto_list['productID'];?>"><button>Editar</button></a><a href="admin-products.php?delproduct=<?php echo $produto_list["productID"];?>"><button>Deletar</button></a></td>
+                <td><a href="admin-products.php?editproduct=<?php echo $produto_list['productID'];?>"><button>Editar</button></a><br><br><a href="admin-products.php?delproduct=<?php echo $produto_list["productID"];?>"><button>Deletar</button></a></td>
 
             </tr>
-        </tbody>
 
         <?php
             }
+
         ?>
 
+        </tbody>
     </table>
-</div>

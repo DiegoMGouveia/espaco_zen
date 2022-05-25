@@ -23,28 +23,11 @@
     <?php
     // topo da página
     require("reqs/topo.php");
-    ?>
 
+    // lista de serviço - apresentação
+    require("reqs/forall-listservice.php");
 
-    <div class="container1-conteudo1">
-        <div class="conteudo1">
-            <h2>
-                Aqui você encontra:
-            </h2>
-            <ul>
-            <?php
-            $list_sql = selectservices($conecta);
-            while($service_list = mysqli_fetch_array($list_sql)) {
-                $serviceID = $service_list['servicesID'];
-
-            ?>
-                <li><?php echo $service_list["name"]; ?></li>
-            <?php
-                 } 
-                 ?>
-            </ul>
-        </div>
-    </div>
+?>
 
     <div class="container2-posts">
         <h2>Novidades:</h2>

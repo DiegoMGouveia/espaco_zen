@@ -33,31 +33,32 @@ adminCheck();
     <!-- fundo do conteúdo da página -->
     <div class="adminuserpanel">
 
-        <h2>Administração de cupons promocionais: </h2>
+        
             
             <?php 
             // menu da galeria
             require("reqs/admin-coupons-menu.php");
+            echo "<h2>Administração de cupons promocionais: </h2>";
 
             // opção 1 novo cupom
             if(isset($_GET["new"])) {
                 ?>
 
-                <div class="form-coupon">
+                <div class="form-products">
 
-                    <form action="admin-coupons.php?new" method="post">
+                    <form action="admin-coupons.php?new" method="post" class="form-coupon">
                         <label for="discount">Desconto: %</label>
-                        <input type="text" name="discount" placeholder="25" required><br>
+                        <input type="text" name="discount" placeholder="25" class="inputdiscount" required><br>
                         <label for="description">Descrição: </label>
                         <input type="text" name="description" placeholder="sorteio do instagram" required><br>
-                        <button type="submit">Gerar</button>
+                        <button type="submit" class="btn-submitcoupons">Gerar</button>
                     </form>
                     <br>
                     <?php 
                     if (isset($_POST["discount"])) {
                         $new_coupon = insertCode($_POST["discount"],$_POST["description"],$conecta);
-                        echo "Novo cupom de " . $_POST["discount"] . "% de desconto foi gerado! <br>";
-                        echo "CUPOM: '$new_coupon'";
+                        echo "Novo cupom de <span class='red'>" . $_POST["discount"] . "%</span> de desconto foi gerado! <br><br>";
+                        echo "CUPOM: <span class='red'>$new_coupon</span>";
 
                     }
                     ?>

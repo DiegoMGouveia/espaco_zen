@@ -60,6 +60,8 @@
     <?php
     // topo da página
     require("reqs/topo.php");
+    // lista de serviço - apresentação
+    require("reqs/forall-listservice.php");
     ?>
 
 

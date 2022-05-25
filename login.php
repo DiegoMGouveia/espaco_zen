@@ -56,6 +56,9 @@
     <?php
     // topo da página
     require("reqs/topo.php");
+
+    // lista de serviço - apresentação
+    require("reqs/forall-listservice.php");
     ?>
 
 
@@ -71,8 +74,6 @@
             <br>
             <br>
         </form>
-
-        <a href="register.php">Cadastre-se!</a>
     
         <?php
         if (isset($mensagem)){

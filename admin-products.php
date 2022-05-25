@@ -31,13 +31,14 @@ adminCheck();
         require("reqs/adminpanel-menuprincipal.php");
         ?>
     <div class="adminuserpanel">
+        <?php 
+            // menu dos produtos
+            require("reqs/admin-products-menu.php");
+        ?>
         
         <h2>Administração de produtos: </h2>
         
-        <?php 
-        // menu dos produtos
-        require("reqs/admin-products-menu.php");
-        ?>
+
 
         <?php 
 

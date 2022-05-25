@@ -32,9 +32,9 @@
                 Entre em contato:
             </h2>
             <ul>
-            <li> <a href="https://wa.me/5553981171529?text=Ol%C3%A1%20quero%20marcar%20um%20horario"><img src="./_imgs/whatsapp.png" alt="whatsapp icone" width="35em"></a> WhatsApp: <br><a href="https://wa.me/5553981171529?text=Ol%C3%A1%20quero%20marcar%20um%20horario">(53)98117-1529</a></li>
-            <li><a href="tel:+5553981171529"><img src="_imgs/calling.png" alt="ligar icone" width="35em"></a> Celular: <br><a href="tel:+5553981171529">(53)98117-1529</a></li>
-            <li><a href="https://www.instagram.com/espacozenlaranjal/"><img src="_imgs/insta.png" alt="instagram icone" width="35em"></a> Instagram: <br> <a href="https://www.instagram.com/espacozenlaranjal/">@espacozenlaranjal</a></li>
+            <li> <a href="https://wa.me/5553981171529?text=Ol%C3%A1%20quero%20marcar%20um%20horario" target="_blank"><img src="./_imgs/whatsapp.png" alt="whatsapp icone" width="35em">WhatsApp: <br><div class="container-info-contact">(53)98117-1529</div></a></li>
+            <li><a href="tel:+5553981171529" target="_blank"><img src="_imgs/calling.png" alt="ligar icone" width="35em"> Celular: <br><div class="container-info-contact">(53)98117-1529</div></a></li>
+            <li><a href="https://www.instagram.com/espacozenlaranjal/" target="_blank" ><img src="_imgs/insta.png" alt="instagram icone" width="35em">Instagram: <br><div class="container-info-contact">@espacozenlaranjal</div></a></li>
             </ul>
         </div>
     </div>

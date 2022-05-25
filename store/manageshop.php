@@ -5,10 +5,9 @@ if( isset ($_SESSION["cart"]) ) {
     if (isset($_POST["inputIdDel"])){
         $deleted = delItemCart($_POST["inputIdDel"], $conecta);
 
+
+        
     }
-    
-
-
 
     // pega o id do GET e inicia a sessão no shopstore
 
@@ -16,6 +15,98 @@ if( isset ($_SESSION["cart"]) ) {
     echo "<div class='container-storeshop'>";
 
     ?>
+
+    <div class="form-insert-cart">
+        <h2>Dados do carrinho:</h2>
+        <div class='container2-shop'>
+            <?php 
+            $coupon_cart = haveCoupon($_SESSION["cart"]["storeID"], $conecta);
+            $operator = selectNameOperator($_SESSION["cart"]["operatorID"], $conecta);
+            ?>
+            <br><b>Identificação do carrinho:</b> <?php echo $_SESSION["cart"]["storeID"] . " | <b>Cupom:</b> $coupon_cart <br> <b>Operador:</b> $operator |  <b>CPF Cliente:</b> " . $_SESSION["cart"]["cpfClient"]?> <br><br>
+        </div>
+
+        <h3>Insira o item no carrinho: </h3>
+        <form action="store.php?shop" method="post" class="form-insert-item">
+            <label for="inputtypeitem">Tipo:</label>
+            <select name="inputtypeitem">
+                <option disabled selected>Selecione</option>
+                <option value="service">Serviço</option>
+                <option value="product">Produto</option>
+            </select>
+            <label for="inputiditem">ID do item: </label>
+            <input type="number" name="inputiditem" class="inputcart" placeholder="00" required>
+            <label for="inputqtditem">Quantidade do item: </label>
+            <input type="number" size="20" name="inputqtditem" class="inputcart" Value="1" required>
+            <button type="submit">Enviar</button>
+
+        </form>
+
+        <?php
+
+
+        if (isset($_POST["coupon"])){
+            insertCoupon($_POST["coupon"], $_SESSION["cart"]["storeID"], $conecta);
+        }
+
+        if ($coupon_cart == "Nenhum."){
+            ?>
+            <form action="store.php?shop" method="post">
+
+                <label for="coupon">Cupom de Desconto:</label>
+                <input type="text" name="coupon" id="coupon" placeholder="X3D5-XD12" minlength="9" maxlength="9">
+                <button type="submit">Inserir Cupom</button>
+            </form>
+
+        <?php
+        }
+        // inserção de dados no carrinho
+        if ( isset ( $_POST["inputtypeitem"] ) ) {
+            if( $_POST["inputtypeitem"] == "service" ) {
+                $item = selectservicebyid($_POST["inputiditem"],$conecta);
+                if ($item == false) {
+                    
+                } else {
+
+                    $carrinho = [
+                        "shopType" => $_POST["inputtypeitem"],
+                        "storeID" => $_SESSION["cart"]["storeID"],
+                        "itemID" => $item["servicesID"],
+                        "itemName" => $item["name"],
+                        "shopQtd" => $_POST["inputqtditem"],
+                        "shopPrice" => $item["price"],
+                    ];
+                    $item_insert = addShop($carrinho,$conecta);
+
+                }
+                
+            
+            } elseif( $_POST["inputtypeitem"] == "product" ) {
+                $item = selectProduct($_POST["inputiditem"],$conecta);
+                if ($item == false) {
+                    
+                } else {
+
+                    $carrinho = [
+                    "shopType" => $_POST["inputtypeitem"],
+                    "storeID" => $_SESSION["cart"]["storeID"],
+                    "itemID" => $item["productID"],
+                    "itemName" => $item["name"],
+                    "shopQtd" => $_POST["inputqtditem"],
+                    "shopPrice" => $item["pricetosell"],
+                ];
+                $item_insert = addShop($carrinho,$conecta);
+
+                }
+            }
+        } // if ( isset ( $_POST["inputtypeitem"] ) ) {
+        ?>
+        <?php
+        listCart($_SESSION["cart"]["storeID"],$conecta);
+
+        ?>
+
+    </div> <!-- form-insert-cart -->
 
     <!-- formulário para pesquisar o produto ou serviço -->
     <div class="search-itens">
@@ -41,7 +132,7 @@ if( isset ($_SESSION["cart"]) ) {
         $service_add["storeID"] = $_SESSION['cart']['storeID'];
         ?>
         <div class="table-search-container">
-            <table class="shop-table">
+            <table class="darkTable">
                 <thead>
                     <tr>
                         <th width="30">ID</th>
@@ -96,81 +187,7 @@ if( isset ($_SESSION["cart"]) ) {
     ?>
     </div> <!-- "search-itens --> <br>
 
-    <div class="form-insert-cart">
-        <h3>Insira o item no carrinho: </h3>
-        <form action="store.php?shop" method="post" class="form-insert-item">
-            <label for="inputtypeitem">Serviço:</label>
-            <input type="radio" name="inputtypeitem" class="inputrcart" value="service">
-            <label for="inputtypeitem">Produto:</label>
-            <input type="radio" name="inputtypeitem" class="inputrcart"value="product">
-            <label for="inputiditem">ID do item: </label>
-            <input type="number" name="inputiditem" class="inputcart" placeholder="00" required>
-            <label for="inputqtditem">Quantidade do item: </label>
-            <input type="number" size="20" name="inputqtditem" class="inputcart" Value="1" required>
-            <button type="submit">Enviar</button>
-
-        </form>
-
-        <?php
-        if (haveCoupon($_SESSION["cart"]["storeID"], $conection) == "Nenhum."){
-            ?>
-            <form action="store.php?shop" method="post">
-
-                <label for="coupon">Cupom de Desconto:</label>
-                <input type="text" name="coupon" id="coupon" placeholder="X3D5-XD12" minlength="9" maxlength="9">
-                <button type="submit">Inserir Cupom</button>
-            </form>
-
-        <?php
-        }
-        // inserção de dados no carrinho
-        if ( isset ( $_POST["inputtypeitem"] ) ) {
-            if( $_POST["inputtypeitem"] == "service" ) {
-                $item = selectservicebyid($_POST["inputiditem"],$conecta);
-                if ($item == false) {
-                    
-                } else {
-
-                    $carrinho = [
-                        "shopType" => $_POST["inputtypeitem"],
-                        "storeID" => $_SESSION["cart"]["storeID"],
-                        "itemID" => $item["servicesID"],
-                        "itemName" => $item["name"],
-                        "shopQtd" => $_POST["inputqtditem"],
-                        "shopPrice" => $item["price"],
-                    ];
-                    $item_insert = addShop($carrinho,$conecta);
-
-                }
-                
-            
-            } elseif( $_POST["inputtypeitem"] == "product" ) {
-                $item = selectProduct($_POST["inputiditem"],$conecta);
-                if ($item == false) {
-                    
-                } else {
-
-                    $carrinho = [
-                    "shopType" => $_POST["inputtypeitem"],
-                    "storeID" => $_SESSION["cart"]["storeID"],
-                    "itemID" => $item["productID"],
-                    "itemName" => $item["name"],
-                    "shopQtd" => $_POST["inputqtditem"],
-                    "shopPrice" => $item["pricetosell"],
-                ];
-                $item_insert = addShop($carrinho,$conecta);
-
-                }
-            }
-        } // if ( isset ( $_POST["inputtypeitem"] ) ) {
-        ?>
-        <div class="list-shop-container">
-        <?php
-        listCart($_SESSION["cart"]["storeID"],$conecta);
-        ?>
-        </div> <!-- list-shop-container -->
-
-    </div> <!-- form-insert-cart -->
+    
 
         <div class="delitem">
             <p>Remover item do carrinho</p>

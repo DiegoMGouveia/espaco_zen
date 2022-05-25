@@ -32,12 +32,13 @@
     // Painel Administrativo -> Usuários
     ?>
     <div class="adminuserpanel">
-        <h2> Administração de Usuários: </h2>
+        
         <?php
         // menu com 2 opções 
         // "allusers" => lista todos usuários
         // "search"   => pesquisa por um ou mais usuários
         require("reqs/admin-users-menu.php");
+        echo "<h2> Administração de Usuários: </h2>";
 
         
         if ( isset ( $_GET["allusers"] ) ) {

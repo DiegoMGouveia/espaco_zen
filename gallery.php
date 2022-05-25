@@ -24,8 +24,11 @@
     require("reqs/topo.php");
     ?>
     <br>
-    <center><h1>Postagens de fotos do <strong>Espaço Zen</strong></h1></center>
-    <div class="container-content">
+    <div class="container-caption-page">
+
+        <center><h1>Postagens de fotos do <strong>Espaço Zen</strong></h1></center>
+    </div>
+    <div class="container-content"> <!-- container-caption-page -->
     <?php 
     $gallery_query = listgallery($conecta);
     while($gallery_list = mysqli_fetch_array($gallery_query)) {

@@ -33,11 +33,13 @@ adminCheck();
     <!-- fundo do conteúdo da página -->
     <div class="adminuserpanel">
 
-        <h2>Administração da Galeria de Fotos: </h2>
+        
             
             <?php 
             // menu da galeria
             require("reqs/admin-gallery-menu.php");
+
+            echo "<h2>Administração da Galeria de Fotos: </h2>";
 
             // opção 1 nova foto
             if(isset($_GET["newphoto"])) {

@@ -751,7 +751,7 @@
 
                             $sql_coupon_update = "UPDATE coupons SET status = 'usado' WHERE coupon = '$coupon' ";
                             if (mysqli_query($conection, $sql_coupon_update)){
-                                echo "Cupom inserido com sucesso!";
+                                echo "<span class='msgsucess green bold'>Cupom inserido com sucesso!</span>";
                             }
                             
 
@@ -868,6 +868,7 @@
     function haveCoupon($storeID, $conection){
         $sql = "SELECT * FROM store WHERE storeID = '$storeID' ";
         $sqlQuery = mysqli_query($conection,$sql);
+        
         if ($sqlQuery->num_rows > 0){
             $coupon = mysqli_fetch_assoc($sqlQuery);
             if (empty($coupon["coupon"])){
@@ -881,19 +882,16 @@
 
     //lista os produtos de um carrinho ($storeID)
     function listCart($storeID, $conection){
-        $operator = selectNameOperator($_SESSION["cart"]["operatorID"], $conection);
-
-        if (isset($_POST["coupon"])){
-            insertCoupon($_POST["coupon"], $storeID, $conection);
+        $store = openCart($storeID, $conection);
+        if (!empty($store["coupon"])) {
+            $coupon = $store["coupon"];
         }
-        ?>
-
         
-        <?php 
-        $coupon_cart = haveCoupon($_SESSION["cart"]["storeID"], $conection);
-        echo "<div class='container2-shop'> <h4>Carrinho: </h4> Identificação do carrinho: " . $_SESSION["cart"]["storeID"] . "| Cupom: $coupon_cart <br> Operador: $operator |  Cliente CPF: " . $_SESSION["cart"]["cpfClient"] . "</div><br>";
+
         ?>
-        <table class="shop-table">
+        <table class="darkTable" cellspacing="0" >
+            <br>
+            <h3>Itens no Carrinho:</h3>
             <thead>
                 <tr>
                     <th width="50">Cód</th>
@@ -908,9 +906,7 @@
             <?php 
             $shop_cart = selectShopCart($storeID,$conection);
             while($produto_list = mysqli_fetch_array($shop_cart)) {
-
-
-            ?>
+                ?>
                 <tr>
                     <td><?php echo $produto_list["shopID"] ?></td>
                     <td><?php echo $produto_list["itemID"] ?></td>
@@ -922,6 +918,8 @@
                 <?php
                 $total += $produto_list["shopPrice"];
 
+
+                $coupon_cart = haveCoupon($_SESSION["cart"]["storeID"], $conection);
                 if ($coupon_cart != "Nenhum."){
                     $disc = "0.";
                     $total_disc = selectDiscount($coupon_cart, $conection);
@@ -942,11 +940,11 @@
 
             <div class='container-total'>
 
-                <p>Total: <?php echo "R$" . $total ?></p>
+                <p><span class='text-total'>Total:</span> <?php echo "<b>R$" . $total ?></b></p>
                 <?php
                 
                 if ($coupon_cart != "Nenhum.") {
-                    echo "Total com Desconto de $total_disc% de Desc. = R$$total_2 <br> ";
+                    echo "<span class='text-total'>Desconto:<b> $total_disc% </b> <br> Total com Desconto = R$$total_2 <br> </span>";
                 }
                 ?>
 
@@ -960,7 +958,6 @@
 
             <?php
 
-            echo "<br>";
 
     } // function listCart($storeID, $conection){
 

@@ -58,7 +58,7 @@ adminCheck();
             } elseif (!isset($_SESSION["cart"]) || empty($_SESSION["cart"])) {
 
                 ?>
-                <a href="store.php">Voltar</a>
+                <a href="store.php"><button class="buttonback"> Voltar </button></a>
                 <?php
             }
             
@@ -87,7 +87,7 @@ adminCheck();
                 ?>
                 <div class="list-store-container">
                     <h3>Lista de Carrinhos:</h3>
-                    <table class="shop-table">
+                    <table class="darkTable">
                         
                         <thead>
                             <tr>
