@@ -694,7 +694,6 @@ body {
 }
 
 .storepanel {
-    display: inline-block;
     background-color: rgb(37, 36, 36);
     margin-left: 25em;
     margin-top: -30em;
@@ -711,6 +710,11 @@ body {
 
 .storepanel h2{
     text-align: center;
+    color: white;
+}
+
+.storepanel h3{
+    color: white;
 }
 
 .storepanel ul{
@@ -780,8 +784,8 @@ body {
 }
 
 .store-menu-containers {
-    margin-left: 17vw;
-    margin-right: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .container-new-shop {
@@ -893,6 +897,7 @@ table.shop-table {
 
 .container2-shop {
     margin-top: 1em;
+    margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
     width: 99.5%;
@@ -1009,7 +1014,7 @@ table.shop-table {
 .search-itens {
     width: 27em;
     background:#3b3b3be8;
-    margin-top: -36.41em;
+    margin-top: -40.25em;
     margin-left: 5em;
     border: 1px solid;
     padding: 1em;
@@ -1029,7 +1034,7 @@ table.shop-table {
 
 .table-search-container {
 
-    height: 9em;
+    height: 26em;
     overflow-y: auto;
 
 }
@@ -1125,7 +1130,6 @@ table.darkTable {
   table.darkTable td, table.darkTable th {
     border: 1px solid #000000;
     padding: 3px 1px;
-    max-height: 20px;
   }
   table.darkTable tbody td {
     font-size: 15px;

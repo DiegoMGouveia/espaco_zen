@@ -1,3 +1,14 @@
+
+changelog version 1.0.2.0
+
+MOD: correções menores de front-end.
+
+
+
+
+
+-----------------------------------------------------------------------------------
+
 changelog version 1.0.0.9
 
 design version

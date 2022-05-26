@@ -1,6 +1,6 @@
 
 
-<div class="store-menu-containers">
+<center><div class="store-menu-containers">
     <div class="menu-store-container">
         <a href="store.php?newcart">
             <div class="menu-store-container2">
@@ -38,4 +38,4 @@
     <!-- menu-store-container -->
     </div> 
 <!-- store-menu-containers -->
-</div>
+</div></center>
