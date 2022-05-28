@@ -48,6 +48,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="_css/style.css">
     <link rel="shortcut icon" href="_imgs/icone_zen.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <title>Login - Espaço Zen</title>
 </head>
 <body>
@@ -70,7 +73,7 @@
             <label for="password">Senha: </label>
             <center><input type="password" name="password" id="password"></center>
             
-            <center><button type="reset">Limpar</button><button type="submit">Entrar</button>
+            <center><button type="reset">Limpar</button> <button type="submit">Entrar</button>
             <br>
             <br>
         </form>

@@ -1,4 +1,17 @@
 
+changelog version 1.0.2.1
+
+
+algumas correções menores referente ao design foram feitas.
+NOVO: criado a função "insertTotalDiscontedCart" para adicionar o novo total com desconto ao banco de dados da tabela store em uma nova coluna chamada "totalDiscontPrice".
+MOD: Atualizadp a forma como a contagem dos itens vendidos era feita, agora é através dos carrinhos e não dos itens e também mostra o "total com desconto".
+MOD: Atualizado a fonte do nome do "Espaço Zen".
+
+
+
+
+-----------------------------------------------------------------------------------
+
 changelog version 1.0.2.0
 
 MOD: correções menores de front-end.

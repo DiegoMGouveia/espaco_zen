@@ -931,6 +931,7 @@
                     
                 }
                 insertTotalCart($total, $produto_list["storeID"],$conection);
+                insertTotalDiscontedCart($total_2, $produto_list["storeID"],$conection);
 
             
             } // while($produto_list = mysqli_fetch_array(selectShopCart($shop_cart,$conection))) {
@@ -975,10 +976,15 @@
     }
 
     function insertTotalCart($total, $storeID, $conection) {
-            $sql = "UPDATE store SET totalPrice = '$total' WHERE storeID = '$storeID' ";
-            $newTotal = mysqli_query($conection, $sql);
-            
+        $sql = "UPDATE store SET totalPrice = '$total' WHERE storeID = '$storeID' ";
+        $newTotal = mysqli_query($conection, $sql);
     }
+
+    function insertTotalDiscontedCart($total, $storeID, $conection) {
+        $sql = "UPDATE store SET totalDiscontPrice = '$total' WHERE storeID = '$storeID' ";
+        $newTotal = mysqli_query($conection, $sql);
+    }
+
 
     function totalPriceStore($storeID, $conection) {
 

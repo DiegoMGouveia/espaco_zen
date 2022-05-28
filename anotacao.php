@@ -1,134 +1,37 @@
-<?php
-require("_func/functions.php");
-require_once("_banco/conection.php");
-require("classes/Store.php");
-
-$carrinho = [
-    "storeID" => "",
-    "operatorID" => "",
-     "openTime" => "",
-     "closeTime" => "",
-     "totalPrice" => "",
-     "coupon" => "",
-     "cpfClient" => "",
-];
-
-
-session_start();
-
-// checa se o usuário é administrador
-adminCheck();
-?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="_css/style.css">
-    <link rel="shortcut icon" href="_imgs/icone_zen.ico" type="image/x-icon">
-    <title>Store - Espaço Zen</title>
-</head>
+<html>
 <body>
-    
-    
-    <?php
-    
-    // topo da página
-    require("reqs/topo.php");
-    
-    // menu do administrador
-    require("reqs/adminpanel-menuprincipal.php");
-    ?>
 
-    <!-- fundo do conteúdo da página -->
-    <div class="storepanel">
+<h2>Sizes:</h2>
 
-        <h2>Store: </h2>
+<p id="screen"></p>
+<p id="window"></p>
+<p id="page"></p>
 
-        <div class="storewindow">
+<script>
 
-            <?php
-            // menu entrada 3 opções (Novo carrinho, Listar Carrinhos, Financeiro)
+// Get the size of the device screen
+var screenWidth = screen.width;
+var screenHeight = screen.height;
 
-            if (empty($_GET)) {
-                require("store/store-menu.php");
-            }
-            
-            // termina a sessão "cart"
-            if(isset($_GET["quitshop"])) {
+// Get the browser window size
+var windowWidth = window.innerWidth;
+var windowHeight = window.innerHeight;
 
-                unset($_SESSION["cart"]);
-                
-                header('location: store.php');
-                
-            }
-            
+// Get the size of the entire webpage
+const pageWidth  = document.documentElement.scrollWidth;
+const pageHeight = document.documentElement.scrollHeight;
 
-            // if( isset ($_SESSION["cart"]) ) {
-            require("store/manageshop.php");
+// Showing the sizes on the webpage
+var x = document.getElementById("screen");
+x.innerHTML = "Device Screen: width: " + screenWidth + ", height: " + screenHeight + ".";
 
-                // novo carrinho de compras
-            require("store/store-new-shop.php");
+var y = document.getElementById("window");
+y.innerHTML = "Browser Window: width: " + windowWidth + ", height: " + windowHeight + ".";
 
-            //listar carrinhos
-            if ( isset ( $_GET["liststore"] ) || empty( $_GET["liststore"]) ) {
-                $store_list = listShops($conecta);
+var z = document.getElementById("page");
+z.innerHTML = "Webpage: width:" + pageWidth + ", height: " + pageHeight + ".";
 
-                var_dump($store_list);
-                ?>
-
-                <table class="shop-table">
-                    <thead>
-                        <tr>
-                            <th width="50">ID</th>
-                            <th width="50">Operador</th>
-                            <th width="700">Abertura</th>
-                            <th width="80">Encerramento</th>
-                            <th width="30">Valor Total</th>
-                            <th width="30">Cupom</th>
-                            <th width="30">CPF Cliente</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    while($shop = mysqli_fetch_array($store_list)) {
-                        ?>
-                        <tr>
-                            <td><?php echo $shop["itemID"] ?></td>
-                            <td><?php echo $shop["shopType"] ?></td>
-                            <td><?php echo $shop["itemName"] ?></td>
-                            <td><?php echo $shop["shopQtd"] ?></td>
-                            <td><?php echo $shop["shopPrice"] ?></td>
-                        </tr>
-                        <?php
-                
-                
-                    } // while($shop = mysqli_fetch_array($store_list)) {
-
-                    ?>
-                    </tbody>
-
-                </table>
-                
-
-                <?php
-                
-                
-
-
-            } // if ( isset ( $_GET["listStore"])) {
-            
-
-            ?>
-
-        <!-- class storewindow -->
-        </div>
-            
-    <!-- class="storepanel" -->
-    </div>
-
-    
+</script>
 </body>
 </html>

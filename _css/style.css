@@ -2,7 +2,8 @@
 body {
     font-family: Verdana,arial,helvetica;
     background-color:rgb(255, 255, 255);
-    margin:0;
+    width:100%;
+    margin:0 auto;
     padding:0;
     display:inline;
 
@@ -96,7 +97,7 @@ body {
 
 .img-logo img{
     width: 15em;
-    margin-left: -12vw;
+    margin-left: -17em;
     margin-right: auto;
 }
 
@@ -109,15 +110,18 @@ body {
 
 .titulo h1 {
     color: black;
+    font-family: 'Tangerine', cursive;
+    font-size: 60px;
+    font-weight: bold;
 
     border: 7px double rgba(78, 45, 45, 0.575);
-    display: inline-block;
     padding: 0.5%;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     border-bottom-left-radius: 1em;
-    margin-top: 1em;
-    margin-left: 0.5em;
+    margin-top: -1em;
+    margin-left: 1em;
+    float: left;
 
 }
 
@@ -417,6 +421,8 @@ body {
     padding: 1em;
     border-radius: 20px;
     color: white;
+    box-shadow: 0px 0px 10px 3px rgb(126, 126, 126);
+
 }
 
 .adminuserpanel h2{
@@ -694,13 +700,13 @@ body {
 }
 
 .storepanel {
-    background-color: rgb(37, 36, 36);
+    background-color: rgb(19, 19, 19);
     margin-left: 25em;
     margin-top: -30em;
     padding-left: 3em;
     padding-right: 3em;
     padding-top: 1em;
-    box-shadow: 0 0 12px rgb(69, 69, 69);
+    box-shadow: 0px 0px 10px 3px rgb(126, 126, 126);
     padding-bottom: 2em;
     float: left;
 
@@ -1014,7 +1020,7 @@ table.shop-table {
 .search-itens {
     width: 27em;
     background:#3b3b3be8;
-    margin-top: -40.25em;
+    margin-top: -37.39em;
     margin-left: 5em;
     border: 1px solid;
     padding: 1em;
@@ -1055,14 +1061,17 @@ table.shop-table {
 
 .container-total2{
     display: block;
-    width: 8em;
-    height: 1.3em;
+    width: 13em;
+    height: 7em;
     background:#434343;
     color: white;
     font-size: bold;
     margin: 0;
+    padding-top: 0.1em;
+    margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5em;
     border-radius: 1em;
     text-align: center;
     box-shadow: 0 0 12px rgba(255, 252, 252, 0.311);

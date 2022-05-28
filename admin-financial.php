@@ -12,13 +12,9 @@
 if (isset($_POST["month"])){
 
     $search = $_POST["month"];
-    $sql = "SELECT * FROM shop_cart WHERE MONTH(time_sale) = '$search'";
+    $sql = "SELECT * FROM store WHERE MONTH(openTime) = '$search'";
     $financial = mysqli_query($conecta, $sql);
-    if ($financial){
-        ;
-    } else {
-        echo "fudeu";
-    }
+    
 }
 ?>
 
@@ -30,7 +26,10 @@ if (isset($_POST["month"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="_css/style.css">
     <link rel="shortcut icon" href="_imgs/icone_zen.ico" type="image/x-icon">
-    <title>Administração de serviços - Espaço Zen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <title>Gestão Financeira - Espaço Zen</title>
 </head>
 <body>
 
@@ -73,24 +72,27 @@ if (isset($_POST["month"])){
             <table class="darkTable">
                 <thead>
                     <tr>
-                        <th width="50">Nome</th>
-                        <th width="50">Quantidade</th>
-                        <th width="50">Valor</th>
+                        <th width="50">ID</th>
+                        <th width="50">Cliente</th>
+                        <th width="50">total</th>
+                        <th width="50">total Desc</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    while($results = mysqli_fetch_array(($financial))){
+                    while($results = mysqli_fetch_array($financial)){
                         ?>
                         <tr>
-                            <td><b><?php echo $results["itemName"] ?> </b></td>
-                            <td><b><?php echo $results["shopQtd"] ?></b> </td>
-                            <td><b><?php echo $results["shopPrice"] ?> </b></td>
+                            <td><b><?php echo $results["storeID"] ?> </b></td>
+                            <td><b><?php echo $results["cpfClient"] ?></b> </td>
+                            <td><b><?php echo "R$" . $results["totalPrice"] ?> </b></td>
+                            <td><b><?php echo "R$" . $results["totalDiscontPrice"] ?> </b></td>
                         </tr>
                         
                     
                         <?php
-                        $total += $results["shopPrice"];
+                        $total += $results["totalPrice"];
+                        $total2 += $results["totalDiscontPrice"];
                     }
 
                     ?></tbody>
@@ -98,9 +100,10 @@ if (isset($_POST["month"])){
             </table>
             <div class='container-total2'>
 
-                    <p>Total:<b> <?php echo "R$ " . $total ?></b></p>
+                <p>Total vendido:<b><br> <?php echo "R$ " . $total ?></b></p>
+                <p>Total vendido com desconto: <br><b> <?php echo "R$ " . $total2 ?></b></p>
 
-                </div> <!-- CLASS container-total -->
+            </div> <!-- CLASS container-total -->
             <?php
         }
         ?>
