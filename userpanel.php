@@ -33,7 +33,7 @@
     require("reqs/userpanel-menuprincipal.php");
     ?>
 
-    <div class="userpanel">
+    <div class="container2-mapa">
 
         <h2>Painel do(a) Usuário(a):</h2>
         <div class="container-perfil">

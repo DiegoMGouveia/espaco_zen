@@ -7,6 +7,9 @@
 <?php
 
  if( $_POST["searchproduct"] ){
+   
+
+    echo "<center>Mostrando resultados para '". $_POST["searchproduct"] . "'.</center><br>";
 
      ?>
 

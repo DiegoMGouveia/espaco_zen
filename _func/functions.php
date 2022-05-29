@@ -777,7 +777,7 @@
     }
 
     function searchSales($search, $conection) {
-        $sql = "SELECT * FROM shop_cart WHERE shopID LIKE '%{$search_input}%' OR shopType LIKE '%{$search_input}%' OR storeID LIKE '%{$search_input}%' OR itemID LIKE '%{$search_input}%' OR itemName LIKE '%{$search_input}%' OR time_sale LIKE '%{$search_input}%' ";
+        $sql = "SELECT * FROM shop_cart WHERE shopID LIKE '%{$search}%' OR shopType LIKE '%{$search}%' OR storeID LIKE '%{$search}%' OR itemID LIKE '%{$search}%' OR itemName LIKE '%{$search}%' OR time_sale LIKE '%{$search}%' ";
         $sqlQuery = mysqli_query($conection, $sql);
         return $sqlQuery;
     }
@@ -905,6 +905,7 @@
             <tbody>
             <?php 
             $shop_cart = selectShopCart($storeID,$conection);
+            $total = 0;
             while($produto_list = mysqli_fetch_array($shop_cart)) {
                 ?>
                 <tr>
