@@ -16,3 +16,7 @@ Finalizei o sistema de cadastro de serviços
 agora farei o cadastro de produtos
 
 
+versão 1.0.2.1
+veja as atualizações no changelog.txt
+versão inicial 1.0.0.3
+versão final 1.0.2.1
