@@ -1,12 +1,16 @@
 <div class="tabela-lista-users">
-    <table border="1" cellspacing="0">
-        <tr class="topo-tabela">
-            <td>Imagem: </td>
-            <td>ID: </td>
-            <td>Nome: </td>
-            <td>Descrição: </td>
-            <td>Ação: </td>
-        </tr>
+<table cellspacing="0" class="darkTable" >
+        <thead>
+            <tr>
+                <th>Imagem: </th>
+                <th>ID: </th>
+                <th>Nome: </th>
+                <th>Descrição: </th>
+                <th>Ação: </th>
+            </tr>
+        </thead>
+
+        <tbody>
 
         <?php
 
@@ -19,15 +23,16 @@
 
         <td><figure><img width="195em" src="<?php echo $imagem;?>"></figure></td>
             <td><?php echo $gallery_list["galleryID"]?></td>
-            <td><?php echo $gallery_list["name"]?></td>
+            <td><strong><?php echo $gallery_list["name"]?></strong></td>
             <td><?php echo $gallery_list["description"]?></td>
-            <td><a href="admin-gallery.php?editphoto=<?php echo $gallery_list['galleryID'];?>"><button>Editar</button></a><br><a href="admin-gallery.php?delphoto=<?php echo $gallery_list["galleryID"];?>"><button>Deletar</button></a></td>
+            <td><a href="admin-gallery.php?editphoto=<?php echo $gallery_list['galleryID'];?>"><button>Editar</button></a><br><br><a href="admin-gallery.php?delphoto=<?php echo $gallery_list["galleryID"];?>"><button>Deletar</button></a></td>
 
         </tr>
 
         <?php
             }
         ?>
+        <tbody>
 
     </table>
 </div>

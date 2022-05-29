@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="_css/style.css">
     <link rel="shortcut icon" href="_imgs/icone_zen.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <title>Inicio - Espaço Zen</title>
 </head>
 <body>
@@ -23,31 +26,11 @@
     <?php
     // topo da página
     require("reqs/topo.php");
-    ?>
 
+    // lista de serviço - apresentação
+    require("reqs/forall-listservice.php");
 
-    <div class="container1-conteudo1">
-        <div class="conteudo1">
-            <h2>
-                Aqui você encontra:
-            </h2>
-            <ul>
-                <li>Terapia Capilar</li>
-                <li>Cronogramas</li>
-                <li>Mechas e Colorimetria</li>
-                <li>Químicas em geral</li>
-                <li>Corte feminino e infantil</li>
-                <li>Sobrancelhas</li>
-                <li>Cílios</li>
-                <li>Depilação</li>
-                <li>Unhas</li>
-                <li>Maquiagem</li>
-                <li>Drenagem linfática</li>
-                <li>Microagulhamento</li>
-                <li>Peeling químico</li>
-            </ul>
-        </div>
-    </div>
+?>
 
     <div class="container2-posts">
         <h2>Novidades:</h2>

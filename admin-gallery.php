@@ -5,15 +5,8 @@ require_once("_banco/conection.php");
 
 session_start();
 
-if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 2) {
-
-    $user = useridset();
-    $privileges = privilegeset();
-
-} else {
-    // se não estiver, será redirecionado ao index.php
-    header('location: login.php');
-}
+// checa se o usuário é administrador
+adminCheck();
 
 ?>
 
@@ -25,6 +18,9 @@ if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SE
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="_css/style.css">
     <link rel="shortcut icon" href="_imgs/icone_zen.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <title>Administração da Galeria - Espaço Zen</title>
 </head>
 <body>
@@ -40,11 +36,13 @@ if(isset($_SESSION['user_logged']) && $_SESSION['privileges'] == 1 || isset($_SE
     <!-- fundo do conteúdo da página -->
     <div class="adminuserpanel">
 
-        <h2>Administração da Galeria de Fotos: </h2>
+        
             
             <?php 
             // menu da galeria
             require("reqs/admin-gallery-menu.php");
+
+            echo "<h2>Administração da Galeria de Fotos: </h2>";
 
             // opção 1 nova foto
             if(isset($_GET["newphoto"])) {

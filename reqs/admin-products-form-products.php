@@ -1,5 +1,5 @@
 <div class="form-products">
-    <h3>Cadastrando produto: </h3>
+    <h2>Cadastrando produto: </h2>
     <form action="admin-products.php?newproduct" method="POST" enctype="multipart/form-data">
 
         <label for="newproductname">Nome do produto: </label><br>

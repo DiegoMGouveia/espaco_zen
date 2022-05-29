@@ -1,0 +1,152 @@
+
+changelog version 1.0.2.1
+
+
+algumas correções menores referente ao design foram feitas.
+NOVO: criado a função "insertTotalDiscontedCart" para adicionar o novo total com desconto ao banco de dados da tabela store em uma nova coluna chamada "totalDiscontPrice".
+MOD: Atualizadp a forma como a contagem dos itens vendidos era feita, agora é através dos carrinhos e não dos itens e também mostra o "total com desconto".
+MOD: Atualizado a fonte do nome do "Espaço Zen".
+
+
+
+
+-----------------------------------------------------------------------------------
+
+changelog version 1.0.2.0
+
+MOD: correções menores de front-end.
+
+
+
+
+
+-----------------------------------------------------------------------------------
+
+changelog version 1.0.0.9
+
+design version
+
+MOD: mudança geral no front-end, alterando o tema rosa para um tema preto e branco.
+algumas correções ocorreram no desenvolvimento.
+
+
+
+-----------------------------------------------------------------------------------
+
+changelog version 1.0.0.8
+
+
+MOD: atualizado layout do carrinho de compras.
+
+
+-----------------------------------------------------------------------------------
+
+
+
+changelog version 1.0.0.8
+
+NOVO: Adicionado link no menú ("reqs/admin-coupons-menu.php") para ver todos os cupons.
+NOVO: Adicionado sistema que lista todos os cupons e junto um botão para deletar o cupom desejado.
+MOD: Modificado layout da pesquisa de item na página "store.php"
+NOVO: Adicionado uma nova função "haveCoupon", erifica se tem um cupom no carrinho, se tiver retorna o cupom, se não retorna uma string "Nenhum."
+MOD: alterado o layout do carrinho na página "store.php"
+MOD: Modificado a função "listCart" para que o layout da página fique melhor.
+MOD: atualizado layout da lista de carrinhos.
+
+
+
+
+-----------------------------------------------------------------------------------
+
+
+changelog version 1.0.0.8
+
+NOVO: Criado arquivo "admin-coupons.php" e "reqs/admin-coupons-menu.php" onde o administrador poderá gerar um novo código de cupom promocional, podendo escolher quantos porcento de desconto tera o cupom e a descrição do mesmo.
+NOVO: Criado a função "createCode" onde será gerado um código aleatório de 9 caracteres, alternados entre letras e numeros.ex: "A1H1-3F3G"
+NOVO: Criado a função "insertCode" que gera um codigo usando a função "createCode", faz a verificação se este codigo ja se encontra no banco de dados, caso não esteja, ele pega dados como porcentagem e descrição do cupom e insere ao banco.
+NOVO: criado arquivo "admin-financial.php" onde mostrará dados sobre vendas no mes escolhido.
+NOVO: criado a função "monthName" para setar o nome do mês escolhido.
+
+
+-----------------------------------------------------------------------------------
+
+
+changelog version 1.0.0.7
+
+NOVO: nova função "delItemCart" que procura o código do item, verifica se esta associado ao carrinho em questão, se estiver, ele deleta o item, caso contrario nada acontece.
+
+
+
+-----------------------------------------------------------------------------------
+
+changelog version 1.0.0.6
+
+NOVO: agora no Store, é possivel abrir novamente um carrinho que havia sido fechado através do menu "listar carrinhos", adicionando assim uma nova data de fechamento do carrinho.
+NOVO: criado a função "openCart" para abrir um carrinho já fechado.
+NOVO: Criado a função "destroyCart" para deletar um carrinho e os itens pertencentes a ele do banco de dados
+
+
+-----------------------------------------------------------------------------------
+
+
+
+
+changelog version 1.0.0.5
+
+NOVO: criado painel do usuário, userpanel.php, o usuário precisa estar logado para acessar a página ou será redirecionado a página de login.
+NOVO criado CSS para a página de painel de usuário.
+
+-----------------------------------------------------------------------------------
+
+
+changelog version 1.0.0.4
+
+NOVO: agora no index.php mostra no menu a esquerda, todos os nomes dos serviços cadastrados.
+NOVO: Criado arquivo services.php onde mostrará informações de todos os serviços cadastrados aos clientes.
+NOVO: Criado arquivo gallery.php onde mostrará as fotos postadas referente a serviços entre outras imagens aos clientes.
+MOD: adicionado link da página de serviços e da galeria ao menu principal.
+NOVO: front da página de serviços inicialmente feito
+MOD: update banco de dados
+MOD: consertado a sessão na pagina contato.php que não havia sido instalada.
+ADD: "userCheck" nova função que verifica se o usuário está logado, se não estiver redirecionará para a página de login.
+
+
+
+-----------------------------------------------------------------------------------
+
+changelog version 1.0.0.3
+
+NOVO: foi adicionado botão voltar em algumas páginas da store;
+RESOLVIDO: foi consertado o bug encontrado no ultimo update,com isso a página administrativa de usuários e serviços tiveram seus arquivos separados do adminpanel.php
+NOVO: foi criado este arquivo changelog.txt para informar alterações no projeto a fim de organizar melhor o projeto.
+
+Store - 
+NOVO: a store agora cria um novo carrinho, adiciona itens no carrinho, soma o total, insere cupom de desconto, informa a hora da adição do item no carrinho.
+
+Registro - agora aparece uma mensagem quando há informações importantes(nome de usuário, e-mail ou celular) duplicadas;
+
+Style - foi ajustado o estilo da tabela da Store, dados estão centralizados na celula;
+
+Functions:
+ ADD: "privilegename" retorna o nome do privilégio conforme o banco de dados.
+ MOD: "registro" agora ele retorna uma mensagem de erro quando há dados iguais no cadastro de um novo usuário.
+ MOD: "delUser" atualizado novo endereço da lista de usuários.
+ MOD: "selectservices" agora serve para listar todos os serviços.
+ MOD: "delservice" atualização de redirecionamento de página.
+ MOD: "selectProduct" agora para selecionar um produto é necessário informar primeiro o productID e depois a conexão.
+ MOD: "searchProduct"  agora para procurar um produto é necessário informar primeiro a variavel de pesquisa e depois a conexão.
+ ADD: "closeShopCart" função para fechar um carrinho de comprar de um cliente, é necessário informar o $shopID, conexão e o $coupon caso aja um.
+ ADD: "searchSales" função de pesquisa de itens e serviços vendidos, é necessário a variavel de pesquisa e a variavel de conexão, função ainda não inserida no sistema até o momento desta atualização.
+ MOD: "addShop" alterada a função para adicionar a data e hora da inserção do item no banco de dados.
+ MOD: "listCart" alterada a posição do botão de fechar o carrinho e adicionado o campo para inserção do cupom, inserido o cifrão em frente ao valor mostrado na tabela.
+
+ ----------------------------------------------
+ pretenção para o novo update:
+ 
+ arrumar a pesquisa dos itens vendidos e inserir o valor total dos itens encontrados;
+ poder remover item do carrinho, modificar carrinho passado, deletar carrinho e seus itens do historico de vendas;
+ ajustar o design da store;
+ area administrativa financeira, informando gastos e ganhos no ano, semestre, mes, semanal, diário;
+ 
+
+ 

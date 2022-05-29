@@ -2,6 +2,7 @@
     <input type="text" name="searchphoto" id="searchuser" placeholder="Digite o ID, nome ou parte da descrição da foto" required>
     <button type="submit">Procurar</button>
 </form>
+<br>
 
 <?php
 
@@ -9,36 +10,41 @@
 
      ?>
 
-     <table class="tabela-lista-users" border="1" cellspacing="0">
-        <tr class="topo-tabela">
-            <td>img: </td>
-            <td>ID: </td>
-            <td>Nome da foto: </td>
-            <td>Descrição: </td>
-            <td>Ação: </td>
-        </tr>
+     <table cellspacing="0" class="darkTable" >
+        <thead>
+            <tr>
+                <th>Imagem: </th>
+                <th>ID: </th>
+                <th>Nome: </th>
+                <th>Descrição: </th>
+                <th>Ação: </th>
+            </tr>
+        </thead>
+
+        <tbody>
 
         <?php
 
-        $sql_query = searchPhoto($conecta);
-                    
-        while($gallery_list = mysqli_fetch_array($sql_query)) {
-            $galleryID = $gallery_list['galleryID'];
-            
+            $gallery_query = searchPhoto($conecta);
+            while($gallery_list = mysqli_fetch_array($gallery_query)) {
+                $imagem = $gallery_list['photoPath'];
+
         ?>
         <tr>
-            <td><figure><img class="img-service-list" width="195em" src="<?php echo $gallery_list["photoPath"];?>"></figure></td>
-            <td><?php echo $galleryID ?></td>
-            <td><?php echo $gallery_list['name']?></td>
-            <td><?php echo $gallery_list['description']?></td>
-            <td><a href="admin-gallery.php?editphoto=<?php echo $galleryID ?>"><button type="submit">Modificar</button></a><br><a href="admin-gallery.php?delphoto=<?php echo $galleryID ?>"><button type="submit">Deletar</button></a></td>
+
+        <td><figure><img width="195em" src="<?php echo $imagem;?>"></figure></td>
+            <td><?php echo $gallery_list["galleryID"]?></td>
+            <td><strong><?php echo $gallery_list["name"]?></strong></td>
+            <td><?php echo $gallery_list["description"]?></td>
+            <td><a href="admin-gallery.php?editphoto=<?php echo $gallery_list['galleryID'];?>"><button>Editar</button></a><br><br><a href="admin-gallery.php?delphoto=<?php echo $gallery_list["galleryID"];?>"><button>Deletar</button></a></td>
 
         </tr>
-        <?php 
 
-        } 
-
+        <?php
+            }
         ?>
+        <tbody>
+
     </table>
 
      <?php

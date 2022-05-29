@@ -1,38 +1,55 @@
 
 body {
-    background-color:rgb(255, 208, 208);
-    background-image: url("../_imgs/fundo3.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    margin:0;
+    font-family: Verdana,arial,helvetica;
+    background-color:rgb(255, 255, 255);
+    width:100%;
+    margin:0 auto;
     padding:0;
     display:inline;
-    margin-left: auto;
-    margin-right: auto;
-    width: 6em;
 
 }
 
 .bord-menu-principal {
-    width: 30em;
+    width: 33em;
     height: auto;
     text-align: center;
-    
-    background-color:rgba(221, 156, 156, 0.308);
-    border-radius: 10px;
+    color: white;
+    background-color:rgba(0, 0, 0, 0.748);
+    border-radius: 2em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5em;
     border-bottom: 3px solid;
     border-left: 3px solid;
     border-right: 3px solid;
     border-top: 1.5px solid;
     border-color: rgba(78, 45, 45, 0.342);
     padding-left: 1em;
+    box-shadow: 0 0 15px rgb(68, 68, 68);
     padding-right: 1em;
 
 
+}
+
+.errormsg {
+    color: red;
+}
+
+.msgsucess{
+    border: 1px solid black;
+    border-radius: 5px;
+    background: white;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.green {
+    color: green;
 }
 
 .bord-menu-principal ul{
@@ -46,7 +63,7 @@ body {
 .bord-menu-principal li{
     
     display:inline;
-    border: 1px solid rgba(78, 45, 45, 0.308);
+    border: 1px solid rgba(133, 133, 133, 0.83);
     border-radius: 10px;
     padding: 0.3em;
     margin-top: 0.6em;
@@ -59,9 +76,10 @@ body {
     
     text-align: left;
     border: 1px solid rgba(78, 45, 45, 0.308);
-    background-color:rgba(221, 156, 156, 0.795);
+    background-color:rgba(0, 0, 0, 0.604);
     padding: 0.3em;
     margin-top: 0.6em;
+    font-weight: bold;
 }
 
 .bord-menu-principal a{
@@ -79,37 +97,49 @@ body {
 
 .img-logo img{
     width: 15em;
-    margin-left: -12vw;
+    margin-left: -17em;
     margin-right: auto;
 }
 
 
 .titulo{
     text-align: center;
-    margin-top: 3em;
-    margin-left: 3vw;
-    margin-right: auto;
+    margin-left: 3em;
     float: left;
 }
 
 .titulo h1 {
+    color: black;
+    font-family: 'Tangerine', cursive;
+    font-size: 60px;
+    font-weight: bold;
+
     border: 7px double rgba(78, 45, 45, 0.575);
-    display: inline-block;
     padding: 0.5%;
-    margin-top: 1em;
-    margin-left: 0.5em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    margin-top: -1em;
+    margin-left: 1em;
+    float: left;
 
 }
 
 .container1-conteudo1 {
     width: 18em;
-    height: auto;
-    background: rgba(221, 156, 156, 0.37);
-    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(43, 43, 43, 0.763) 53%, rgba(43, 43, 43, 0.804) 100%);
+    color: white;
+    text-align: center;
+    border-radius: 2em;
     margin-left: 1em;
     margin-bottom: 1px;
-    margin-top: -10em;
+    margin-top: -8em;
 }
+
+.conteudo1 {
+    margin-top: -8em;
+}
+
 .conteudo1 h2{
     margin-top: 2em;
     padding-top: 2em;
@@ -120,36 +150,36 @@ body {
     list-style: none;
     margin-bottom: 10em;
     padding-bottom: 3em;
+    background:rgb(26, 26, 26);
+    border-radius: 2em;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
 }
 
 .conteudo1 ul li{
     text-align: left;
-    background-color: rgba(221, 156, 156, 0.384);
+    background-color: rgba(45, 45, 45, 0.756);
+    color: rgba(255, 255, 255, 0.724);
     margin-top: 1%;
     height: 1.5em;
-    width: 70%;
+    width: 75%;
     padding: 0.3em;
     margin-left: 0.5em;
     border-radius: 10px;
 }
 .conteudo1 ul li:hover{
-    text-align: left;
-    background-color: rgba(201, 23, 23, 0.384);
-    margin-top: 1%;
-    height: 1.5em;
-    width: 70%;
-    padding: 0.3em;
-    margin-left: 0.5em;
-    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 .container2-posts {
     width: 50em;
-    height: auto;
-    background-color: rgba(221, 156, 156, 0.384);
+    color: white;
+    background-color:rgba(0, 0, 0, 0.748);
     margin-left: auto;
     margin-right: auto;
-    margin-top: -39em;
+    margin-top: -42em;
     padding: 3em;
     border-radius: 20px;
 }
@@ -181,20 +211,43 @@ body {
 .container1-contato1 {
     width: 18em;
     height: 18em;
-    background: rgba(221, 156, 156, 0.37);
-    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(43, 43, 43, 0.992) 53%, rgba(43, 43, 43, 0.804) 100%);
+    border-radius: 2em;
+    margin-bottom: 1px;
     margin-left: 1em;
+    margin-top: -8em;
 }
 
 .contato1 h2{
     margin-top: 2em;
     padding-top: 2em;
+    font-weight: bold;
     margin-left: 0.5em;
 }
 
 .contato1 ul{
+    padding-right: 0%;
     list-style: none;
     margin-bottom: 10em;
+    padding-bottom: 3em;
+    background:rgb(26, 26, 26);
+    border-radius: 2em;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    padding-top: 2em;
+    text-decoration:none;
+}
+
+.container-info-contact {
+    display:inline-block;
+    border: 1px solid;
+    border-radius: 1em;
+    padding: 5px;
+    background-color:white;
+    color: black;
+
 }
 
 .contato1 img{
@@ -202,8 +255,7 @@ body {
 }
 
 .contato1 ul li{
-    text-align: left;
-    background-color: rgba(221, 156, 156, 0.384);
+    background-color: rgba(68, 68, 68, 0.913);
     margin-top: 1%;
     height: auto;
     width: 70%;
@@ -212,6 +264,11 @@ body {
     margin-left: 0.5em;
     border-radius: 10px;
     text-align: center;
+}
+
+.contato1 ul a {
+    text-decoration:none;
+    color: inherit;
 }
 
 
@@ -226,16 +283,17 @@ body {
     margin-left: 0.5em;
     border-radius: 10px;
     text-align: center;
+    font-weight: bold;
 }
 
 .container2-mapa {
     width: auto;
     height: auto;
-    background-color: rgba(221, 156, 156, 0.384);
+    background-color: rgba(25, 25, 25, 0.384);
     float: left;
     padding: 1em;
-    margin-left: 30vw;
-    margin-top: -25vh;
+    margin-left: 28vw;
+    margin-top: -20vh;
     border-radius: 20px;
 }
 
@@ -244,14 +302,24 @@ body {
 .container-login {
     
     width: 13em;
-    height: auto;
-    background-color: rgba(221, 156, 156, 0.384);
-    float: left;
+    background-color: rgba(0, 0, 0, 0.787);
     padding: 1em;
-    margin-left: 44vw;
-    margin-top: 10vh;
+    color: white;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -40em;
     border-radius: 20px;
     text-align: center;
+
+}
+
+.container-login input{
+    border: 1px solid;
+    border-radius: 10px;
+    height: 20px;
+    text-align: center;
+    background: #cfcfcfcb;
 
 }
 
@@ -262,16 +330,27 @@ body {
 /* Registro */
 
 .container-register {
-    width: auto;
+    width: 14em;
     height: auto;
-    background-color: rgba(221, 156, 156, 0.384);
-    text-align: right;
-    float: left;
+    background-color: rgba(0, 0, 0, 0.787);
+    box-shadow: 0 0 28px rgba(0, 0, 0, 0.811);
+    color: white;
+    text-align: center;
+    font-weight: bold;
     padding: 1em;
-    margin-left: 38vw;
-    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -41em;
     border-radius: 20px;
     
+}
+
+.container-register input{
+    border: 1px solid;
+    border-radius: 10px;
+    height: 20px;
+    text-align: center;
+    background: #cfcfcfcb;
 }
 
 /* Administração */
@@ -279,13 +358,17 @@ body {
 /* usuários */
 
 .container1-menuadmin {
+    display: block;
     width: 18em;
     height: auto;
-    background: rgba(221, 156, 156, 0.37);
-    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(43, 43, 43, 0.91) 53%, rgba(43, 43, 43, 0.804) 100%);
+    color: white;
+    border-radius: 2em;
     margin-left: 1em;
     margin-bottom: 1px;
     text-align: center;
+    box-shadow: 0 0 15px rgb(20, 20, 20);
+
 }
 
 .container1-menuadmin a{
@@ -294,7 +377,7 @@ body {
 }
 
 .paneladmin-menu h2{
-    margin-top: -6em;
+    margin-top: -2.5em;
     padding-top: 2em;
     margin-left: 0.5em;
 }
@@ -303,12 +386,17 @@ body {
     list-style: none;
     margin-bottom: 10em;
     padding-bottom: 3em;
+    background:rgb(26, 26, 26);
     padding-inline-start: 3em;
     padding-inline-end: 0em;
+    border-radius: 2em;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
 }
 
 .paneladmin-menu ul li{
-    background-color: rgba(221, 156, 156, 0.384);
+    background-color: rgba(45, 45, 45, 0.756);
+    color: rgba(255, 255, 255, 0.724);
     margin-top: 1%;
     height: 1.5em;
     width: 70%;
@@ -318,18 +406,23 @@ body {
     text-align: center;
 }
 .paneladmin-menu li:hover{
-    background-color: rgba(201, 23, 23, 0.384);
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 .adminuserpanel {
     width: 50em;
     height: auto;
-    background-color: rgba(221, 156, 156, 0.384);
+    background-color: rgb(19, 19, 19);
     margin-left: auto;
     margin-right: auto;
-    margin-top: -24em;
-    padding: 3em;
+    margin-top: -30em;
+    padding: 1em;
     border-radius: 20px;
+    color: white;
+    box-shadow: 0px 0px 10px 3px rgb(126, 126, 126);
+
 }
 
 .adminuserpanel h2{
@@ -346,6 +439,8 @@ body {
 
 .adminuserpanel ul li {
     padding: 5px;   
+    color: white;
+    font-weight: bold;
 }
 
 .adminuserpanel a{
@@ -355,58 +450,47 @@ body {
 }
 
 .container2-menu-users {
+
     display:inline-block;
-    width: auto;
-    height: auto;
-    margin-left: 3em;
+    margin-top: -1em;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 0;
-    background-color: rgba(209, 112, 112, 0.384);
-    border-radius: 5px;
+}
+
+.container2-menu-users ul{
+
+    list-style: none;
+    margin: 0;
+    display:inline-block;
+    text-align: center;
 }
 
 .container2-menu-users li{
-    border: 1px solid rgba(201, 23, 23, 0.582);
+    border: 1px solid rgba(3, 3, 3, 0.582);
+    float: left;
+    background-color: rgba(84, 83, 83, 0.694);
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
 }
 
 
 .container2-menu-users li:hover{
-    background-color: rgba(209, 112, 112, 0.664);
+    background-color: rgba(0, 0, 0, 0.664);
 }
 
-.tabela-lista-users {
-    margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
 
-.tabela-lista-users table{
 
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 2%;
-}
-
-.tabela-lista-users td{
-    padding: 5px;
-    margin-right: 55em;
-
-    background-color:rgba(88, 60, 60, 0.151);
-}
-
-.topo-tabela {
-    background-color:rgba(88, 60, 60, 0.308);
-}
 
 /* manage user */
 
 .manageuser {
     width: 13em;
     height: auto;
-    background-color: rgba(221, 156, 156, 0.384);
+    background-color: rgba(75, 75, 75, 0.384);
     margin-left: auto;
     margin-right: auto;
-    margin-top: -23em;
+    margin-top: 1em;
     border-radius: 20px;
     padding: 2em;
     padding-bottom: 3em;
@@ -415,7 +499,7 @@ body {
 }
 .manageuser input{
     padding: 0.2em;
-    border-color: rgba(201, 23, 23, 0.582);
+    border-color: rgba(36, 36, 36, 0.582);
     border-radius: 10px;
     
 }
@@ -424,7 +508,7 @@ body {
 
     width: 19em;
     margin-left:20em;
-    border: 1px solid rgba(218, 42, 77, 0.753);
+    border: 1px solid rgba(159, 159, 159, 0.753);
     border-radius: 10px;
     padding: 0.5em;
 
@@ -440,7 +524,7 @@ body {
     background-color: rgba(221, 156, 156, 0.384);
     margin-left: auto;
     margin-right: auto;
-    margin-top: -24em;
+    margin-top: -32em;
     padding: 3em;
     border-radius: 20px;
 }
@@ -466,6 +550,27 @@ body {
     text-decoration: none;
 
 }
+
+.container-perfil{
+    padding: 2em;
+    border: 1px solid;
+}
+
+.userpanel {
+    width: 50em;
+    height: auto;
+    background-color: rgba(221, 156, 156, 0.384);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -21em;
+    padding: 3em;
+    border-radius: 20px;
+}
+
+.userpanel h2{
+    text-align: center;
+}
+
 
 .menu-service {
     display:inline-block;
@@ -493,14 +598,17 @@ body {
     width: 19em;
     height: auto;
 
-    background-color: rgba(209, 112, 112, 0.384);
+    background-color: rgb(122, 122, 122);
     margin-right: auto;
     margin-left: auto;
+    color: black;
+    margin-bottom: 2em;
     
     padding-top: 0.3em;
     padding-bottom: 1em;
     padding-right: 1em;
     border-radius: 10px;
+    box-shadow: 0 0 28px rgba(245, 245, 245, 0.424);
 }
 
 .inputservices {
@@ -517,9 +625,11 @@ body {
     width: 19em;
     height: auto;
 
-    background-color: rgba(209, 112, 112, 0.384);
+    box-shadow: 0 0 28px rgba(250, 42, 42, 0.494);
+    background-color: rgba(155, 13, 13, 0.531);
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 1em;
     
     padding-top: 0.3em;
     padding-bottom: 1em;
@@ -527,25 +637,39 @@ body {
     border-radius: 10px;
 }
 
+.delservice button{
+    margin-right: 5px;
+    margin-left: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.793);
+    border-radius: 10px;
+}
+
 .form-products {
     width: 21em;
     height: auto;
-    background-color: rgba(209, 112, 112, 0.384);
+    background-color: rgba(111, 109, 109, 0.764);
     margin-right: auto;
     margin-left: auto;
     margin-top: 1em;
+    margin-bottom: 1em;
+    color: black;
     border-radius: 10px;
     padding:1%;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px 5px rgba(111, 109, 109, 0.764);
     text-align: center;
 }
 
-.container1-conteudo1 {
-    width: 18em;
-    height: auto;
-    background: rgba(221, 156, 156, 0.37);
+.input-products {
+
+    border: 1px solid;
     border-radius: 10px;
-    margin-left: 1em;
-    margin-bottom: 1px;
+    height: 20px;
+    text-align: center;
+}
+
+.textareainput {
+    height: 4em;
 }
 
 .container2-menu {
@@ -566,3 +690,485 @@ body {
 .container2-menu li:hover{
     background-color: rgba(209, 112, 112, 0.664);
 }
+
+/* store */
+
+.buttonback {
+    float: left;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.storepanel {
+    background-color: rgb(19, 19, 19);
+    margin-left: 25em;
+    margin-top: -30em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 1em;
+    box-shadow: 0px 0px 10px 3px rgb(126, 126, 126);
+    padding-bottom: 2em;
+    float: left;
+
+
+    border-radius: 20px;
+}
+
+.storepanel h2{
+    text-align: center;
+    color: white;
+}
+
+.storepanel h3{
+    color: white;
+}
+
+.storepanel ul{
+    display: inline-block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+.storepanel ul li {
+    padding: 5px;   
+}
+
+.storepanel a{
+    color: inherit;
+    text-decoration: none;
+
+}
+
+
+.storewindow {
+    width: 64.75em;
+    background-color: rgb(95, 94, 94);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1em;
+
+
+}
+
+/* carrinho */
+
+.menu-store-container {
+
+    display: inline-block;
+    width: 4em;
+    color: white;
+    height: auto;
+    padding: 1em;
+    padding-right: 1.9em;
+    background-color: rgba(34, 34, 34, 0.931);
+    border-radius: 1em;
+    box-shadow: 0 0 12px rgb(104, 102, 104);
+    margin-right: 1em;
+    
+    
+    
+}
+
+.menu-store-container2 {
+
+    width: 4em;
+    height: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    border: 1px solid rgba(82, 81, 81, 0.876);
+    border-radius: 1em;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.menu-store-container p{
+    margin: 0;
+}
+
+.store-menu-containers {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.container-new-shop {
+    display: block;
+    width: 20em;
+    height: auto;
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3em;
+    font-weight: bold;
+    border: 1px solid rgba(70, 70, 70, 0.856);
+    border-radius: 1em;
+    background-color:rgba(114, 112, 112, 0.968);
+}
+
+
+
+/* estilo tabela store */
+
+.list-store-container {
+    background-color:#38373796;
+    width: 36em;
+    height: auto;
+    padding: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 1px solid black;
+    border-radius: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-store-container h3{
+    margin: 0;
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+table.shop-table {
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 60%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table.shop-table td, table.shop-table th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+  }
+  table.shop-table tbody td {
+    font-size: 13px;
+    font-weight: bold;
+    color: #212121;
+    text-align: center;
+  }
+  table.shop-table tr:nth-child(even) {
+    background: #F1C8F5;
+  }
+  table.shop-table thead {
+    background: #A40C92;
+    background: -moz-linear-gradient(top, #bb49ad 0%, #ad249d 66%, #A40C92 100%);
+    background: -webkit-linear-gradient(top, #bb49ad 0%, #ad249d 66%, #A40C92 100%);
+    background: linear-gradient(to bottom, #bb49ad 0%, #ad249d 66%, #A40C92 100%);
+    border-bottom: 2px solid #444444;
+  }
+  table.shop-table thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #F5C0F4;
+  }
+  table.shop-table thead th:first-child {
+    border-left: none;
+  }
+  
+  table.shop-table tfoot td {
+    font-size: 14px;
+  }
+  table.shop-table tfoot .links {
+    text-align: center;
+  }
+  table.shop-table tfoot .links a{
+    display: inline-block;
+    background: #A40C69;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
+
+.shop-table button{
+    background:#eb50d949;
+    border: 1px solid rgba(123, 6, 94, 0.404);
+    border-radius: 1em;
+}
+
+.list-shop-container {
+    background:#5c595974;
+    border: 1px solid rgba(0, 0, 0, 0.334);
+    border-bottom-left-radius: 1.6em;
+    border-bottom-right-radius: 1.6em;
+    margin-top: 1.5em;
+}
+
+.container2-shop {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 99.5%;
+    border: 1px solid rgba(47, 47, 47, 0.135);
+    background: rgb(198, 198, 198);
+
+}
+
+.container2-shop h4 {
+
+    margin: 0;
+    margin-bottom: 0.3em;
+}
+
+.container-total{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    background:#111111;
+    box-shadow: 0px 0px 20px 5px rgb(113, 111, 111);
+    border: 1px solid #2c2c2c;
+    border-radius: 1em;
+    padding: 0.5em;
+    text-align:left;
+    color: white;
+}
+
+.inputcart{
+    width: 4em;
+}
+
+.form-insert-cart {
+    display: inline-block;
+    width: 35.5em;
+    margin: 0;
+    margin-right: 1em;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 0.75em;
+    border-top-right-radius: 0;
+    background:#373737e2;
+    text-align: center;
+    
+}
+
+
+.form-insert-cart h3 {
+    text-align: center;
+    margin: 0;
+}
+
+.form-insert-item {
+    margin: 0;
+    border-radius: 0.5em;
+}
+
+
+.form-insert-item input{
+    border-radius: 0.4em;
+}
+
+
+
+/* serviços */
+
+.container-content{
+    width: 90em;
+    background-color: rgba(167, 164, 164, 0.765);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(0, 0, 0, 0.446);
+    border-radius: 2em;
+    padding: 2em;
+
+}
+
+.container1-service-show {
+    background-color: rgba(0, 0, 0, 0.761);
+    display: inline-block;
+    width: 20em;
+    border: 1px solid rgba(85, 85, 85, 0.785);
+    border-radius: 2px;
+    margin-top: 2em;
+    margin-left: 5em;
+    margin-bottom: 2em;
+    border-radius: 1em;
+    text-align: center;
+    color: white;
+    box-shadow: 0px 0px 10px 5px rgb(52, 50, 50);
+    /* in order: x offset, y offset, blur size, spread size, color */
+    /* blur size and spread size are optional (they default to 0) */
+    
+    padding: 1em;
+
+}
+
+.container1-service-show img{
+    box-shadow: 0px 0px 10px 3px rgb(152, 150, 150);
+    
+}
+
+.container1-service-show p{
+    background-color:rgba(255, 255, 255, 0.909);
+    display:inline-block;
+    margin: 0;
+    padding: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.898);
+    border-radius: 2em;
+    color: black;
+    box-shadow: 0px 0px 10px 3px rgb(126, 126, 126);
+    font-size: 1em;
+}
+
+.search-itens {
+    width: 27em;
+    background:#3b3b3be8;
+    margin-top: -37.39em;
+    margin-left: 5em;
+    border: 1px solid;
+    padding: 1em;
+    border-top-right-radius: 0.8em;
+    text-align: center;
+    float: right;
+
+}
+
+.container-type-item {
+    display: inline-block;
+    margin-top: 0.4em;
+    background:#8a8a8a;
+    border: 1px solid rgba(0, 0, 0, 0.361);
+    border-radius: 2em;
+}
+
+.table-search-container {
+
+    height: 26em;
+    overflow-y: auto;
+
+}
+
+.search-itens p {
+    margin: 0;
+    padding: 0;
+}
+
+.delitem {
+    background: #ff0800da;
+    width: 13em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em;
+    border-radius: 1em;
+}
+
+.container-total2{
+    display: block;
+    width: 13em;
+    height: 7em;
+    background:#434343;
+    color: white;
+    font-size: bold;
+    margin: 0;
+    padding-top: 0.1em;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
+    border-radius: 1em;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(255, 252, 252, 0.311);
+
+}
+
+.text-total {
+    font-size: 20px;
+}
+
+.form-coupon {
+    margin-top: 2em;
+    margin-left: 2em;
+    text-align: left;
+}
+
+.form-coupon input {
+    border: 1px solid;
+    border-radius: 2em;
+    height: 1.5em;
+}
+
+.btn-submitcoupons {
+    margin-left: 9em;
+    margin-top: 1em;
+    border: 1px solid;
+    border-radius: 1em;
+}
+
+
+.inputdiscount {
+    width: 2em;
+}
+
+.container-caption-page {
+    width: 30%;
+    margin:0%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:rgba(0, 0, 0, 0.567);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.554);
+    border-bottom: none;
+}
+
+
+.container-caption-page h1 {
+
+    margin: 0;
+
+}
+
+
+/* tabela base usuarios */
+table.darkTable {
+    font-family: "Arial Black", Gadget, sans-serif;
+    border: 2px solid #000000;
+    background-color: #414141;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  table.darkTable td, table.darkTable th {
+    border: 1px solid #000000;
+    padding: 3px 1px;
+  }
+  table.darkTable tbody td {
+    font-size: 15px;
+    color: #E6E6E6;
+    font-size: bold;
+    max-height: 20px;
+  }
+  table.darkTable tr:nth-child(even) {
+    background: #222222;
+  }
+  table.darkTable thead {
+    background: #141414;
+    border-bottom: 3px solid #000000;
+  }
+  table.darkTable thead th {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #4A4A4A;
+    max-height: 50px;
+  }
+  table.darkTable thead th:first-child {
+    border-left: none;
+  }
+  
+  table.darkTable tfoot td {
+    font-size: 12px;
+  }
+
+  .red {
+      color: red;
+  }

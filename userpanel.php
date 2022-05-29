@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
-    <title>Painel Administrativo - Espaço Zen</title>
+    <title>Painel do(a) Usuário(a) - Espaço Zen</title>
 </head>
 <body>
 
@@ -30,12 +30,27 @@
 
     <?php 
     // menu do administrador
-    require("reqs/adminpanel-menuprincipal.php");
-
-       
-
-
+    require("reqs/userpanel-menuprincipal.php");
     ?>
+
+    <div class="userpanel">
+
+        <h2>Painel do(a) Usuário(a):</h2>
+        <div class="container-perfil">
+            <?php
+            $userprofile = selectUser($conecta);
+            ?>
+            <p><strong>Usuário:</strong> <?php echo $userprofile["username"]; ?></p>
+            <p><strong>Nome:</strong> <?php echo $userprofile["name"]; ?></p>
+            <p><strong>E-mail:</strong> <?php echo $userprofile["email"]; ?></p>
+            <p><strong>CPF:</strong> <?php echo $userprofile["cpf"]; ?></p>
+            <p><strong>Celular:</strong> <?php echo $userprofile["cellphone"]; ?></p>
+        </div> <!--container-perfil-->
+
+
+    
+    <div> <!-- adminservicepanel -->
+
     
 </body>
 </html>
