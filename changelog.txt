@@ -1,3 +1,14 @@
+changelog version 1.0.3.0
+
+INF: Inicialização da branch, com o foco no front-end para tornar a pág responsiva.
+
+
+
+
+
+-----------------------------------------------------------------------------------
+
+
 changelog version 1.0.2.2
 
 Detalhes menores em mensagens de pesquisa e de exclusão de alguns dados.
