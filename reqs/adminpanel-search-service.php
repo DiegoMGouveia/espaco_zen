@@ -1,11 +1,8 @@
-<form action="adminpanel.php?services=3" method="POST">
-    <input type="text" name="searchservice" id="searchuser" placeholder="Digite algo sobre o serviço" required>
-    <button type="submit">Procurar</button>
-</form>
-
 <?php
 
- if( $_POST["searchservice"] ){
+ if( $_POST["search"] ){
+
+    echo "<center>Mostrando resultados para '". $_POST["search"] . "'.</center><br>";
 
      ?>
 
@@ -21,7 +18,7 @@
 
         <?php
 
-        $sql_query = searchService($_POST["searchservice"], $conecta);
+        $sql_query = searchService($_POST["search"], $conecta);
                     
         while($service_list = mysqli_fetch_array($sql_query)) {
             $serviceID = $service_list['servicesID'];

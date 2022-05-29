@@ -52,7 +52,7 @@
         } elseif ($_GET['delservice'] > 0){
 
             echo "<div class='delservice'>";
-            echo "<p>Você tem certeza de que quer deletar este serviço?</p> <br> <p>Isso será irreversivel!</p><br>";
+            echo "<p>Você tem certeza de que quer <strong>DELETAR</strong> este serviço?</p> <br> <p>Isso será irreversivel!</p><br>";
             echo "<a href='admin-services.php?allservices'><button>Voltar</button></a>";
 
             echo "<a href='admin-services.php?del=" . $_GET['delservice'] . "'><button>EXCLUIR</button></a>";
@@ -75,9 +75,11 @@
                 <input type="text" name="search" id="searchuser" placeholder="pesquisar serviço">
                 <button type="submit">Buscar</button>
 
-            </form>
+            </form><br>
             <?php 
             if ( isset ( $_POST["search"] ) ) {
+
+                echo "<center>Mostrando resultados para '". $_POST["search"] . "'.</center><br>";
                 $list_sql = searchService($_POST["search"], $conecta);
                 require("reqs/admin-services-allservices.php");
             }
