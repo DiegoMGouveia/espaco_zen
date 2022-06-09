@@ -24,7 +24,7 @@
         <td><figure><img width="195em" src="<?php echo $imagem;?>"></figure></td>
             <td><?php echo $gallery_list["galleryID"]?></td>
             <td><strong><?php echo $gallery_list["name"]?></strong></td>
-            <td><?php echo $gallery_list["description"]?></td>
+            <td class="desc-mob"><?php echo $gallery_list["description"]?></td>
             <td><a href="admin-gallery.php?editphoto=<?php echo $gallery_list['galleryID'];?>"><button>Editar</button></a><br><br><a href="admin-gallery.php?delphoto=<?php echo $gallery_list["galleryID"];?>"><button>Deletar</button></a></td>
 
         </tr>

@@ -22,7 +22,7 @@
                 <td><?php echo $serviceID ?></td>
                 <td><?php echo $service_list['name']?></td>
                 <td><?php echo $service_list['price']?></td>
-                <td><?php echo $service_list['description']?></td>
+                <td class="desc-mob"><?php echo $service_list['description']?></td>
                 <td><a href="admin-services.php?selectservice=<?php echo $serviceID ?>"><button type="submit">Modificar</button></a><br><a href="admin-services.php?delservice=<?php echo $serviceID ?>"><button type="submit">Deletar</button></a></td>
 
             </tr>

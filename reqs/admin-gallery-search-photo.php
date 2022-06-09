@@ -10,43 +10,44 @@
     echo "<center>Mostrando resultados para '". $_POST["searchphoto"] . "'.</center><br>";
 
      ?>
+    <div class="tabela-lista-users">
+        <table cellspacing="0" class="darkTable" >
+            <thead>
+                <tr>
+                    <th>Imagem: </th>
+                    <th>ID: </th>
+                    <th>Nome: </th>
+                    <th>Descrição: </th>
+                    <th>Ação: </th>
+                </tr>
+            </thead>
 
-     <table cellspacing="0" class="darkTable" >
-        <thead>
+            <tbody>
+
+            <?php
+
+                $gallery_query = searchPhoto($conecta);
+                while($gallery_list = mysqli_fetch_array($gallery_query)) {
+                    $imagem = $gallery_list['photoPath'];
+
+            ?>
             <tr>
-                <th>Imagem: </th>
-                <th>ID: </th>
-                <th>Nome: </th>
-                <th>Descrição: </th>
-                <th>Ação: </th>
+
+            <td><figure><img width="195em" src="<?php echo $imagem;?>"></figure></td>
+                <td><?php echo $gallery_list["galleryID"]?></td>
+                <td><strong><?php echo $gallery_list["name"]?></strong></td>
+                <td class="desc-mob"><?php echo $gallery_list["description"]?></td>
+                <td><a href="admin-gallery.php?editphoto=<?php echo $gallery_list['galleryID'];?>"><button>Editar</button></a><br><br><a href="admin-gallery.php?delphoto=<?php echo $gallery_list["galleryID"];?>"><button>Deletar</button></a></td>
+
             </tr>
-        </thead>
 
-        <tbody>
+            <?php
+                }
+            ?>
+            <tbody>
 
-        <?php
-
-            $gallery_query = searchPhoto($conecta);
-            while($gallery_list = mysqli_fetch_array($gallery_query)) {
-                $imagem = $gallery_list['photoPath'];
-
-        ?>
-        <tr>
-
-        <td><figure><img width="195em" src="<?php echo $imagem;?>"></figure></td>
-            <td><?php echo $gallery_list["galleryID"]?></td>
-            <td><strong><?php echo $gallery_list["name"]?></strong></td>
-            <td><?php echo $gallery_list["description"]?></td>
-            <td><a href="admin-gallery.php?editphoto=<?php echo $gallery_list['galleryID'];?>"><button>Editar</button></a><br><br><a href="admin-gallery.php?delphoto=<?php echo $gallery_list["galleryID"];?>"><button>Deletar</button></a></td>
-
-        </tr>
-
-        <?php
-            }
-        ?>
-        <tbody>
-
-    </table>
+        </table>
+    </div>
 
      <?php
  }

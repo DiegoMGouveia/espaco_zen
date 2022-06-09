@@ -1172,3 +1172,120 @@ table.darkTable {
   .red {
       color: red;
   }
+
+
+  /* 
+                    Responsivo 1468px
+  */
+
+  @media (max-width: 1468px) and (min-width: 769px) {
+        .adminuserpanel{
+
+            margin-left: 20em;
+
+        }
+
+  }
+
+  /* 
+            Responsivo 1167px
+    */
+
+    @media  (max-width: 1180px) {
+
+        .titulo h1{
+            margin-top: 0;
+        }
+
+        
+        
+    }
+
+
+  /* 
+  ---------------------------------------------------------------------------------------------
+                    Responsivo 500px
+  ---------------------------------------------------------------------------------------------
+  
+  */
+
+  @media (max-width: 768px){
+    .bord-menu-principal {
+        width: 18em;
+    }
+
+
+    .titulo h1 {
+
+
+        font-size: 40px;
+        margin-top: -0.2em;
+        margin-left: -0.5em;
+
+    }
+    .img-logo img {
+        display: flex;
+        margin-top: -0.5em;
+        margin-left: 17vw;
+        float: left;
+        align-content: flex-end;
+        max-width: 109px;
+
+    }
+
+    .paneladmin-menu h2 {
+        margin-top: 7.5em;
+        padding-top: 2em;
+        margin-left: 0.5em;
+    }
+
+    .paneladmin-menu h2 {
+        margin-top: 3.5em;
+    }
+
+    .adminuserpanel {
+        width: 19em;
+        margin-top: -9em;
+    }
+
+    .tabela-lista-users {
+        
+        overflow-x: scroll;
+    }
+
+    .adminuserpanel{
+
+        overflow-x: scroll;
+
+    }
+
+    #searchuser{
+        margin-left: 0;
+    }
+
+    .conteudo1 {
+        margin-top: 14em;
+    }
+
+    .container2-posts {
+        width: auto;
+        margin-top: -9em;
+    }
+
+    .adminuserpanel ul li {
+        /* padding: 5px;
+        color: white;
+        font-weight: bold; */
+        font-size: smaller;
+    }
+    
+    .newservice{
+
+        width: 18em;
+
+    }
+
+    .desc-mob {
+        min-width: 180px;
+    }
+  }
