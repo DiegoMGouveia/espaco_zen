@@ -109,15 +109,15 @@
     }
 
     
-    function registro($conection, $user, $pwd, $name, $cell, $mail=null){
+    function registro($conection, $user, $pwd, $name, $cell, $cpf, $mail=null){
         $pass = MD5($pwd);
-        $sql = "INSERT INTO users(username,password,name,email,cellphone) VALUES('{$user}','{$pass}','{$name}','{$mail}','{$cell}')";
+        $sql = "INSERT INTO users(username,password,name,email,cellphone,privileges,cpf) VALUES('{$user}','{$pass}','{$name}','{$mail}','{$cell}',4,'{$cpf}')";
         $insert_query = mysqli_query($conection, $sql);
         if ($conection->errno == 1062) {
             return 1062;
         }
         if ( !$insert_query && $conection->errno != 1062) {
-            die("falha na consulta ao banco, entre em contato conosco informando a falha com data e hora. Obrigado!");
+            die("falha [$conection->errno] na consulta ao banco, entre em contato conosco informando a falha com data e hora. Obrigado!");
         } else {
             return $insert_query;
         }
@@ -782,7 +782,7 @@
         return $sqlQuery;
     }
 
-
+    // valida o cpf, ser estiver inválido retorna false
     function validateCPF($number) {
 
         $cpf = preg_replace('/[^0-9]/', "", $number);

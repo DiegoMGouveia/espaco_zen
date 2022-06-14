@@ -38,8 +38,7 @@
 
                 $img_path = "_imgs/noimg.png";
             
-            } else {
-                echo "aqui";
+            } else {    
                 $new_name = uniqid() . "."; // Novo nome aleatório do arquivo
                 $extension = strtolower(pathinfo($serviceImg["name"], PATHINFO_EXTENSION)); // Pega extensão de arquivo e converte em caracteres minúsculos.      
                 $tempPast = $serviceImg["tmp_name"];

@@ -1,3 +1,11 @@
+
+changelog version 1.0.3.1
+
+MOD: pequena atualização de responsividade, agora quando olhado de um dispositivo movel, não carregará a lista de serviços na tela principal, login e cadastro.
+
+----------------------------------------------------------------------------------
+
+
 changelog version 1.0.3.0
 
 MOD: modificado CSS para deixar responsivo a algumas resoluções de tela
