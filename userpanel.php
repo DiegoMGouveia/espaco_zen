@@ -5,7 +5,7 @@
     session_start();
 
     // checa se o usuário é administrador
-    adminCheck();
+    userCheck();
 ?>
 
 <!DOCTYPE html>

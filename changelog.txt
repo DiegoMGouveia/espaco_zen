@@ -1,3 +1,10 @@
+changelog version 1.0.3.2
+
+MOD: consertado bug que usário cliente não conseguia acessar o perfil. 
+
+
+-----------------------------------------------------------------------------------
+
 
 changelog version 1.0.3.1
 
